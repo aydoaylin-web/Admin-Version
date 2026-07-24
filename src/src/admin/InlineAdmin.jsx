@@ -1,513 +1,2937 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { createPortal } from 'react-dom';
-import App from '../App.jsx';
 import {
-  ladeEntwurf, speichereEntwurf, leerEntwurf, erzeugeCodeDateien,
-  geaenderteCodeDateien, SPRACHCODES,
-} from './codeEntwurf';
-import { STELLSCHRAUBEN } from './codegen';
-import { ladeZipHerunter } from './zipExport';
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { createPortal } from 'react-dom';
+
+import App from '../App.jsx';
+
+import {
+  ladeEntwurf,
+  speichereEntwurf,
+  leerEntwurf,
+  erzeugeCodeDateien,
+  geaenderteCodeDateien,
+  SPRACHCODES,
+} from './codeEntwurf.js';
+
+import { STELLSCHRAUBEN } from './codegen.js';
+import { ladeZipHerunter } from './zipExport.js';
 
 /* ============================================================
-   BEARBEITEN DIREKT IN DER APP
+   DEEPFAKE DEFENDER – INLINE-ADMIN
 
-   ZWEI MODI - das ist der Kern:
-
-     SPIELEN      Die App verhaelt sich exakt wie fuer die Kinder.
-                  Jeder Knopf tut, was er tun soll. So gehst du
-                  einen Fall komplett durch und pruefst, ob deine
-                  Aenderungen wirken.
-
-     BEARBEITEN   Ein Klick oeffnet das Bearbeitungsfeld statt
-                  die Aktion auszuloesen.
-
-   In BEIDEN Modi gilt: Alt + Klick bearbeitet immer. Damit
-   kommst du auch mitten im Spielen an jede Stelle, ohne den
-   Modus zu wechseln.
-
-   App.jsx wird nicht veraendert. Die Zuordnung laeuft ueber das,
-   was die App ohnehin ausgibt.
-
-   Eine weitere Stelle anklickbar machen: unten in findeZiel()
-   einen Zweig ergaenzen und im Seitenfeld einen Abschnitt dazu.
+   Funktionen:
+   - echte App im Spielmodus verwenden
+   - sichtbare Elemente im Bearbeitungsmodus auswählen
+   - direkt anzeigen, welche Datei verändert wird
+   - vollständiges Objekt als JSON bearbeiten
+   - alle Contentdateien vollständig bearbeiten
+   - Änderungen lokal speichern
+   - Codeansicht anzeigen
+   - Änderungen als ZIP exportieren
    ============================================================ */
 
-const INHALT_SCHLUESSEL = 'dd-admin-inhalte-v2';
-const FILES = ['settings', 'posts', 'tasks', 'profiles', 'stories', 'guides'];
-const VERDICTS = ['echt', 'suspekt', 'manipuliert'];
+const INHALT_SCHLUESSEL = 'dd-admin-inhalte-v4';
 
-const joinBase = (pfad) => `${import.meta.env.BASE_URL}${String(pfad).replace(/^\//, '')}`;
+const CONTENT_DATEIEN = [
+  'settings',
+  'posts',
+  'tasks',
+  'profiles',
+  'stories',
+  'guides',
+];
+
+const VERDICTS = [
+  'echt',
+  'suspekt',
+  'manipuliert',
+];
+
+const joinBase = (pfad) =>
+  `${import.meta.env.BASE_URL}${String(pfad).replace(/^\//, '')}`;
 
 const feld = {
-  width: '100%', padding: '8px 10px', borderRadius: 8, marginTop: 4,
-  border: '1px solid #cbd5e1', font: 'inherit', fontSize: 13, background: '#fff',
+  width: '100%',
+  boxSizing: 'border-box',
+  padding: '8px 10px',
+  borderRadius: 8,
+  marginTop: 4,
+  border: '1px solid #cbd5e1',
+  font: 'inherit',
+  fontSize: 13,
+  background: '#fff',
 };
-const beschriftung = { display: 'block', fontSize: 12, fontWeight: 700, color: '#3d4c66', marginTop: 12 };
-const block = { marginTop: 14, padding: 12, borderRadius: 10, background: '#f7f9fc', border: '1px solid #dce3ee' };
 
-/* Umrandungen nur im Bearbeitenmodus. Im Spielmodus sieht die
-   Oberflaeche exakt aus wie fuer die Kinder. */
+const beschriftung = {
+  display: 'block',
+  fontSize: 12,
+  fontWeight: 700,
+  color: '#3d4c66',
+  marginTop: 12,
+};
+
+const block = {
+  marginTop: 14,
+  padding: 12,
+  borderRadius: 10,
+  background: '#f7f9fc',
+  border: '1px solid #dce3ee',
+};
+
 const MARKIER_CSS = `
-[data-post-id]{ outline:2px dashed rgba(219,43,115,.5); outline-offset:3px; border-radius:14px; }
-[data-post-id]:hover{ outline-color:#db2b73; outline-style:solid; }
-.analysis-tool-content{ outline:2px dashed rgba(31,158,120,.45); outline-offset:-2px; border-radius:10px; }
-.analysis-tool-content:hover{ outline-color:#1f9e78; outline-style:solid; }
-.task-sheet textarea{ outline:2px dashed rgba(31,158,120,.45); }
+  [data-post-id] {
+    outline: 2px dashed rgba(219, 43, 115, .52);
+    outline-offset: 3px;
+    border-radius: 14px;
+  }
+
+  [data-post-id]:hover {
+    outline-color: #db2b73;
+    outline-style: solid;
+  }
+
+  .analysis-tool-content,
+  .task-sheet,
+  .app-header,
+  .bottom-nav,
+  button,
+  input,
+  textarea,
+  select {
+    transition: outline-color .15s ease;
+  }
+
+  .analysis-tool-content {
+    outline: 2px dashed rgba(31, 158, 120, .45);
+    outline-offset: -2px;
+    border-radius: 10px;
+  }
+
+  .analysis-tool-content:hover {
+    outline-color: #1f9e78;
+    outline-style: solid;
+  }
+
+  .task-sheet textarea,
+  .task-sheet select,
+  .task-sheet input {
+    outline: 2px dashed rgba(31, 158, 120, .38);
+  }
+
+  .app-header:hover,
+  .bottom-nav:hover {
+    outline: 2px dashed rgba(9, 43, 97, .4);
+    outline-offset: -2px;
+  }
 `;
 
-export function AdminKopfKnopf({ aktiv, onClick }) {
+function clone(value) {
+  if (typeof structuredClone === 'function') {
+    return structuredClone(value);
+  }
+
+  return JSON.parse(JSON.stringify(value));
+}
+
+function normalisiereDateiName(name) {
+  if (String(name).startsWith('content/')) {
+    return String(name);
+  }
+
+  if (String(name).endsWith('.json')) {
+    return `content/${name}`;
+  }
+
+  return `content/${name}.json`;
+}
+
+function stringifyDatei(value) {
+  return `${JSON.stringify(value, null, 2)}\n`;
+}
+
+function arrayOderLeer(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function objektOderLeer(value) {
+  return value && typeof value === 'object' && !Array.isArray(value)
+    ? value
+    : {};
+}
+
+function zweisprachigerWert(wert, code) {
+  if (
+    wert &&
+    typeof wert === 'object' &&
+    !Array.isArray(wert)
+  ) {
+    return wert[code] ?? '';
+  }
+
+  if (code === 'de') {
+    return wert ?? '';
+  }
+
+  return '';
+}
+
+function setzeZweisprachigenWert(wert, code, neuerWert) {
+  if (
+    wert &&
+    typeof wert === 'object' &&
+    !Array.isArray(wert)
+  ) {
+    return {
+      ...wert,
+      [code]: neuerWert,
+    };
+  }
+
+  return {
+    de: code === 'de' ? neuerWert : (wert ?? ''),
+    en: code === 'en' ? neuerWert : '',
+  };
+}
+
+/* ============================================================
+   ADMINBUTTON IN DER KOPFZEILE
+   ============================================================ */
+
+export function AdminKopfKnopf({
+  aktiv,
+  onClick,
+}) {
   const [ziel, setZiel] = useState(null);
+
   useEffect(() => {
     let versuche = 0;
-    const uhr = setInterval(() => {
-      const el = document.querySelector('.app-header .header-actions');
+
+    const uhr = window.setInterval(() => {
+      const element =
+        document.querySelector('.app-header .header-actions') ||
+        document.querySelector('.app-header');
+
       versuche += 1;
-      if (el || versuche > 40) { clearInterval(uhr); setZiel(el || null); }
+
+      if (element || versuche > 50) {
+        window.clearInterval(uhr);
+        setZiel(element || null);
+      }
     }, 100);
-    return () => clearInterval(uhr);
+
+    return () => window.clearInterval(uhr);
   }, []);
 
   const knopf = (
-    <button type="button" data-admin-schutz onClick={onClick} aria-label="Adminmodus"
+    <button
+      type="button"
+      data-admin-schutz
+      onClick={onClick}
+      aria-label="Adminmodus schließen"
       style={{
-        display: 'inline-flex', alignItems: 'center', gap: 5, minHeight: 34,
-        padding: '5px 10px', borderRadius: 999, cursor: 'pointer',
-        border: `1px solid ${aktiv ? '#db2b73' : 'rgba(9,43,97,.25)'}`,
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 5,
+        minHeight: 34,
+        padding: '5px 10px',
+        borderRadius: 999,
+        cursor: 'pointer',
+        border: `1px solid ${
+          aktiv ? '#db2b73' : 'rgba(9,43,97,.25)'
+        }`,
         background: aktiv ? '#db2b73' : 'transparent',
         color: aktiv ? '#fff' : '#092b61',
-        font: 'inherit', fontSize: 12, fontWeight: 800,
-      }}>
-      {aktiv ? 'Fertig' : 'Admin'}
+        font: 'inherit',
+        fontSize: 12,
+        fontWeight: 800,
+      }}
+    >
+      {aktiv ? 'Admin beenden' : 'Admin'}
     </button>
   );
 
-  if (ziel) return createPortal(knopf, ziel);
-  return <div style={{ position: 'fixed', top: 10, left: 10, zIndex: 2147483000 }}>{knopf}</div>;
+  if (ziel) {
+    return createPortal(knopf, ziel);
+  }
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        top: 10,
+        right: 10,
+        zIndex: 2147483000,
+      }}
+    >
+      {knopf}
+    </div>
+  );
 }
 
-/* ---------- Welchen Beitrag zeigt die Feed-Pruefung gerade? ---------- */
+/* ============================================================
+   ZIELERKENNUNG
+   ============================================================ */
+
 function postAusBlatt(blatt, inhalte) {
-  const bild = blatt.querySelector('img.post-image, .task-image-button img, .hotspot-image, img');
-  const quelle = bild ? bild.getAttribute('src') : '';
-  if (!quelle) return null;
-  return (inhalte.posts || []).find((p) => p.media && quelle.endsWith(String(p.media).replace(/^\//, ''))) || null;
+  if (!blatt) {
+    return null;
+  }
+
+  const bild = blatt.querySelector(
+    'img.post-image, .task-image-button img, .hotspot-image, img',
+  );
+
+  const quelle = bild?.getAttribute('src') || '';
+
+  if (!quelle) {
+    return null;
+  }
+
+  return arrayOderLeer(inhalte.posts).find((post) => {
+    if (!post?.media) {
+      return false;
+    }
+
+    const media = String(post.media).replace(/^\//, '');
+
+    return quelle.endsWith(media);
+  }) || null;
 }
 
-/* ---------- Zielbestimmung: worauf wurde geklickt? ---------- */
-export function findeZiel(el, inhalte, entwurf) {
-  const blatt = el.closest('.task-sheet');
+function findeUebersetzungsSchluessel(element, entwurf) {
+  let knoten = element;
 
-  // 1. Analysewerkzeuge in der Feed-Pruefung
-  const werkzeug = el.closest('.analysis-tool-content');
-  if (werkzeug && blatt) {
-    const post = postAusBlatt(blatt, inhalte);
-    if (post) {
-      if (werkzeug.querySelector('.origin-check, .origin-hit, .origin-empty')) return { art: 'herkunft', postId: post.id };
-      if (werkzeug.querySelector('.profile-check-head, .profile-check-bio, .profile-check-avatar')) return { art: 'profil', postId: post.id };
-      if (werkzeug.querySelector('.source-browser-bar, .linked-page-preview, .linked-page-kicker')) return { art: 'quelle', postId: post.id };
-      return { art: 'zonen', postId: post.id };
-    }
-  }
+  for (let ebene = 0; ebene < 6 && knoten; ebene += 1) {
+    const text = String(knoten.textContent || '').trim();
 
-  // 2. Begruendungsfeld und Urteilsauswahl
-  if (blatt) {
-    const post = postAusBlatt(blatt, inhalte);
-    const imBegruendungsteil = el.closest('textarea, .verdict-question, .feedback, .reason, .verdict-card, .verdict-option, .verdict-row');
-    if (post) return { art: imBegruendungsteil ? 'bewertung' : 'beitrag', postId: post.id };
-  }
-
-  // 3. Beitrag im Feed
-  const beitrag = el.closest('[data-post-id]');
-  if (beitrag) return { art: 'beitrag', postId: beitrag.getAttribute('data-post-id') };
-
-  // 4. Oberflaechentext ueber die Uebersetzungen
-  let knoten = el;
-  for (let i = 0; i < 4 && knoten; i += 1) {
-    const text = (knoten.textContent || '').trim();
-    if (text && text.length <= 120) {
+    if (text && text.length <= 180) {
       for (const code of SPRACHCODES) {
-        const eintraege = entwurf.translations[code] || {};
-        const schluessel = Object.keys(eintraege).find((k) => eintraege[k] === text);
-        if (schluessel) return { art: 'text', schluessel };
+        const eintraege =
+          entwurf?.translations?.[code] || {};
+
+        const schluessel = Object.keys(eintraege).find(
+          (key) => String(eintraege[key]).trim() === text,
+        );
+
+        if (schluessel) {
+          return schluessel;
+        }
       }
     }
+
     knoten = knoten.parentElement;
   }
+
   return null;
 }
 
-/* Freies Feld fuer verschachtelte Daten wie sourceCheck oder
-   profileCheck. Zeigt sofort an, wenn die Klammern nicht stimmen,
-   und uebernimmt erst dann. */
-function JsonFeld({ wert, onChange, zeilen = 12 }) {
-  const [text, setText] = useState(() => JSON.stringify(wert ?? {}, null, 2));
-  const [fehler, setFehler] = useState('');
-  useEffect(() => { setText(JSON.stringify(wert ?? {}, null, 2)); }, [wert]);
+export function findeZiel(element, inhalte, entwurf) {
+  if (!element || element.closest('[data-admin-schutz]')) {
+    return null;
+  }
 
-  function tippen(neu) {
-    setText(neu);
-    try {
-      const geparst = JSON.parse(neu);
-      setFehler('');
-      onChange(geparst);
-    } catch (f) {
-      setFehler(f.message);
+  const blatt = element.closest('.task-sheet');
+  const feedPost = element.closest('[data-post-id]');
+
+  /* Analysewerkzeug */
+  const werkzeug = element.closest('.analysis-tool-content');
+
+  if (werkzeug && blatt) {
+    const post = postAusBlatt(blatt, inhalte);
+
+    if (post) {
+      if (
+        werkzeug.querySelector(
+          '.origin-check, .origin-hit, .origin-empty',
+        )
+      ) {
+        return {
+          art: 'herkunft',
+          postId: post.id,
+        };
+      }
+
+      if (
+        werkzeug.querySelector(
+          '.profile-check-head, .profile-check-bio, .profile-check-avatar',
+        )
+      ) {
+        return {
+          art: 'profil',
+          postId: post.id,
+        };
+      }
+
+      if (
+        werkzeug.querySelector(
+          '.source-browser-bar, .linked-page-preview, .linked-page-kicker',
+        )
+      ) {
+        return {
+          art: 'quelle',
+          postId: post.id,
+        };
+      }
+
+      return {
+        art: 'zonen',
+        postId: post.id,
+      };
     }
   }
+
+  /* Aufgabe / Feedprüfung */
+  if (blatt) {
+    const post = postAusBlatt(blatt, inhalte);
+
+    if (post) {
+      const bewertung = element.closest(
+        [
+          'textarea',
+          '.verdict-question',
+          '.feedback',
+          '.reason',
+          '.verdict-card',
+          '.verdict-option',
+          '.verdict-row',
+          '.confidence-rating',
+          '.confidence-row',
+          '.decision-section',
+        ].join(', '),
+      );
+
+      return {
+        art: bewertung ? 'bewertung' : 'beitrag',
+        postId: post.id,
+      };
+    }
+  }
+
+  /* Beitrag im Feed */
+  if (feedPost) {
+    return {
+      art: 'beitrag',
+      postId: feedPost.getAttribute('data-post-id'),
+    };
+  }
+
+  /* Kopfzeile / Punkte / Zeit */
+  if (
+    element.closest(
+      [
+        '.app-header',
+        '.score',
+        '.score-display',
+        '.points',
+        '.points-display',
+        '.timer',
+        '.time-display',
+        '.header-score',
+        '.header-timer',
+      ].join(', '),
+    )
+  ) {
+    return {
+      art: 'einstellungen',
+      bereich: 'header',
+    };
+  }
+
+  /* Navigation */
+  if (element.closest('.bottom-nav, nav')) {
+    return {
+      art: 'einstellungen',
+      bereich: 'navigation',
+    };
+  }
+
+  /* Übersetzter Oberflächentext */
+  const schluessel =
+    findeUebersetzungsSchluessel(element, entwurf);
+
+  if (schluessel) {
+    return {
+      art: 'text',
+      schluessel,
+    };
+  }
+
+  /* Fallback:
+     Nicht eindeutig zuordenbare Elemente führen zum vollständigen
+     Dateneditor. Dadurch bleibt kein Bereich vollständig unzugänglich. */
+  return {
+    art: 'alle-daten',
+    beschreibung:
+      String(element.textContent || '')
+        .trim()
+        .slice(0, 100) || element.tagName,
+  };
+}
+
+/* ============================================================
+   DATEIZUORDNUNG
+   ============================================================ */
+
+function dateienFuerZiel(ziel, inhalte) {
+  if (!ziel) {
+    return [];
+  }
+
+  switch (ziel.art) {
+    case 'beitrag':
+      return [
+        'content/posts.json',
+        'content/tasks.json',
+      ];
+
+    case 'profil':
+      return [
+        'content/profiles.json',
+      ];
+
+    case 'quelle':
+    case 'herkunft':
+      return [
+        'content/posts.json',
+      ];
+
+    case 'zonen':
+      return [
+        'src/data/imageHotspots.js',
+      ];
+
+    case 'bewertung':
+      return [
+        'content/tasks.json',
+        'src/data/reasonConcepts.js',
+      ];
+
+    case 'text':
+      return [
+        'src/data/translations.js',
+      ];
+
+    case 'einstellungen':
+      return [
+        'content/settings.json',
+      ];
+
+    case 'alle-daten':
+      return CONTENT_DATEIEN.map(normalisiereDateiName);
+
+    default:
+      return [];
+  }
+}
+
+function DateiAnzeige({
+  dateien,
+}) {
+  if (!dateien?.length) {
+    return null;
+  }
+
+  return (
+    <div
+      style={{
+        marginTop: 10,
+        padding: 10,
+        borderRadius: 9,
+        background: '#fff7df',
+        border: '1px solid #efd486',
+      }}
+    >
+      <strong
+        style={{
+          display: 'block',
+          fontSize: 12,
+          color: '#674f0b',
+          marginBottom: 5,
+        }}
+      >
+        Direkt beeinflusste Datei(en)
+      </strong>
+
+      {dateien.map((datei) => (
+        <code
+          key={datei}
+          style={{
+            display: 'block',
+            marginTop: 3,
+            fontSize: 11.5,
+            color: '#493804',
+            overflowWrap: 'anywhere',
+          }}
+        >
+          {datei}
+        </code>
+      ))}
+    </div>
+  );
+}
+
+/* ============================================================
+   JSON-EDITOR
+   ============================================================ */
+
+function JsonFeld({
+  wert,
+  onChange,
+  zeilen = 14,
+  onFehler,
+}) {
+  const [text, setText] = useState(() =>
+    JSON.stringify(wert ?? {}, null, 2),
+  );
+
+  const [fehler, setFehler] = useState('');
+
+  useEffect(() => {
+    setText(JSON.stringify(wert ?? {}, null, 2));
+    setFehler('');
+  }, [wert]);
+
+  function tippen(neuerText) {
+    setText(neuerText);
+
+    try {
+      const geparst = JSON.parse(neuerText);
+
+      setFehler('');
+      onFehler?.('');
+      onChange(geparst);
+    } catch (error) {
+      const nachricht =
+        error instanceof Error
+          ? error.message
+          : String(error);
+
+      setFehler(nachricht);
+      onFehler?.(nachricht);
+    }
+  }
+
   return (
     <>
-      <textarea rows={zeilen} spellCheck={false} value={text} onChange={(e) => tippen(e.target.value)}
-        style={{ ...feld, fontFamily: 'ui-monospace, Menlo, Consolas, monospace', fontSize: 12, borderColor: fehler ? '#d98b8b' : '#cbd5e1' }} />
-      {fehler && <p style={{ fontSize: 11.5, color: '#a3382c', margin: '4px 0 0' }}>Noch nicht übernommen: {fehler}</p>}
+      <textarea
+        rows={zeilen}
+        spellCheck={false}
+        value={text}
+        onChange={(event) => tippen(event.target.value)}
+        style={{
+          ...feld,
+          resize: 'vertical',
+          fontFamily:
+            'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+          fontSize: 12,
+          lineHeight: 1.5,
+          borderColor: fehler ? '#d98b8b' : '#cbd5e1',
+        }}
+      />
+
+      {fehler && (
+        <p
+          style={{
+            fontSize: 11.5,
+            color: '#a3382c',
+            margin: '4px 0 0',
+          }}
+        >
+          Noch nicht übernommen: {fehler}
+        </p>
+      )}
     </>
   );
 }
 
-/* ---------- Bearbeitungsfeld ---------- */
-function Seitenfeld({ ziel, inhalte, setInhalte, entwurf, setEntwurf, onSchliessen }) {
-  const post = (inhalte.posts || []).find((p) => p.id === ziel.postId);
-  const task = (inhalte.tasks || []).find((t) => t.postId === ziel.postId);
-  const profil = post ? (inhalte.profiles || []).find((p) => p.id === post.profileId) : null;
-  const regel = entwurf.reasonConcepts[ziel.postId];
-  const zonen = entwurf.imageHotspots[ziel.postId];
+/* ============================================================
+   VOLLSTÄNDIGER OBJEKTEDITOR
 
-  const aenderePost = (k, v) => setInhalte({ ...inhalte, posts: inhalte.posts.map((p) => (p.id === post.id ? { ...p, [k]: v } : p)) });
-  const aendereTask = (k, v) => setInhalte({ ...inhalte, tasks: inhalte.tasks.map((t) => (t.id === task.id ? { ...t, [k]: v } : t)) });
-  const aendereProfil = (k, v) => setInhalte({ ...inhalte, profiles: inhalte.profiles.map((p) => (p.id === profil.id ? { ...p, [k]: v } : p)) });
-  const aendereRegel = (neu) => setEntwurf({ ...entwurf, reasonConcepts: { ...entwurf.reasonConcepts, [ziel.postId]: neu } });
-  const aendereZonen = (neu) => setEntwurf({ ...entwurf, imageHotspots: { ...entwurf.imageHotspots, [ziel.postId]: neu } });
+   Wichtig:
+   Neben komfortablen Feldern wird immer auch das vollständige
+   Originalobjekt angeboten. Dadurch kann jedes vorhandene oder
+   später ergänzte Feld geändert werden.
+   ============================================================ */
 
-  const zwei = (w, c) => (w && typeof w === 'object' ? (w[c] ?? '') : (c === 'de' ? (w ?? '') : ''));
-  const setzeZwei = (w, c, neu) => (w && typeof w === 'object' ? { ...w, [c]: neu } : { de: c === 'de' ? neu : (w ?? ''), en: c === 'en' ? neu : '' });
-
-  const titel = {
-    beitrag: 'Beitrag', bewertung: 'Bewertung & Algorithmus', text: 'Oberflächentext',
-    profil: 'Profilprüfung', quelle: 'Quellenprüfung', herkunft: 'Bildherkunft', zonen: 'Bildzonen',
-  }[ziel.art];
+function VollstaendigesObjekt({
+  titel,
+  datei,
+  wert,
+  onChange,
+}) {
+  const [offen, setOffen] = useState(false);
 
   return (
-    <aside style={{
-      position: 'fixed', top: 0, right: 0, bottom: 0, width: 'min(430px, 94vw)', zIndex: 2147483100,
-      background: '#fff', borderLeft: '1px solid #dce3ee', boxShadow: '-8px 0 28px rgba(13,36,79,.16)',
-      overflowY: 'auto', padding: 18,
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-        <strong style={{ fontSize: 15 }}>{titel}</strong>
-        <code style={{ fontSize: 11, background: '#eef2f8', padding: '2px 6px', borderRadius: 6 }}>
-          {ziel.schluessel || ziel.postId}
-        </code>
-        <button type="button" onClick={onSchliessen} style={{ marginLeft: 'auto' }}>Schließen</button>
+    <section style={block}>
+      <button
+        type="button"
+        onClick={() => setOffen((aktuell) => !aktuell)}
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: 8,
+          padding: 0,
+          border: 0,
+          background: 'transparent',
+          font: 'inherit',
+          cursor: 'pointer',
+          textAlign: 'left',
+        }}
+      >
+        <strong style={{ fontSize: 13 }}>
+          {titel}
+        </strong>
+
+        <span style={{ fontSize: 12 }}>
+          {offen ? 'Schließen' : 'Alles bearbeiten'}
+        </span>
+      </button>
+
+      <code
+        style={{
+          display: 'block',
+          marginTop: 5,
+          fontSize: 11,
+          color: '#5a6b86',
+        }}
+      >
+        {datei}
+      </code>
+
+      {offen && (
+        <div style={{ marginTop: 10 }}>
+          <JsonFeld
+            wert={wert}
+            onChange={onChange}
+            zeilen={22}
+          />
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ============================================================
+   SEITENFELD
+   ============================================================ */
+
+function Seitenfeld({
+  ziel,
+  inhalte,
+  setInhalte,
+  entwurf,
+  setEntwurf,
+  onSchliessen,
+  onAlleDaten,
+}) {
+  const posts = arrayOderLeer(inhalte.posts);
+  const tasks = arrayOderLeer(inhalte.tasks);
+  const profiles = arrayOderLeer(inhalte.profiles);
+
+  const post = posts.find(
+    (eintrag) => String(eintrag.id) === String(ziel.postId),
+  );
+
+  const task = tasks.find(
+    (eintrag) =>
+      String(eintrag.postId) === String(ziel.postId),
+  );
+
+  const profil = post
+    ? profiles.find(
+        (eintrag) =>
+          String(eintrag.id) === String(post.profileId),
+      )
+    : null;
+
+  const regel =
+    entwurf?.reasonConcepts?.[ziel.postId] || null;
+
+  const zonen =
+    entwurf?.imageHotspots?.[ziel.postId] || {
+      errorCount: 0,
+      hotspots: [],
+    };
+
+  const betroffeneDateien =
+    dateienFuerZiel(ziel, inhalte);
+
+  function aenderePost(key, value) {
+    if (!post) {
+      return;
+    }
+
+    setInhalte((aktuell) => ({
+      ...aktuell,
+      posts: arrayOderLeer(aktuell.posts).map((eintrag) =>
+        String(eintrag.id) === String(post.id)
+          ? {
+              ...eintrag,
+              [key]: value,
+            }
+          : eintrag,
+      ),
+    }));
+  }
+
+  function ersetzePost(neuerPost) {
+    if (!post) {
+      return;
+    }
+
+    setInhalte((aktuell) => ({
+      ...aktuell,
+      posts: arrayOderLeer(aktuell.posts).map((eintrag) =>
+        String(eintrag.id) === String(post.id)
+          ? neuerPost
+          : eintrag,
+      ),
+    }));
+  }
+
+  function aendereTask(key, value) {
+    if (!task) {
+      return;
+    }
+
+    setInhalte((aktuell) => ({
+      ...aktuell,
+      tasks: arrayOderLeer(aktuell.tasks).map((eintrag) =>
+        String(eintrag.id) === String(task.id)
+          ? {
+              ...eintrag,
+              [key]: value,
+            }
+          : eintrag,
+      ),
+    }));
+  }
+
+  function ersetzeTask(neueTask) {
+    if (!task) {
+      return;
+    }
+
+    setInhalte((aktuell) => ({
+      ...aktuell,
+      tasks: arrayOderLeer(aktuell.tasks).map((eintrag) =>
+        String(eintrag.id) === String(task.id)
+          ? neueTask
+          : eintrag,
+      ),
+    }));
+  }
+
+  function aendereProfil(key, value) {
+    if (!profil) {
+      return;
+    }
+
+    setInhalte((aktuell) => ({
+      ...aktuell,
+      profiles: arrayOderLeer(aktuell.profiles).map(
+        (eintrag) =>
+          String(eintrag.id) === String(profil.id)
+            ? {
+                ...eintrag,
+                [key]: value,
+              }
+            : eintrag,
+      ),
+    }));
+  }
+
+  function ersetzeProfil(neuesProfil) {
+    if (!profil) {
+      return;
+    }
+
+    setInhalte((aktuell) => ({
+      ...aktuell,
+      profiles: arrayOderLeer(aktuell.profiles).map(
+        (eintrag) =>
+          String(eintrag.id) === String(profil.id)
+            ? neuesProfil
+            : eintrag,
+      ),
+    }));
+  }
+
+  function aendereRegel(neueRegel) {
+    setEntwurf((aktuell) => ({
+      ...aktuell,
+      reasonConcepts: {
+        ...objektOderLeer(aktuell.reasonConcepts),
+        [ziel.postId]: neueRegel,
+      },
+    }));
+  }
+
+  function aendereZonen(neueZonen) {
+    setEntwurf((aktuell) => ({
+      ...aktuell,
+      imageHotspots: {
+        ...objektOderLeer(aktuell.imageHotspots),
+        [ziel.postId]: neueZonen,
+      },
+    }));
+  }
+
+  function aendereEinstellungen(key, value) {
+    setInhalte((aktuell) => ({
+      ...aktuell,
+      settings: {
+        ...objektOderLeer(aktuell.settings),
+        [key]: value,
+      },
+    }));
+  }
+
+  const titel = {
+    beitrag: 'Beitrag',
+    bewertung: 'Bewertung und Algorithmus',
+    text: 'Oberflächentext',
+    profil: 'Profilprüfung',
+    quelle: 'Quellenprüfung',
+    herkunft: 'Bildherkunft',
+    zonen: 'Bildzonen',
+    einstellungen: 'Spieleinstellungen',
+    'alle-daten': 'Alle Daten',
+  }[ziel.art] || 'Bearbeiten';
+
+  return (
+    <aside
+      data-admin-schutz
+      style={{
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        width: 'min(460px, 96vw)',
+        zIndex: 2147483100,
+        background: '#fff',
+        borderLeft: '1px solid #dce3ee',
+        boxShadow: '-8px 0 28px rgba(13,36,79,.16)',
+        overflowY: 'auto',
+        padding: 18,
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          marginBottom: 4,
+        }}
+      >
+        <strong style={{ fontSize: 15 }}>
+          {titel}
+        </strong>
+
+        {(ziel.schluessel || ziel.postId) && (
+          <code
+            style={{
+              fontSize: 11,
+              background: '#eef2f8',
+              padding: '2px 6px',
+              borderRadius: 6,
+            }}
+          >
+            {ziel.schluessel || ziel.postId}
+          </code>
+        )}
+
+        <button
+          type="button"
+          onClick={onSchliessen}
+          style={{ marginLeft: 'auto' }}
+        >
+          Schließen
+        </button>
       </div>
 
-      {ziel.art === 'text' && SPRACHCODES.map((code) => (
-        <label key={code} style={beschriftung}>{code.toUpperCase()}
-          <textarea rows={3} style={feld} value={entwurf.translations[code]?.[ziel.schluessel] ?? ''}
-            onChange={(e) => setEntwurf({
-              ...entwurf,
-              translations: { ...entwurf.translations, [code]: { ...entwurf.translations[code], [ziel.schluessel]: e.target.value } },
-            })} />
-        </label>
-      ))}
+      <DateiAnzeige dateien={betroffeneDateien} />
+
+      {ziel.art === 'alle-daten' && (
+        <div style={{ marginTop: 14 }}>
+          <p
+            style={{
+              fontSize: 12.5,
+              lineHeight: 1.5,
+              color: '#5a6b86',
+            }}
+          >
+            Dieses Element konnte keiner einzelnen Datenstruktur
+            eindeutig zugeordnet werden. Öffne den vollständigen
+            Dateneditor, um jede Contentdatei bearbeiten zu können.
+          </p>
+
+          <button
+            type="button"
+            onClick={onAlleDaten}
+          >
+            Alle Daten öffnen
+          </button>
+        </div>
+      )}
+
+      {ziel.art === 'text' && (
+        <>
+          {SPRACHCODES.map((code) => (
+            <label
+              key={code}
+              style={beschriftung}
+            >
+              {code.toUpperCase()}
+
+              <textarea
+                rows={4}
+                style={feld}
+                value={
+                  entwurf?.translations?.[code]?.[
+                    ziel.schluessel
+                  ] ?? ''
+                }
+                onChange={(event) =>
+                  setEntwurf((aktuell) => ({
+                    ...aktuell,
+                    translations: {
+                      ...objektOderLeer(
+                        aktuell.translations,
+                      ),
+                      [code]: {
+                        ...objektOderLeer(
+                          aktuell.translations?.[code],
+                        ),
+                        [ziel.schluessel]:
+                          event.target.value,
+                      },
+                    },
+                  }))
+                }
+              />
+            </label>
+          ))}
+
+          <VollstaendigesObjekt
+            titel="Vollständige Übersetzungen"
+            datei="src/data/translations.js"
+            wert={entwurf.translations}
+            onChange={(value) =>
+              setEntwurf((aktuell) => ({
+                ...aktuell,
+                translations: value,
+              }))
+            }
+          />
+        </>
+      )}
+
+      {ziel.art === 'einstellungen' && (
+        <>
+          <label style={beschriftung}>
+            Zielpunktzahl zum Gewinnen
+
+            <input
+              type="number"
+              style={feld}
+              value={inhalte.settings?.targetScore ?? 20}
+              onChange={(event) =>
+                aendereEinstellungen(
+                  'targetScore',
+                  Number(event.target.value),
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Verlustgrenze
+
+            <input
+              type="number"
+              style={feld}
+              value={inhalte.settings?.loseScore ?? -10}
+              onChange={(event) =>
+                aendereEinstellungen(
+                  'loseScore',
+                  Number(event.target.value),
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Standardzeit in Sekunden
+
+            <input
+              type="number"
+              min="0"
+              style={feld}
+              value={
+                inhalte.settings?.defaultTimeLimit ?? 180
+              }
+              onChange={(event) =>
+                aendereEinstellungen(
+                  'defaultTimeLimit',
+                  Number(event.target.value),
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Maximale Anzahl an Tipps
+
+            <input
+              type="number"
+              min="0"
+              style={feld}
+              value={inhalte.settings?.maxTips ?? 3}
+              onChange={(event) =>
+                aendereEinstellungen(
+                  'maxTips',
+                  Number(event.target.value),
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Mindestabstand für Benachrichtigungen in Millisekunden
+
+            <input
+              type="number"
+              min="0"
+              style={feld}
+              value={
+                inhalte.settings?.notificationDelayMin ??
+                12000
+              }
+              onChange={(event) =>
+                aendereEinstellungen(
+                  'notificationDelayMin',
+                  Number(event.target.value),
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Höchstabstand für Benachrichtigungen in Millisekunden
+
+            <input
+              type="number"
+              min="0"
+              style={feld}
+              value={
+                inhalte.settings?.notificationDelayMax ??
+                25000
+              }
+              onChange={(event) =>
+                aendereEinstellungen(
+                  'notificationDelayMax',
+                  Number(event.target.value),
+                )
+              }
+            />
+          </label>
+
+          <label
+            style={{
+              ...beschriftung,
+              display: 'flex',
+              gap: 8,
+              alignItems: 'center',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={
+                inhalte.settings
+                  ?.endWhenAllTasksCompleted !== false
+              }
+              onChange={(event) =>
+                aendereEinstellungen(
+                  'endWhenAllTasksCompleted',
+                  event.target.checked,
+                )
+              }
+            />
+
+            Spiel beenden, wenn alle Aufgaben erledigt sind
+          </label>
+
+          <VollstaendigesObjekt
+            titel="Alle Einstellungen bearbeiten"
+            datei="content/settings.json"
+            wert={inhalte.settings}
+            onChange={(value) =>
+              setInhalte((aktuell) => ({
+                ...aktuell,
+                settings: value,
+              }))
+            }
+          />
+        </>
+      )}
 
       {ziel.art === 'beitrag' && post && (
         <>
-          <label style={beschriftung}>Benutzername
-            <input style={feld} value={post.username || ''} onChange={(e) => aenderePost('username', e.target.value)} /></label>
-          <label style={beschriftung}>Ort
-            <input style={feld} value={post.location || ''} onChange={(e) => aenderePost('location', e.target.value)} /></label>
-          <label style={beschriftung}>Likes
-            <input type="number" style={feld} value={post.likes ?? 0} onChange={(e) => aenderePost('likes', Number(e.target.value))} /></label>
-          <label style={beschriftung}>Bildpfad
-            <input style={feld} value={post.media || ''} onChange={(e) => aenderePost('media', e.target.value)} /></label>
+          <label style={beschriftung}>
+            Benutzername
+
+            <input
+              style={feld}
+              value={post.username || ''}
+              onChange={(event) =>
+                aenderePost(
+                  'username',
+                  event.target.value,
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Ort
+
+            <input
+              style={feld}
+              value={post.location || ''}
+              onChange={(event) =>
+                aenderePost(
+                  'location',
+                  event.target.value,
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Likes
+
+            <input
+              type="number"
+              style={feld}
+              value={post.likes ?? 0}
+              onChange={(event) =>
+                aenderePost(
+                  'likes',
+                  Number(event.target.value),
+                )
+              }
+            />
+          </label>
+
+          <label style={beschriftung}>
+            Bild- oder Medienpfad
+
+            <input
+              style={feld}
+              value={post.media || ''}
+              onChange={(event) =>
+                aenderePost(
+                  'media',
+                  event.target.value,
+                )
+              }
+            />
+          </label>
+
           {SPRACHCODES.map((code) => (
-            <label key={code} style={beschriftung}>Bildunterschrift {code.toUpperCase()}
-              <textarea rows={3} style={feld} value={zwei(post.caption, code)}
-                onChange={(e) => aenderePost('caption', setzeZwei(post.caption, code, e.target.value))} /></label>
+            <label
+              key={code}
+              style={beschriftung}
+            >
+              Bildunterschrift {code.toUpperCase()}
+
+              <textarea
+                rows={4}
+                style={feld}
+                value={zweisprachigerWert(
+                  post.caption,
+                  code,
+                )}
+                onChange={(event) =>
+                  aenderePost(
+                    'caption',
+                    setzeZweisprachigenWert(
+                      post.caption,
+                      code,
+                      event.target.value,
+                    ),
+                  )
+                }
+              />
+            </label>
           ))}
+
           {task && (
             <div style={block}>
-              <strong style={{ fontSize: 12.5 }}>Aufgabe</strong>
-              <label style={beschriftung}>Richtiges Urteil
-                <select style={feld} value={task.correctVerdict || ''} onChange={(e) => aendereTask('correctVerdict', e.target.value)}>
-                  {VERDICTS.map((v) => <option key={v} value={v}>{v}</option>)}
-                </select></label>
-              {regel && regel.verdict !== task.correctVerdict && (
-                <p style={{ fontSize: 12, color: '#a3382c', marginTop: 6 }}>
-                  Die Bewertungsregel steht noch auf „{regel.verdict}“.{' '}
-                  <button type="button" onClick={() => aendereRegel({ ...regel, verdict: task.correctVerdict })}>Mitziehen</button>
-                </p>
-              )}
-              <label style={beschriftung}>Punkte richtig
-                <input type="number" style={feld} value={task.pointsCorrect ?? 1} onChange={(e) => aendereTask('pointsCorrect', Number(e.target.value))} /></label>
-              <label style={beschriftung}>Zeitlimit in Sekunden
-                <input type="number" style={feld} value={task.timeLimit ?? 180} onChange={(e) => aendereTask('timeLimit', Number(e.target.value))} /></label>
+              <strong style={{ fontSize: 12.5 }}>
+                Verknüpfte Aufgabe
+              </strong>
+
+              <label style={beschriftung}>
+                Richtiges Urteil
+
+                <select
+                  style={feld}
+                  value={task.correctVerdict || ''}
+                  onChange={(event) =>
+                    aendereTask(
+                      'correctVerdict',
+                      event.target.value,
+                    )
+                  }
+                >
+                  <option value="">
+                    Keine Auswahl
+                  </option>
+
+                  {VERDICTS.map((verdict) => (
+                    <option
+                      key={verdict}
+                      value={verdict}
+                    >
+                      {verdict}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label style={beschriftung}>
+                Punkte richtig
+
+                <input
+                  type="number"
+                  style={feld}
+                  value={task.pointsCorrect ?? 1}
+                  onChange={(event) =>
+                    aendereTask(
+                      'pointsCorrect',
+                      Number(event.target.value),
+                    )
+                  }
+                />
+              </label>
+
+              <label style={beschriftung}>
+                Punkte falsch
+
+                <input
+                  type="number"
+                  style={feld}
+                  value={task.pointsWrong ?? -1}
+                  onChange={(event) =>
+                    aendereTask(
+                      'pointsWrong',
+                      Number(event.target.value),
+                    )
+                  }
+                />
+              </label>
+
+              <label style={beschriftung}>
+                Zeitlimit in Sekunden
+
+                <input
+                  type="number"
+                  min="0"
+                  style={feld}
+                  value={
+                    task.timeLimit ??
+                    inhalte.settings
+                      ?.defaultTimeLimit ??
+                    180
+                  }
+                  onChange={(event) =>
+                    aendereTask(
+                      'timeLimit',
+                      Number(event.target.value),
+                    )
+                  }
+                />
+              </label>
             </div>
+          )}
+
+          <VollstaendigesObjekt
+            titel="Vollständigen Beitrag bearbeiten"
+            datei="content/posts.json"
+            wert={post}
+            onChange={ersetzePost}
+          />
+
+          {task && (
+            <VollstaendigesObjekt
+              titel="Vollständige Aufgabe bearbeiten"
+              datei="content/tasks.json"
+              wert={task}
+              onChange={ersetzeTask}
+            />
           )}
         </>
       )}
 
       {ziel.art === 'profil' && profil && (
         <>
-          <label style={beschriftung}>Benutzername
-            <input style={feld} value={profil.username || ''} onChange={(e) => aendereProfil('username', e.target.value)} /></label>
-          <label style={beschriftung}>Anzeigename
-            <input style={feld} value={profil.displayName || ''} onChange={(e) => aendereProfil('displayName', e.target.value)} /></label>
-          <label style={{ ...beschriftung, display: 'flex', gap: 8, alignItems: 'center' }}>
-            <input type="checkbox" checked={Boolean(profil.verified)} onChange={(e) => aendereProfil('verified', e.target.checked)} />
-            Verifiziert
+          <label style={beschriftung}>
+            Benutzername
+
+            <input
+              style={feld}
+              value={profil.username || ''}
+              onChange={(event) =>
+                aendereProfil(
+                  'username',
+                  event.target.value,
+                )
+              }
+            />
           </label>
+
+          <label style={beschriftung}>
+            Anzeigename
+
+            <input
+              style={feld}
+              value={profil.displayName || ''}
+              onChange={(event) =>
+                aendereProfil(
+                  'displayName',
+                  event.target.value,
+                )
+              }
+            />
+          </label>
+
+          <label
+            style={{
+              ...beschriftung,
+              display: 'flex',
+              gap: 8,
+              alignItems: 'center',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={Boolean(profil.verified)}
+              onChange={(event) =>
+                aendereProfil(
+                  'verified',
+                  event.target.checked,
+                )
+              }
+            />
+
+            Profil ist verifiziert
+          </label>
+
           {SPRACHCODES.map((code) => (
-            <label key={code} style={beschriftung}>Biografie {code.toUpperCase()}
-              <textarea rows={3} style={feld} value={zwei(profil.bio, code)}
-                onChange={(e) => aendereProfil('bio', setzeZwei(profil.bio, code, e.target.value))} /></label>
+            <label
+              key={code}
+              style={beschriftung}
+            >
+              Biografie {code.toUpperCase()}
+
+              <textarea
+                rows={4}
+                style={feld}
+                value={zweisprachigerWert(
+                  profil.bio,
+                  code,
+                )}
+                onChange={(event) =>
+                  aendereProfil(
+                    'bio',
+                    setzeZweisprachigenWert(
+                      profil.bio,
+                      code,
+                      event.target.value,
+                    ),
+                  )
+                }
+              />
+            </label>
           ))}
-          <label style={beschriftung}>Profilprüfung (Impressum, Kommentare, Besonderheit …)
-            <JsonFeld wert={profil.profileCheck} onChange={(v) => aendereProfil('profileCheck', v)} /></label>
+
+          <label style={beschriftung}>
+            Profilprüfung
+
+            <JsonFeld
+              wert={profil.profileCheck}
+              onChange={(value) =>
+                aendereProfil(
+                  'profileCheck',
+                  value,
+                )
+              }
+              zeilen={16}
+            />
+          </label>
+
+          <VollstaendigesObjekt
+            titel="Vollständiges Profil bearbeiten"
+            datei="content/profiles.json"
+            wert={profil}
+            onChange={ersetzeProfil}
+          />
         </>
       )}
 
       {ziel.art === 'quelle' && post && (
-        <label style={beschriftung}>Quellenprüfung
-          <JsonFeld wert={post.sourceCheck} onChange={(v) => aenderePost('sourceCheck', v)} zeilen={16} /></label>
+        <>
+          <label style={beschriftung}>
+            Quellenprüfung
+
+            <JsonFeld
+              wert={post.sourceCheck}
+              onChange={(value) =>
+                aenderePost(
+                  'sourceCheck',
+                  value,
+                )
+              }
+              zeilen={20}
+            />
+          </label>
+
+          <VollstaendigesObjekt
+            titel="Vollständigen Beitrag bearbeiten"
+            datei="content/posts.json"
+            wert={post}
+            onChange={ersetzePost}
+          />
+        </>
       )}
 
       {ziel.art === 'herkunft' && post && (
-        <label style={beschriftung}>Bildherkunft / Rückwärtssuche
-          <JsonFeld wert={post.imageOriginCheck} onChange={(v) => aenderePost('imageOriginCheck', v)} zeilen={16} /></label>
+        <>
+          <label style={beschriftung}>
+            Bildherkunft / Rückwärtssuche
+
+            <JsonFeld
+              wert={post.imageOriginCheck}
+              onChange={(value) =>
+                aenderePost(
+                  'imageOriginCheck',
+                  value,
+                )
+              }
+              zeilen={20}
+            />
+          </label>
+
+          <VollstaendigesObjekt
+            titel="Vollständigen Beitrag bearbeiten"
+            datei="content/posts.json"
+            wert={post}
+            onChange={ersetzePost}
+          />
+        </>
       )}
 
       {ziel.art === 'zonen' && (
         <>
-          <p style={{ fontSize: 12.5, color: '#5a6b86' }}>
-            Alle Werte in Prozent des Bildes. x und y sind die linke obere Ecke.
+          <p
+            style={{
+              fontSize: 12.5,
+              color: '#5a6b86',
+              lineHeight: 1.5,
+            }}
+          >
+            x und y markieren die linke obere Ecke. w und h
+            bestimmen Breite und Höhe der Zone.
           </p>
-          {(zonen?.hotspots || []).map((z, i) => (
-            <div key={i} style={block}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-                {['x', 'y', 'w', 'h'].map((achse) => (
-                  <label key={achse} style={{ fontSize: 12 }}>{achse}
-                    <input type="number" style={feld} value={z[achse]}
-                      onChange={(e) => aendereZonen({
+
+          {arrayOderLeer(zonen.hotspots).map(
+            (zone, index) => (
+              <div
+                key={`${index}-${zone.x}-${zone.y}`}
+                style={block}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                  }}
+                >
+                  <strong style={{ fontSize: 12.5 }}>
+                    Zone {index + 1}
+                  </strong>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      aendereZonen({
                         ...zonen,
-                        hotspots: zonen.hotspots.map((q, j) => (j === i ? { ...q, [achse]: Number(e.target.value) } : q)),
-                      })} /></label>
-                ))}
+                        hotspots:
+                          arrayOderLeer(
+                            zonen.hotspots,
+                          ).filter(
+                            (_, aktuellePosition) =>
+                              aktuellePosition !== index,
+                          ),
+                      })
+                    }
+                    style={{ marginLeft: 'auto' }}
+                  >
+                    Löschen
+                  </button>
+                </div>
+
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns:
+                      'repeat(2, minmax(0, 1fr))',
+                    gap: 8,
+                  }}
+                >
+                  {['x', 'y', 'w', 'h'].map(
+                    (achse) => (
+                      <label
+                        key={achse}
+                        style={{
+                          fontSize: 12,
+                          marginTop: 8,
+                        }}
+                      >
+                        {achse}
+
+                        <input
+                          type="number"
+                          style={feld}
+                          value={zone[achse] ?? 0}
+                          onChange={(event) =>
+                            aendereZonen({
+                              ...zonen,
+                              hotspots:
+                                arrayOderLeer(
+                                  zonen.hotspots,
+                                ).map(
+                                  (
+                                    aktuelleZone,
+                                    aktuellePosition,
+                                  ) =>
+                                    aktuellePosition ===
+                                    index
+                                      ? {
+                                          ...aktuelleZone,
+                                          [achse]:
+                                            Number(
+                                              event.target
+                                                .value,
+                                            ),
+                                        }
+                                      : aktuelleZone,
+                                ),
+                            })
+                          }
+                        />
+                      </label>
+                    ),
+                  )}
+                </div>
+
+                <label style={beschriftung}>
+                  Hinweistext
+
+                  <textarea
+                    rows={4}
+                    style={feld}
+                    value={zone.hint || ''}
+                    onChange={(event) =>
+                      aendereZonen({
+                        ...zonen,
+                        hotspots:
+                          arrayOderLeer(
+                            zonen.hotspots,
+                          ).map(
+                            (
+                              aktuelleZone,
+                              aktuellePosition,
+                            ) =>
+                              aktuellePosition === index
+                                ? {
+                                    ...aktuelleZone,
+                                    hint:
+                                      event.target.value,
+                                  }
+                                : aktuelleZone,
+                          ),
+                      })
+                    }
+                  />
+                </label>
               </div>
-              <label style={beschriftung}>Hinweistext bei Treffer
-                <textarea rows={3} style={feld} value={z.hint || ''}
-                  onChange={(e) => aendereZonen({
-                    ...zonen,
-                    hotspots: zonen.hotspots.map((q, j) => (j === i ? { ...q, hint: e.target.value } : q)),
-                  })} /></label>
-            </div>
-          ))}
-          <button type="button" style={{ marginTop: 10 }}
-            onClick={() => aendereZonen({
-              errorCount: ((zonen?.hotspots || []).length + 1),
-              hotspots: [...(zonen?.hotspots || []), { x: 40, y: 30, w: 24, h: 30, hint: 'Neuer Hinweis' }],
-            })}>Zone hinzufügen</button>
+            ),
+          )}
+
+          <button
+            type="button"
+            style={{ marginTop: 10 }}
+            onClick={() =>
+              aendereZonen({
+                ...zonen,
+                errorCount:
+                  Number(zonen.errorCount || 0) + 1,
+                hotspots: [
+                  ...arrayOderLeer(zonen.hotspots),
+                  {
+                    x: 40,
+                    y: 30,
+                    w: 24,
+                    h: 30,
+                    hint: 'Neuer Hinweis',
+                  },
+                ],
+              })
+            }
+          >
+            Zone hinzufügen
+          </button>
+
+          <VollstaendigesObjekt
+            titel="Alle Bildzonen bearbeiten"
+            datei="src/data/imageHotspots.js"
+            wert={zonen}
+            onChange={aendereZonen}
+          />
         </>
       )}
 
-      {ziel.art === 'bewertung' && regel && (
+      {ziel.art === 'bewertung' && (
         <>
-          <label style={beschriftung}>Erwartetes Urteil
-            <select style={feld} value={regel.verdict} onChange={(e) => aendereRegel({ ...regel, verdict: e.target.value })}>
-              {VERDICTS.map((v) => <option key={v} value={v}>{v}</option>)}
-            </select></label>
+          {task && (
+            <VollstaendigesObjekt
+              titel="Vollständige Aufgabe bearbeiten"
+              datei="content/tasks.json"
+              wert={task}
+              onChange={ersetzeTask}
+            />
+          )}
 
-          {(regel.concepts || []).map((k, i) => (
-            <div key={i} style={block}>
-              <strong style={{ fontSize: 12.5 }}>Konzept {i + 1}</strong>
-              <label style={beschriftung}>Stichwörter, mit Komma getrennt
-                <textarea rows={2} style={feld} value={(k.terms || []).join(', ')}
-                  onChange={(e) => aendereRegel({
+          {regel ? (
+            <>
+              <label style={beschriftung}>
+                Erwartetes Urteil
+
+                <select
+                  style={feld}
+                  value={regel.verdict || ''}
+                  onChange={(event) =>
+                    aendereRegel({
+                      ...regel,
+                      verdict: event.target.value,
+                    })
+                  }
+                >
+                  <option value="">
+                    Keine Auswahl
+                  </option>
+
+                  {VERDICTS.map((verdict) => (
+                    <option
+                      key={verdict}
+                      value={verdict}
+                    >
+                      {verdict}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              {arrayOderLeer(regel.concepts).map(
+                (konzept, index) => (
+                  <div
+                    key={index}
+                    style={block}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                      }}
+                    >
+                      <strong
+                        style={{ fontSize: 12.5 }}
+                      >
+                        Konzept {index + 1}
+                      </strong>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          aendereRegel({
+                            ...regel,
+                            concepts:
+                              arrayOderLeer(
+                                regel.concepts,
+                              ).filter(
+                                (
+                                  _,
+                                  aktuellePosition,
+                                ) =>
+                                  aktuellePosition !==
+                                  index,
+                              ),
+                          })
+                        }
+                        style={{ marginLeft: 'auto' }}
+                      >
+                        Löschen
+                      </button>
+                    </div>
+
+                    <label style={beschriftung}>
+                      Stichwörter, mit Komma getrennt
+
+                      <textarea
+                        rows={3}
+                        style={feld}
+                        value={arrayOderLeer(
+                          konzept.terms,
+                        ).join(', ')}
+                        onChange={(event) =>
+                          aendereRegel({
+                            ...regel,
+                            concepts:
+                              arrayOderLeer(
+                                regel.concepts,
+                              ).map(
+                                (
+                                  aktuellesKonzept,
+                                  aktuellePosition,
+                                ) =>
+                                  aktuellePosition ===
+                                  index
+                                    ? {
+                                        ...aktuellesKonzept,
+                                        terms:
+                                          event.target.value
+                                            .split(',')
+                                            .map((wert) =>
+                                              wert.trim(),
+                                            )
+                                            .filter(Boolean),
+                                      }
+                                    : aktuellesKonzept,
+                              ),
+                          })
+                        }
+                      />
+                    </label>
+
+                    <label style={beschriftung}>
+                      Ganze Phrasen, mit Komma getrennt
+
+                      <textarea
+                        rows={4}
+                        style={feld}
+                        value={arrayOderLeer(
+                          konzept.phrases,
+                        ).join(', ')}
+                        onChange={(event) =>
+                          aendereRegel({
+                            ...regel,
+                            concepts:
+                              arrayOderLeer(
+                                regel.concepts,
+                              ).map(
+                                (
+                                  aktuellesKonzept,
+                                  aktuellePosition,
+                                ) =>
+                                  aktuellePosition ===
+                                  index
+                                    ? {
+                                        ...aktuellesKonzept,
+                                        phrases:
+                                          event.target.value
+                                            .split(',')
+                                            .map((wert) =>
+                                              wert.trim(),
+                                            )
+                                            .filter(Boolean),
+                                      }
+                                    : aktuellesKonzept,
+                              ),
+                          })
+                        }
+                      />
+                    </label>
+                  </div>
+                ),
+              )}
+
+              <button
+                type="button"
+                style={{ marginTop: 10 }}
+                onClick={() =>
+                  aendereRegel({
                     ...regel,
-                    concepts: regel.concepts.map((c, j) => (j === i ? { ...c, terms: e.target.value.split(',').map((v) => v.trim()).filter(Boolean) } : c)),
-                  })} /></label>
-              <label style={beschriftung}>Ganze Phrasen, mit Komma getrennt
-                <textarea rows={3} style={feld} value={(k.phrases || []).join(', ')}
-                  onChange={(e) => aendereRegel({
-                    ...regel,
-                    concepts: regel.concepts.map((c, j) => (j === i ? { ...c, phrases: e.target.value.split(',').map((v) => v.trim()).filter(Boolean) } : c)),
-                  })} /></label>
+                    concepts: [
+                      ...arrayOderLeer(
+                        regel.concepts,
+                      ),
+                      {
+                        terms: [],
+                        phrases: [],
+                      },
+                    ],
+                  })
+                }
+              >
+                Konzept hinzufügen
+              </button>
+
+              {SPRACHCODES.map((code) => (
+                <label
+                  key={code}
+                  style={beschriftung}
+                >
+                  Rückmeldung {code.toUpperCase()}
+
+                  <textarea
+                    rows={4}
+                    style={feld}
+                    value={
+                      regel.feedback?.[code] ?? ''
+                    }
+                    onChange={(event) =>
+                      aendereRegel({
+                        ...regel,
+                        feedback: {
+                          ...objektOderLeer(
+                            regel.feedback,
+                          ),
+                          [code]: event.target.value,
+                        },
+                      })
+                    }
+                  />
+                </label>
+              ))}
+
+              <VollstaendigesObjekt
+                titel="Vollständige Bewertungsregel bearbeiten"
+                datei="src/data/reasonConcepts.js"
+                wert={regel}
+                onChange={aendereRegel}
+              />
+            </>
+          ) : (
+            <div style={block}>
+              <p
+                style={{
+                  fontSize: 12.5,
+                  color: '#5a6b86',
+                }}
+              >
+                Für diesen Beitrag existiert noch keine
+                Bewertungsregel.
+              </p>
+
+              <button
+                type="button"
+                onClick={() =>
+                  aendereRegel({
+                    verdict:
+                      task?.correctVerdict || 'echt',
+                    concepts: [],
+                    feedback: {
+                      de: '',
+                      en: '',
+                    },
+                  })
+                }
+              >
+                Bewertungsregel erstellen
+              </button>
             </div>
-          ))}
+          )}
 
-          {SPRACHCODES.map((code) => (
-            <label key={code} style={beschriftung}>Rückmeldung {code.toUpperCase()}
-              <textarea rows={3} style={feld} value={regel.feedback?.[code] ?? ''}
-                onChange={(e) => aendereRegel({ ...regel, feedback: { ...regel.feedback, [code]: e.target.value } })} /></label>
-          ))}
+          <div
+            style={{
+              ...block,
+              marginTop: 18,
+            }}
+          >
+            <strong style={{ fontSize: 13 }}>
+              Globaler Bewertungsalgorithmus
+            </strong>
 
-          <div style={{ ...block, marginTop: 18 }}>
-            <strong style={{ fontSize: 13 }}>Algorithmus</strong>
-            <p style={{ fontSize: 12, color: '#5a6b86', margin: '4px 0 0' }}>Gilt für alle Fälle, nicht nur für diesen.</p>
-            {STELLSCHRAUBEN.map((s) => (
-              <label key={s.id} style={beschriftung}>{s.name}
-                <span style={{ display: 'block', fontWeight: 400, fontSize: 11.5, color: '#5a6b86' }}>{s.hilfe}</span>
-                <input type="number" style={{ ...feld, maxWidth: 110 }} value={entwurf.stellschrauben[s.id] ?? ''}
-                  onChange={(e) => setEntwurf({ ...entwurf, stellschrauben: { ...entwurf.stellschrauben, [s.id]: Number(e.target.value) } })} /></label>
+            <p
+              style={{
+                fontSize: 12,
+                color: '#5a6b86',
+                margin: '4px 0 0',
+              }}
+            >
+              Diese Werte gelten für alle Fälle.
+            </p>
+
+            {STELLSCHRAUBEN.map((schraube) => (
+              <label
+                key={schraube.id}
+                style={beschriftung}
+              >
+                {schraube.name}
+
+                <span
+                  style={{
+                    display: 'block',
+                    fontWeight: 400,
+                    fontSize: 11.5,
+                    color: '#5a6b86',
+                  }}
+                >
+                  {schraube.hilfe}
+                </span>
+
+                <input
+                  type="number"
+                  style={{
+                    ...feld,
+                    maxWidth: 130,
+                  }}
+                  value={
+                    entwurf.stellschrauben?.[
+                      schraube.id
+                    ] ?? ''
+                  }
+                  onChange={(event) =>
+                    setEntwurf((aktuell) => ({
+                      ...aktuell,
+                      stellschrauben: {
+                        ...objektOderLeer(
+                          aktuell.stellschrauben,
+                        ),
+                        [schraube.id]:
+                          Number(event.target.value),
+                      },
+                    }))
+                  }
+                />
+              </label>
             ))}
+
+            <VollstaendigesObjekt
+              titel="Alle Algorithmuswerte bearbeiten"
+              datei="src/data/conceptMatcher.js"
+              wert={entwurf.stellschrauben}
+              onChange={(value) =>
+                setEntwurf((aktuell) => ({
+                  ...aktuell,
+                  stellschrauben: value,
+                }))
+              }
+            />
           </div>
         </>
       )}
+
+      <div
+        style={{
+          height: 24,
+        }}
+      />
     </aside>
   );
 }
 
-/* ---------- Codeansicht ---------- */
-function CodeAnsicht({ inhalte, entwurf, onSchliessen }) {
-  const dateien = useMemo(() => ({
-    ...Object.fromEntries(FILES.map((n) => [`content/${n}.json`, `${JSON.stringify(inhalte[n], null, 2)}\n`])),
-    ...erzeugeCodeDateien(entwurf),
-  }), [inhalte, entwurf]);
-  const [aktiv, setAktiv] = useState(Object.keys(dateien)[0]);
-  const [kopiert, setKopiert] = useState(false);
+/* ============================================================
+   ALLE CONTENTDATEIEN
+   ============================================================ */
 
-  async function kopieren() {
-    try {
-      await navigator.clipboard.writeText(dateien[aktiv]);
-      setKopiert(true);
-      setTimeout(() => setKopiert(false), 1600);
-    } catch {
-      window.prompt('Markieren und Strg+C:', dateien[aktiv]);
-    }
-  }
+function AlleDatenAnsicht({
+  inhalte,
+  setInhalte,
+  onSchliessen,
+}) {
+  const [aktiv, setAktiv] = useState(
+    CONTENT_DATEIEN[0],
+  );
+
+  const [fehler, setFehler] = useState('');
 
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 2147483200, background: 'rgba(7,13,27,.6)', padding: 24 }} onClick={onSchliessen}>
-      <section onClick={(e) => e.stopPropagation()} style={{
-        maxWidth: 940, margin: '0 auto', height: '100%', display: 'flex', flexDirection: 'column',
-        background: '#fff', borderRadius: 14, padding: 18,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <strong>Quelltext zum Kopieren</strong>
-          <button type="button" onClick={kopieren}>{kopiert ? 'Kopiert' : 'Diese Datei kopieren'}</button>
-          <button type="button" onClick={onSchliessen} style={{ marginLeft: 'auto' }}>Schließen</button>
+    <div
+      data-admin-schutz
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 2147483200,
+        background: 'rgba(7, 13, 27, .64)',
+        padding: 18,
+      }}
+      onClick={onSchliessen}
+    >
+      <section
+        onClick={(event) => event.stopPropagation()}
+        style={{
+          maxWidth: 1100,
+          height: '100%',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          background: '#fff',
+          borderRadius: 14,
+          padding: 18,
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+          }}
+        >
+          <strong>
+            Alle Contentdateien bearbeiten
+          </strong>
+
+          <button
+            type="button"
+            onClick={onSchliessen}
+            style={{ marginLeft: 'auto' }}
+          >
+            Schließen
+          </button>
         </div>
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', margin: '12px 0' }}>
-          {Object.keys(dateien).map((p) => (
-            <button key={p} type="button" onClick={() => setAktiv(p)}
+
+        <p
+          style={{
+            margin: '7px 0 0',
+            color: '#5a6b86',
+            fontSize: 12.5,
+          }}
+        >
+          Jede Änderung wird sofort in die Liveansicht
+          übernommen, sobald das JSON gültig ist.
+        </p>
+
+        <div
+          style={{
+            display: 'flex',
+            gap: 6,
+            flexWrap: 'wrap',
+            margin: '12px 0',
+          }}
+        >
+          {CONTENT_DATEIEN.map((datei) => (
+            <button
+              key={datei}
+              type="button"
+              onClick={() => {
+                setAktiv(datei);
+                setFehler('');
+              }}
               style={{
-                padding: '5px 9px', borderRadius: 8, fontSize: 12, cursor: 'pointer', border: '1px solid #dce3ee',
-                background: p === aktiv ? '#092b61' : '#fff', color: p === aktiv ? '#fff' : '#182235',
-              }}>{p}</button>
+                padding: '6px 10px',
+                borderRadius: 8,
+                cursor: 'pointer',
+                border: '1px solid #dce3ee',
+                background:
+                  datei === aktiv
+                    ? '#092b61'
+                    : '#fff',
+                color:
+                  datei === aktiv
+                    ? '#fff'
+                    : '#182235',
+              }}
+            >
+              content/{datei}.json
+            </button>
           ))}
         </div>
-        <pre style={{
-          flex: 1, margin: 0, padding: 12, overflow: 'auto', borderRadius: 10,
-          background: '#0f1b30', color: '#e6edf7', fontSize: 12.5, lineHeight: 1.5,
-        }}>{dateien[aktiv]}</pre>
+
+        <div
+          style={{
+            flex: 1,
+            minHeight: 0,
+            overflow: 'auto',
+          }}
+        >
+          <JsonFeld
+            key={aktiv}
+            wert={inhalte[aktiv]}
+            onChange={(value) =>
+              setInhalte((aktuell) => ({
+                ...aktuell,
+                [aktiv]: value,
+              }))
+            }
+            onFehler={setFehler}
+            zeilen={32}
+          />
+        </div>
+
+        <div
+          style={{
+            marginTop: 10,
+            fontSize: 12,
+            color: fehler
+              ? '#a3382c'
+              : '#1e6b4f',
+          }}
+        >
+          {fehler
+            ? 'Die Datei wird erst übernommen, wenn das JSON gültig ist.'
+            : `Aktive Datei: content/${aktiv}.json`}
+        </div>
       </section>
     </div>
   );
 }
 
-/* ---------- Hauptkomponente ---------- */
-export default function InlineAdmin() {
-  const [modus, setModus] = useState('spielen');
-  const [inhalte, setInhalte] = useState(null);
-  const [entwurf, setEntwurf] = useState(ladeEntwurf);
-  const [ziel, setZiel] = useState(null);
-  const [zeigeCode, setZeigeCode] = useState(false);
-  const [meldung, setMeldung] = useState('');
+/* ============================================================
+   DATEIEN UND ÄNDERUNGSERKENNUNG
+   ============================================================ */
+
+function erzeugeAlleDateien(inhalte, entwurf) {
+  return {
+    ...Object.fromEntries(
+      CONTENT_DATEIEN.map((name) => [
+        `content/${name}.json`,
+        stringifyDatei(inhalte[name]),
+      ]),
+    ),
+    ...erzeugeCodeDateien(entwurf),
+  };
+}
+
+function ermittleGeaenderteContentDateien(
+  inhalte,
+  originalInhalte,
+) {
+  if (!inhalte || !originalInhalte) {
+    return [];
+  }
+
+  return CONTENT_DATEIEN
+    .filter((name) => {
+      try {
+        return (
+          JSON.stringify(inhalte[name]) !==
+          JSON.stringify(originalInhalte[name])
+        );
+      } catch {
+        return true;
+      }
+    })
+    .map(normalisiereDateiName);
+}
+
+function GeaenderteDateienListe({
+  dateien,
+}) {
+  if (!dateien.length) {
+    return (
+      <span style={{ color: '#1e6b4f' }}>
+        Keine ungespeicherten Änderungen
+      </span>
+    );
+  }
+
+  return (
+    <details style={{ width: '100%' }}>
+      <summary
+        style={{
+          cursor: 'pointer',
+          color: '#a3382c',
+          fontWeight: 700,
+        }}
+      >
+        {dateien.length} Datei(en) geändert
+      </summary>
+
+      <div
+        style={{
+          marginTop: 5,
+          paddingLeft: 6,
+        }}
+      >
+        {dateien.map((datei) => (
+          <code
+            key={datei}
+            style={{
+              display: 'block',
+              marginTop: 3,
+              fontSize: 11,
+              overflowWrap: 'anywhere',
+            }}
+          >
+            {datei}
+          </code>
+        ))}
+      </div>
+    </details>
+  );
+}
+
+/* ============================================================
+   CODEANSICHT
+   ============================================================ */
+
+function CodeAnsicht({
+  inhalte,
+  entwurf,
+  geaenderteDateien,
+  onSchliessen,
+}) {
+  const dateien = useMemo(
+    () => erzeugeAlleDateien(inhalte, entwurf),
+    [inhalte, entwurf],
+  );
+
+  const ersterEintrag =
+    geaenderteDateien.find(
+      (datei) => dateien[datei] !== undefined,
+    ) || Object.keys(dateien)[0];
+
+  const [aktiv, setAktiv] = useState(ersterEintrag);
+  const [kopiert, setKopiert] = useState(false);
 
   useEffect(() => {
-    const gespeichert = (() => {
-      try { return JSON.parse(localStorage.getItem(INHALT_SCHLUESSEL)); } catch { return null; }
-    })();
-    if (gespeichert) { setInhalte(gespeichert); return; }
-    Promise.all(FILES.map(async (n) => {
-      const antwort = await fetch(joinBase(`content/${n}.json`), { cache: 'no-store' });
-      if (!antwort.ok) throw new Error(`content/${n}.json: Status ${antwort.status}`);
-      return [n, await antwort.json()];
-    })).then((paare) => setInhalte(Object.fromEntries(paare)))
-      .catch((f) => setMeldung(f.message));
+    if (!dateien[aktiv]) {
+      setAktiv(ersterEintrag);
+    }
+  }, [aktiv, dateien, ersterEintrag]);
+
+  async function kopieren() {
+    const code = dateien[aktiv] || '';
+
+    try {
+      await navigator.clipboard.writeText(code);
+      setKopiert(true);
+
+      window.setTimeout(
+        () => setKopiert(false),
+        1600,
+      );
+    } catch {
+      window.prompt(
+        'Markieren und kopieren:',
+        code,
+      );
+    }
+  }
+
+  return (
+    <div
+      data-admin-schutz
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 2147483300,
+        background: 'rgba(7,13,27,.64)',
+        padding: 18,
+      }}
+      onClick={onSchliessen}
+    >
+      <section
+        onClick={(event) => event.stopPropagation()}
+        style={{
+          maxWidth: 1100,
+          margin: '0 auto',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          background: '#fff',
+          borderRadius: 14,
+          padding: 18,
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+            flexWrap: 'wrap',
+          }}
+        >
+          <strong>
+            Quelltext und geänderte Dateien
+          </strong>
+
+          <button
+            type="button"
+            onClick={kopieren}
+          >
+            {kopiert
+              ? 'Kopiert'
+              : 'Diese Datei kopieren'}
+          </button>
+
+          <button
+            type="button"
+            onClick={onSchliessen}
+            style={{ marginLeft: 'auto' }}
+          >
+            Schließen
+          </button>
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            gap: 6,
+            flexWrap: 'wrap',
+            margin: '12px 0',
+          }}
+        >
+          {Object.keys(dateien).map((pfad) => {
+            const geaendert =
+              geaenderteDateien.includes(pfad);
+
+            return (
+              <button
+                key={pfad}
+                type="button"
+                onClick={() => setAktiv(pfad)}
+                style={{
+                  padding: '5px 9px',
+                  borderRadius: 8,
+                  fontSize: 12,
+                  cursor: 'pointer',
+                  border: geaendert
+                    ? '2px solid #db2b73'
+                    : '1px solid #dce3ee',
+                  background:
+                    pfad === aktiv
+                      ? '#092b61'
+                      : '#fff',
+                  color:
+                    pfad === aktiv
+                      ? '#fff'
+                      : geaendert
+                        ? '#a33868'
+                        : '#182235',
+                  fontWeight: geaendert
+                    ? 800
+                    : 500,
+                }}
+              >
+                {pfad}
+                {geaendert ? ' · geändert' : ''}
+              </button>
+            );
+          })}
+        </div>
+
+        <div
+          style={{
+            marginBottom: 8,
+            fontSize: 12,
+            color: geaenderteDateien.includes(
+              aktiv,
+            )
+              ? '#a33868'
+              : '#5a6b86',
+          }}
+        >
+          Aktive Datei: <code>{aktiv}</code>
+        </div>
+
+        <pre
+          style={{
+            flex: 1,
+            margin: 0,
+            padding: 12,
+            overflow: 'auto',
+            borderRadius: 10,
+            background: '#0f1b30',
+            color: '#e6edf7',
+            fontSize: 12.5,
+            lineHeight: 1.5,
+            whiteSpace: 'pre',
+          }}
+        >
+          {dateien[aktiv] || ''}
+        </pre>
+      </section>
+    </div>
+  );
+}
+
+/* ============================================================
+   HAUPTKOMPONENTE
+   ============================================================ */
+
+export default function InlineAdmin() {
+  const [modus, setModus] =
+    useState('spielen');
+
+  const [inhalte, setInhalte] =
+    useState(null);
+
+  const [originalInhalte, setOriginalInhalte] =
+    useState(null);
+
+  const [entwurf, setEntwurf] =
+    useState(ladeEntwurf);
+
+  const [ziel, setZiel] =
+    useState(null);
+
+  const [zeigeCode, setZeigeCode] =
+    useState(false);
+
+  const [zeigeAlleDaten, setZeigeAlleDaten] =
+    useState(false);
+
+  const [meldung, setMeldung] =
+    useState('');
+
+  const [speicherStatus, setSpeicherStatus] =
+    useState('');
+
+  useEffect(() => {
+    let aktiv = true;
+
+    async function laden() {
+      try {
+        const paare = await Promise.all(
+          CONTENT_DATEIEN.map(async (name) => {
+            const antwort = await fetch(
+              joinBase(`content/${name}.json`),
+              {
+                cache: 'no-store',
+              },
+            );
+
+            if (!antwort.ok) {
+              throw new Error(
+                `content/${name}.json: Status ${antwort.status}`,
+              );
+            }
+
+            return [
+              name,
+              await antwort.json(),
+            ];
+          }),
+        );
+
+        if (!aktiv) {
+          return;
+        }
+
+        const serverInhalte =
+          Object.fromEntries(paare);
+
+        setOriginalInhalte(clone(serverInhalte));
+
+        let gespeichert = null;
+
+        try {
+          const text =
+            localStorage.getItem(
+              INHALT_SCHLUESSEL,
+            );
+
+          gespeichert = text
+            ? JSON.parse(text)
+            : null;
+        } catch {
+          gespeichert = null;
+        }
+
+        setInhalte(
+          gespeichert || clone(serverInhalte),
+        );
+      } catch (error) {
+        if (!aktiv) {
+          return;
+        }
+
+        setMeldung(
+          error instanceof Error
+            ? error.message
+            : String(error),
+        );
+      }
+    }
+
+    laden();
+
+    return () => {
+      aktiv = false;
+    };
   }, []);
 
   useEffect(() => {
-    if (inhalte) { try { localStorage.setItem(INHALT_SCHLUESSEL, JSON.stringify(inhalte)); } catch { /* voll */ } }
+    if (!inhalte) {
+      return;
+    }
+
+    try {
+      localStorage.setItem(
+        INHALT_SCHLUESSEL,
+        JSON.stringify(inhalte),
+      );
+    } catch {
+      /* localStorage voll oder blockiert */
+    }
   }, [inhalte]);
 
-  useEffect(() => { speichereEntwurf(entwurf); }, [entwurf]);
+  useEffect(() => {
+    speichereEntwurf(entwurf);
+  }, [entwurf]);
 
-  const klick = useCallback((e) => {
-    // Im Spielmodus wird NICHTS abgefangen - ausser du haeltst Alt.
-    const willBearbeiten = e.altKey || modus === 'bearbeiten';
-    if (!willBearbeiten) return;
-    if (e.target.closest('[data-admin-schutz]')) return;
-    // Kopfleiste und Navigation bleiben immer bedienbar, ausser mit Alt.
-    if (!e.altKey && e.target.closest('.bottom-nav, .app-header')) return;
-    const gefunden = findeZiel(e.target, inhalte || {}, entwurf);
-    if (!gefunden) return;
-    e.preventDefault();
-    e.stopPropagation();
-    setZiel(gefunden);
-  }, [modus, inhalte, entwurf]);
+  const geaenderteContentDateien = useMemo(
+    () =>
+      ermittleGeaenderteContentDateien(
+        inhalte,
+        originalInhalte,
+      ),
+    [inhalte, originalInhalte],
+  );
 
-  const geaendert = useMemo(() => geaenderteCodeDateien(entwurf), [entwurf]);
+  const geaenderteGenerierteDateien = useMemo(
+    () => geaenderteCodeDateien(entwurf),
+    [entwurf],
+  );
+
+  const alleGeaendertenDateien = useMemo(
+    () =>
+      Array.from(
+        new Set([
+          ...geaenderteContentDateien,
+          ...geaenderteGenerierteDateien,
+        ]),
+      ),
+    [
+      geaenderteContentDateien,
+      geaenderteGenerierteDateien,
+    ],
+  );
+
+  const klick = useCallback(
+    (event) => {
+      const willBearbeiten =
+        event.altKey ||
+        modus === 'bearbeiten';
+
+      if (!willBearbeiten) {
+        return;
+      }
+
+      if (
+        event.target.closest(
+          '[data-admin-schutz]',
+        )
+      ) {
+        return;
+      }
+
+      const gefunden = findeZiel(
+        event.target,
+        inhalte || {},
+        entwurf,
+      );
+
+      if (!gefunden) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      setZiel(gefunden);
+    },
+    [
+      modus,
+      inhalte,
+      entwurf,
+    ],
+  );
+
+  function manuellSpeichern() {
+    try {
+      localStorage.setItem(
+        INHALT_SCHLUESSEL,
+        JSON.stringify(inhalte),
+      );
+
+      speichereEntwurf(entwurf);
+
+      setSpeicherStatus('Gespeichert');
+
+      window.setTimeout(
+        () => setSpeicherStatus(''),
+        1800,
+      );
+    } catch (error) {
+      setSpeicherStatus(
+        `Speichern fehlgeschlagen: ${
+          error instanceof Error
+            ? error.message
+            : String(error)
+        }`,
+      );
+    }
+  }
+
+  function zuruecksetzen() {
+    const bestaetigt = window.confirm(
+      'Alle lokalen Änderungen verwerfen und den GitHub-Stand laden?',
+    );
+
+    if (!bestaetigt) {
+      return;
+    }
+
+    try {
+      localStorage.removeItem(
+        INHALT_SCHLUESSEL,
+      );
+    } catch {
+      /* nichts */
+    }
+
+    setEntwurf(leerEntwurf());
+    window.location.reload();
+  }
+
+  function exportiereZip() {
+    manuellSpeichern();
+
+    ladeZipHerunter(
+      inhalte,
+      entwurf,
+      {
+        originalInhalte,
+        nurGeaenderteDateien: true,
+      },
+    );
+  }
 
   if (meldung) {
-    return <div style={{ padding: 24, fontFamily: 'system-ui' }}>
-      <p><strong>Die Inhalte konnten nicht geladen werden.</strong></p>
-      <p>{meldung}</p>
-      <p>Der Adminmodus braucht einen Server — npm run dev oder die veröffentlichte Adresse, nicht per Doppelklick.</p>
-    </div>;
+    return (
+      <div
+        style={{
+          padding: 24,
+          fontFamily: 'system-ui',
+        }}
+      >
+        <p>
+          <strong>
+            Die Inhalte konnten nicht geladen
+            werden.
+          </strong>
+        </p>
+
+        <p>{meldung}</p>
+
+        <p>
+          Der Adminmodus benötigt einen Server.
+          Verwende npm run dev oder die
+          veröffentlichte GitHub-Pages-Adresse.
+        </p>
+      </div>
+    );
   }
-  if (!inhalte) return <div style={{ padding: 24, fontFamily: 'system-ui' }}>Inhalte werden geladen …</div>;
+
+  if (!inhalte) {
+    return (
+      <div
+        style={{
+          padding: 24,
+          fontFamily: 'system-ui',
+        }}
+      >
+        Inhalte werden geladen …
+      </div>
+    );
+  }
 
   return (
     <div onClickCapture={klick}>
-      {modus === 'bearbeiten' && <style>{MARKIER_CSS}</style>}
+      {modus === 'bearbeiten' && (
+        <style>{MARKIER_CSS}</style>
+      )}
 
-      <App contentOverride={inhalte} previewMode />
+      <App
+        contentOverride={inhalte}
+        previewMode
+      />
 
-      <AdminKopfKnopf aktiv onClick={() => { window.location.hash = ''; window.location.reload(); }} />
+      <AdminKopfKnopf
+        aktiv
+        onClick={() => {
+          window.location.hash = '';
+          window.location.reload();
+        }}
+      />
 
-      <div data-admin-schutz style={{
-        position: 'fixed', left: 12, bottom: 12, zIndex: 2147483050, maxWidth: 'min(420px, 94vw)',
-        display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', padding: 10, borderRadius: 12,
-        background: 'rgba(255,255,255,.97)', border: '1px solid #dce3ee', boxShadow: '0 8px 22px rgba(13,36,79,.16)',
-      }}>
-        <div style={{ display: 'flex', border: '1px solid #cbd5e1', borderRadius: 999, overflow: 'hidden' }}>
-          {[['spielen', 'Spielen'], ['bearbeiten', 'Bearbeiten']].map(([id, name]) => (
-            <button key={id} type="button" onClick={() => { setModus(id); setZiel(null); }}
+      <div
+        data-admin-schutz
+        style={{
+          position: 'fixed',
+          left: 12,
+          bottom: 12,
+          zIndex: 2147483050,
+          maxWidth: 'min(560px, 96vw)',
+          display: 'flex',
+          gap: 8,
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          padding: 10,
+          borderRadius: 12,
+          background: 'rgba(255,255,255,.97)',
+          border: '1px solid #dce3ee',
+          boxShadow:
+            '0 8px 22px rgba(13,36,79,.16)',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            border: '1px solid #cbd5e1',
+            borderRadius: 999,
+            overflow: 'hidden',
+          }}
+        >
+          {[
+            ['spielen', 'Spielen'],
+            ['bearbeiten', 'Bearbeiten'],
+          ].map(([id, name]) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => {
+                setModus(id);
+                setZiel(null);
+              }}
               style={{
-                padding: '6px 12px', border: 'none', cursor: 'pointer', font: 'inherit',
-                fontSize: 12, fontWeight: 800,
-                background: modus === id ? '#092b61' : 'transparent',
-                color: modus === id ? '#fff' : '#092b61',
-              }}>{name}</button>
+                padding: '6px 12px',
+                border: 'none',
+                cursor: 'pointer',
+                font: 'inherit',
+                fontSize: 12,
+                fontWeight: 800,
+                background:
+                  modus === id
+                    ? '#092b61'
+                    : 'transparent',
+                color:
+                  modus === id
+                    ? '#fff'
+                    : '#092b61',
+              }}
+            >
+              {name}
+            </button>
           ))}
         </div>
-        <button type="button" onClick={() => setZeigeCode(true)}>Code</button>
-        <button type="button" onClick={() => ladeZipHerunter(inhalte, entwurf)}>ZIP</button>
-        <button type="button" onClick={() => {
-          if (!window.confirm('Alle Änderungen verwerfen und den Auslieferungsstand laden?')) return;
-          try { localStorage.removeItem(INHALT_SCHLUESSEL); } catch { /* nichts */ }
-          setEntwurf(leerEntwurf());
-          window.location.reload();
-        }}>Zurücksetzen</button>
-        <p style={{ width: '100%', margin: 0, fontSize: 11.5, lineHeight: 1.45, color: '#5a6b86' }}>
+
+        <button
+          type="button"
+          onClick={() =>
+            setZeigeAlleDaten(true)
+          }
+        >
+          Alle Daten
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setZeigeCode(true)}
+        >
+          Code
+        </button>
+
+        <button
+          type="button"
+          onClick={manuellSpeichern}
+        >
+          {speicherStatus || 'Speichern'}
+        </button>
+
+        <button
+          type="button"
+          onClick={exportiereZip}
+        >
+          Geänderte Dateien als ZIP
+        </button>
+
+        <button
+          type="button"
+          onClick={zuruecksetzen}
+        >
+          Zurücksetzen
+        </button>
+
+        <p
+          style={{
+            width: '100%',
+            margin: 0,
+            fontSize: 11.5,
+            lineHeight: 1.45,
+            color: '#5a6b86',
+          }}
+        >
           {modus === 'spielen'
-            ? 'Die App verhält sich wie für die Kinder. Zum Ändern: Alt gedrückt halten und klicken.'
-            : 'Klick öffnet die Bearbeitung. Zum Durchspielen auf „Spielen“ wechseln.'}
-          {geaendert.length > 0 && <span style={{ color: '#a3382c' }}> · {geaendert.length} Codedatei(en) geändert</span>}
+            ? 'Die App verhält sich wie für die Schülerinnen und Schüler. Mit Alt + Klick kannst du trotzdem ein Element bearbeiten.'
+            : 'Klicke ein sichtbares Element an. Im Bearbeitungsfenster wird direkt angezeigt, welche Datei verändert wird.'}
         </p>
+
+        <GeaenderteDateienListe
+          dateien={alleGeaendertenDateien}
+        />
       </div>
 
       {ziel && (
-        <div data-admin-schutz>
-          <Seitenfeld ziel={ziel} inhalte={inhalte} setInhalte={setInhalte}
-            entwurf={entwurf} setEntwurf={setEntwurf} onSchliessen={() => setZiel(null)} />
-        </div>
+        <Seitenfeld
+          ziel={ziel}
+          inhalte={inhalte}
+          setInhalte={setInhalte}
+          entwurf={entwurf}
+          setEntwurf={setEntwurf}
+          onSchliessen={() => setZiel(null)}
+          onAlleDaten={() => {
+            setZiel(null);
+            setZeigeAlleDaten(true);
+          }}
+        />
+      )}
+
+      {zeigeAlleDaten && (
+        <AlleDatenAnsicht
+          inhalte={inhalte}
+          setInhalte={setInhalte}
+          onSchliessen={() =>
+            setZeigeAlleDaten(false)
+          }
+        />
       )}
 
       {zeigeCode && (
-        <div data-admin-schutz>
-          <CodeAnsicht inhalte={inhalte} entwurf={entwurf} onSchliessen={() => setZeigeCode(false)} />
-        </div>
+        <CodeAnsicht
+          inhalte={inhalte}
+          entwurf={entwurf}
+          geaenderteDateien={
+            alleGeaendertenDateien
+          }
+          onSchliessen={() =>
+            setZeigeCode(false)
+          }
+        />
       )}
     </div>
   );
