@@ -1,22 +1,6 @@
 import JSZip from 'jszip';
 import { erzeugeCodeDateien, geaenderteCodeDateien } from './codeEntwurf';
 
-/* ============================================================
-   ZIP-EXPORT
-
-   Packt alles, was der Adminbereich erzeugen kann, in der
-   richtigen Ordnerstruktur:
-     content/*.json          die Inhalte
-     src/data/*.js           Uebersetzungen, Regeln, Zonen, Algorithmus
-     src/App.jsx             falls im Rohtext bearbeitet
-
-   Bilder und Tonspuren sind NICHT dabei. Sie liegen als
-   47 MB im Repository, der Adminbereich aendert sie nie, und
-   sie durch den Browser zu schleifen wuerde nur Speicher
-   kosten. Du entpackst das Paket also ueber dein Repository -
-   die unveraenderten Dateien bleiben einfach liegen.
-   ============================================================ */
-
 const FILES = ['settings', 'posts', 'tasks', 'profiles', 'stories', 'guides'];
 
 function zeitstempel() {
@@ -25,57 +9,54 @@ function zeitstempel() {
   return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}_${z(d.getHours())}${z(d.getMinutes())}`;
 }
 
-export async function baueZip(inhalte, codeEntwurf) {
+export async function baueZip(inhalte, codeEntwurf, originalInhalte = null) {
   const zip = new JSZip();
-
   const jsonDateien = {};
+
   FILES.forEach((name) => {
     if (!inhalte || inhalte[name] === undefined) return;
-    jsonDateien[`content/${name}.json`] = `${JSON.stringify(inhalte[name], null, 2)}\n`;
+    const istGeaendert = !originalInhalte
+      || JSON.stringify(inhalte[name]) !== JSON.stringify(originalInhalte[name]);
+    if (istGeaendert) {
+      jsonDateien[`content/${name}.json`] = `${JSON.stringify(inhalte[name], null, 2)}\n`;
+    }
   });
 
-  const codeDateien = erzeugeCodeDateien(codeEntwurf);
-  const geaendert = geaenderteCodeDateien(codeEntwurf);
+  const alleCodeDateien = erzeugeCodeDateien(codeEntwurf);
+  const geaenderteCodePfade = geaenderteCodeDateien(codeEntwurf);
+  const codeDateien = Object.fromEntries(
+    geaenderteCodePfade.map((pfad) => [pfad, alleCodeDateien[pfad]]),
+  );
 
-  Object.entries({ ...jsonDateien, ...codeDateien }).forEach(([pfad, text]) => {
-    zip.file(pfad, text);
-  });
+  const dateien = { ...jsonDateien, ...codeDateien };
+  if (Object.keys(dateien).length === 0) {
+    throw new Error('Es gibt derzeit keine Änderungen zum Exportieren.');
+  }
 
-  const liesmich = `AiGram / Deepfake Defender - Aenderungspaket
+  Object.entries(dateien).forEach(([pfad, text]) => zip.file(pfad, text));
+
+  zip.file('LIESMICH.txt', `Deepfake Defender - Änderungspaket
 Erzeugt am ${new Date().toLocaleString('de-DE')}
 
-SO SPIELST DU ES EIN
-1. Dieses Archiv entpacken.
-2. Die Ordner "content" und "src" ueber die gleichnamigen Ordner
-   in deinem Repository kopieren, vorhandene Dateien ersetzen.
-3. Aenderungen committen und pushen.
-4. Warten, bis der Actions-Lauf gruen ist, dann die Seite neu
-   laden (bei Firefox und Chrome mit gedrueckter Umschalttaste).
+Nur diese geänderten Dateien auf GitHub ersetzen oder neu hochladen:
+${Object.keys(dateien).map((p) => `  ${p}`).join('\n')}
 
-WAS DRIN IST
-${Object.keys(jsonDateien).map((p) => `  ${p}`).join('\n') || '  (keine Inhalte)'}
-${Object.keys(codeDateien).map((p) => `  ${p}`).join('\n')}
-
-GEAENDERTE CODE-DATEIEN
-${geaendert.length ? geaendert.map((p) => `  ${p}`).join('\n') : '  keine'}
-
-WAS NICHT DRIN IST
-  assets/   Bilder und Tonspuren
-  icons/    App-Symbole
-  Diese Dateien aendert der Adminbereich nie. Sie bleiben in
-  deinem Repository unveraendert liegen.
-`;
-  zip.file('LIESMICH.txt', liesmich);
+Es müssen keine anderen Projektdateien neu hochgeladen werden.
+`);
 
   return zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
 }
 
-export async function ladeZipHerunter(inhalte, codeEntwurf) {
-  const blob = await baueZip(inhalte, codeEntwurf);
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `aigram-aenderungen_${zeitstempel()}.zip`;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 2000);
+export async function ladeZipHerunter(inhalte, codeEntwurf, originalInhalte = null) {
+  try {
+    const blob = await baueZip(inhalte, codeEntwurf, originalInhalte);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `deepfake-defender-aenderungen_${zeitstempel()}.zip`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  } catch (fehler) {
+    window.alert(fehler?.message || 'Das ZIP konnte nicht erstellt werden.');
+  }
 }
