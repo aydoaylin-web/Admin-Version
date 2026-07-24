@@ -1,0 +1,1938 @@
+*{box-sizing:border-box}html,body,#root{margin:0;min-height:100%;font-family:Inter,Arial,sans-serif;background:#fff;color:#131722}button,input,textarea{font:inherit}button{cursor:pointer}.page{min-height:100vh;display:flex;justify-content:center;padding:18px}.phone-shell{position:relative;width:min(100%,480px);min-height:calc(100vh - 36px);padding-bottom:76px;overflow:hidden;background:#fff;border-radius:26px;box-shadow:0 18px 55px rgba(13,36,79,.16)}.app-header{position:sticky;top:0;z-index:30;height:62px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #e8eaf0;backdrop-filter:blur(14px)}.wordmark{font-size:28px;font-weight:900;letter-spacing:-1.5px;color:#092350}.wordmark span{background:linear-gradient(135deg,#8c2bc2,#db2b73,#f57632);-webkit-background-clip:text;background-clip:text;color:transparent}.header-actions{display:flex;gap:6px}.header-actions button,.icon-plain{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:none}.header-actions button:hover,.icon-plain:hover{background:#f3f4f7}.feed-tabs{height:44px;display:flex;justify-content:center;gap:38px;border-bottom:1px solid #eceef3}.feed-tabs button{position:relative;border:0;background:none;font-weight:700;color:#7c8493}.feed-tabs button.active{color:#111827}.feed-tabs button.active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px;background:#111827}.stories{display:flex;gap:13px;padding:14px 14px 13px;overflow-x:auto;border-bottom:1px solid #eceef3;scrollbar-width:none}.stories::-webkit-scrollbar{display:none}.story{min-width:66px;text-align:center;font-size:10px;color:#4b5563;transition:.3s}.story-active{transform:translateY(-3px)}.story-ring{position:relative;width:62px;height:62px;margin:auto;padding:3px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#8534c8,#e1367b,#ef7b32)}.story-ring>div{width:100%;height:100%;display:grid;place-items:center;border:3px solid #fff;border-radius:50%;background:#102b5b;color:#fff;font-weight:900}.story-active .story-ring{animation:pulse 1.2s ease}.story-status{position:absolute;right:0;bottom:3px;width:14px;height:14px;border:2px solid #fff;border-radius:50%;background:#38b76b}.story-status.live{background:#ef3340}.story-status.new{background:#2f80ed}@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(220,43,115,.15)}}.feed-toolbar{padding:9px 14px;display:flex;align-items:center;justify-content:space-between;background:#fafbfc;border-bottom:1px solid #edf0f3;color:#6b7280;font-size:11px;font-weight:700}.feed-toolbar button{padding:6px 9px;display:flex;align-items:center;gap:5px;border:0;border-radius:8px;background:#fff;color:#17355f}.post{margin-bottom:13px;background:#fff;border-bottom:1px solid #e8eaf0}.post-head{height:59px;padding:9px 13px;display:flex;align-items:center;gap:10px}.avatar{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:linear-gradient(135deg,#7f2ac1,#db2f76,#ef762d);color:#fff;font-weight:900}.post-user{min-width:0;flex:1;display:flex;flex-direction:column}.post-user strong{font-size:13px}.post-user span{font-size:10px;color:#7b8391}.post-image-button{position:relative;width:100%;padding:0;display:block;overflow:hidden;border:0;background:#111;cursor:zoom-in}.post-image{width:100%;max-height:610px;display:block;object-fit:cover}.expand-hint{position:absolute;right:10px;bottom:10px;padding:7px 9px;display:flex;gap:5px;align-items:center;border-radius:999px;background:rgba(0,0,0,.65);color:#fff;font-size:10px;opacity:0;transition:.2s}.post-image-button:hover .expand-hint{opacity:1}.heart-burst{position:absolute;inset:0;display:grid;place-items:center;color:#fff;filter:drop-shadow(0 5px 14px rgba(0,0,0,.35));animation:heartPop .8s ease forwards}@keyframes heartPop{0%{opacity:0;transform:scale(.3)}35%{opacity:1;transform:scale(1.18)}100%{opacity:0;transform:scale(.9)}}.post-actions{height:50px;padding:4px 10px;display:flex;align-items:center}.post-actions button{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:10px;background:none}.post-actions button:hover{background:#f3f4f7}.post-actions .push-right{margin-left:auto}.is-liked{color:#e82f46}.post-copy{padding:0 14px 15px;font-size:13px}.post-copy p{margin:7px 0;line-height:1.45}.comment-link{padding:0;border:0;background:none;color:#7b8391;font-size:12px}.post-time{display:block;margin-top:8px;color:#a0a6af;font-size:9px;text-transform:uppercase}.completed-strip{margin:0 14px 14px;padding:9px 11px;display:flex;align-items:center;gap:8px;border-radius:10px;background:#ecf8f0;color:#19733a;font-size:12px;font-weight:700}.infinite-loader{padding:24px;text-align:center;color:#8b93a0;font-size:12px}.skeleton{overflow:hidden}.skeleton-head,.skeleton-media,.skeleton-lines{background:linear-gradient(90deg,#eef0f4 25%,#f7f8fa 50%,#eef0f4 75%);background-size:200% 100%;animation:shimmer 1.3s infinite}.skeleton-head{height:58px}.skeleton-media{height:360px}.skeleton-lines{height:86px;margin:12px;border-radius:8px}@keyframes shimmer{to{background-position:-200% 0}}.agency-toast{position:absolute;top:70px;left:12px;right:12px;z-index:80;display:flex;align-items:center;border:1px solid rgba(34,87,166,.2);border-radius:15px;background:#fff;box-shadow:0 12px 32px rgba(20,48,95,.22);backdrop-filter:blur(12px);animation:toastIn .35s ease}.toast-main{min-width:0;flex:1;padding:11px;display:flex;align-items:center;gap:10px;border:0;background:none;text-align:left}.toast-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:#0b2c62;color:#fff}.toast-main span:nth-child(2){min-width:0;display:flex;flex-direction:column}.toast-main strong{font-size:13px;color:#0c234b}.toast-main small{margin-top:3px;color:#626c7d;font-size:11px;line-height:1.35}.toast-close{width:38px;height:38px;border:0;background:none}@keyframes toastIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}.score-chip{position:fixed;right:max(18px,calc((100vw - 480px)/2 + 14px));bottom:82px;z-index:35;padding:8px 11px;display:flex;align-items:center;gap:6px;border-radius:999px;background:#082556;color:#fff;box-shadow:0 8px 22px rgba(8,37,86,.28);font-weight:800}.bottom-nav{position:fixed;bottom:18px;left:50%;z-index:40;width:min(100%,480px);height:68px;display:grid;grid-template-columns:repeat(4,1fr);transform:translateX(-50%);background:#fff;border-top:1px solid #e1e4ea;border-radius:0 0 26px 26px;backdrop-filter:blur(14px)}.bottom-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:none;color:#7d8491;font-size:9px}.bottom-nav button.active{color:#092350}.modal-backdrop{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(7,13,27,.76);backdrop-filter:blur(5px)}.intro-card{width:min(410px,100%);padding:30px 25px;border-radius:22px;background:#fff;text-align:center}.intro-shield{width:76px;height:76px;margin:0 auto 18px;display:grid;place-items:center;border-radius:22px;background:#082556;color:#fff}.eyebrow{color:#315b97;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1px}.intro-card h1{margin:7px 0 10px;color:#0c2858}.intro-card p{color:#626b78;line-height:1.55}.intro-card button,.primary{width:100%;margin-top:18px;padding:13px;border:0;border-radius:11px;background:#092b61;color:#fff;font-weight:800}.post-modal{position:relative;width:min(1080px,96vw);max-height:92vh;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,.7fr);overflow:hidden;border-radius:18px;background:#fff}.modal-close{position:absolute;top:12px;right:12px;z-index:6;width:40px;height:40px;border:0;border-radius:50%;background:rgba(0,0,0,.68);color:#fff}.modal-nav{position:absolute;top:50%;z-index:5;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff}.modal-prev{left:12px}.modal-next{right:12px}.post-modal-media{position:relative;display:grid;place-items:center;min-height:520px;overflow:auto;background:#0b0c0f}.post-modal-media img{width:100%;height:100%;max-height:92vh;object-fit:contain;transition:transform .2s;transform-origin:center}.zoom-controls{position:absolute;left:50%;bottom:16px;display:flex;align-items:center;gap:8px;transform:translateX(-50%);padding:7px;border-radius:999px;background:rgba(0,0,0,.7);color:#fff}.zoom-controls button{width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff}.zoom-controls span{min-width:48px;text-align:center;font-size:11px}.post-modal-info{overflow-y:auto}.modal-caption{padding:15px;border-top:1px solid #e8ebef;line-height:1.5}.modal-comments{padding:0 15px 20px;display:grid;gap:11px;font-size:13px}.comments-backdrop{align-items:end;padding:0}.comments-sheet{width:min(100%,520px);max-height:82vh;padding:8px 16px 0;overflow:auto;border-radius:24px 24px 0 0;background:#fff}.sheet-handle{width:46px;height:5px;margin:2px auto 8px;border-radius:999px;background:#ccd1d9}.comments-sheet header{display:flex;align-items:center;justify-content:center;border-bottom:1px solid #eceff3}.comments-sheet header h2{font-size:16px}.comments-sheet header button{position:absolute;right:16px;border:0;background:none}.comments-list{padding-bottom:76px}.comment-row{padding:12px 0;display:flex;align-items:flex-start;gap:10px}.comment-avatar{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:50%;background:#142f5c;color:#fff;font-size:11px;font-weight:800}.comment-row p{margin:0;flex:1;font-size:12px;line-height:1.45}.comment-row small{display:block;margin-top:5px;color:#8b93a0}.comment-row>button{border:0;background:none;color:#7b8391}.comment-input{position:sticky;bottom:0;padding:10px 0;display:flex;align-items:center;gap:9px;background:#fff;border-top:1px solid #e8ebef}.comment-input input{min-width:0;flex:1;padding:10px 12px;border:1px solid #dce1e8;border-radius:999px}.comment-input button{border:0;background:none;color:#2259a1;font-weight:800}.task-backdrop{align-items:end;padding:0}.task-sheet{width:min(100%,520px);max-height:94vh;padding:17px;overflow-y:auto;border-radius:24px 24px 0 0;background:#fff}.task-top{display:flex;align-items:flex-start;gap:10px}.task-top>button{width:38px;height:38px;border:0;border-radius:50%;background:#f0f2f6}.task-top>div:nth-child(2){min-width:0;flex:1}.task-top h2{margin:3px 0 0;color:#102b5b}.timer{min-width:58px;padding:8px;border-radius:11px;background:#fff5dd;color:#9a5e00;text-align:center;font-weight:900}.task-image-button{position:relative;width:100%;margin:14px 0;padding:0;overflow:hidden;border:0;border-radius:13px;background:#111}.task-image-button img{width:100%;max-height:300px;display:block;object-fit:cover}.task-image-button span{position:absolute;right:9px;bottom:9px;padding:6px 9px;display:flex;align-items:center;gap:5px;border-radius:999px;background:rgba(0,0,0,.68);color:#fff;font-size:10px}.instruction{margin:14px 0;line-height:1.5}.options{display:grid;gap:9px}.options label{padding:12px 13px;display:flex;gap:10px;border:1px solid #dce1e9;border-radius:11px}.options label.selected{border-color:#245caa;background:#f1f6ff}.analysis-input-block{display:grid;gap:8px;margin:14px 0}.analysis-input-block label{font-size:.82rem;font-weight:800}.analysis-input-block textarea{width:100%;min-height:120px;resize:vertical;border:1px solid #d8deea;border-radius:14px;padding:13px 14px}.analysis-input-block small{color:#6b7280}.confidence-control{margin:14px 0;padding:12px;border:1px solid #dfe4eb;border-radius:12px;background:#f7f9fc}.confidence-control label{display:flex;justify-content:space-between}.confidence-control input{width:100%;margin-top:10px}.feedback{margin-top:13px;padding:12px;border-radius:11px;font-size:13px}.feedback.correct{background:#ebf8ef;color:#176c36}.feedback.wrong,.feedback.warning{background:#fff0ee;color:#a42c24}.dashboard-screen{min-height:610px;padding:24px 16px;background:#f4f6f9}.screen-heading span{color:#345c93;font-size:10px;font-weight:900;text-transform:uppercase}.screen-heading h2{margin:5px 0 18px;color:#102b59}.empty-state{padding:75px 20px;text-align:center;color:#77808d}.case-list{display:grid;gap:10px}.case-card{padding:14px;display:flex;align-items:center;justify-content:space-between;border:1px solid #dfe4eb;border-radius:14px;background:#fff}.case-good,.case-bad{min-width:42px;padding:7px;border-radius:9px;text-align:center;font-weight:900}.case-good{background:#e9f8ee;color:#16713a}.case-bad{background:#fff0ee;color:#b02f27}.agency-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.agency-stats>div,.rules-panel,.research-panel{padding:16px;border:1px solid #e0e4eb;border-radius:15px;background:#fff}.agency-stats strong{display:block;color:#0d2c62;font-size:28px}.rules-panel,.research-panel{margin-top:14px}.rule{margin-top:9px;padding:10px;display:flex;gap:8px;border-radius:10px;background:#eef7f1;color:#176b38}.research-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.research-actions button,.secondary-action{padding:10px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#17365f;font-weight:800}.secondary-action{width:100%;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px}.profile-screen{padding:0 0 24px;text-align:center}.profile-cover{height:120px;background:linear-gradient(135deg,#0d2c62,#7332ad,#e24f7d)}.profile-avatar{width:90px;height:90px;margin:-45px auto 10px;display:grid;place-items:center;border:5px solid #f4f6f9;border-radius:50%;background:#142f5c;color:#fff;font-size:34px;font-weight:900}.profile-bio{margin:12px auto;max-width:300px;color:#5f6875}.profile-metrics{padding:18px 0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #dfe4eb;border-bottom:1px solid #dfe4eb}.profile-metrics strong{display:block;font-size:23px}.profile-metrics span{font-size:10px;color:#7c8490;text-transform:uppercase}.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:14px}.profile-grid button{padding:0;border:0;aspect-ratio:1;background:#ddd}.profile-grid img{width:100%;height:100%;object-fit:cover}.load-error{margin:14px;padding:13px;border-radius:11px;background:#fff0ee;color:#a92e27}.primary:disabled{opacity:.65}
+@media(max-width:760px){.page{padding:0}.phone-shell{min-height:100vh;border-radius:0}.bottom-nav{bottom:0;border-radius:0}.score-chip{right:12px;bottom:72px}.post-modal-backdrop{padding:0}.post-modal{width:100%;height:100%;max-height:none;grid-template-columns:1fr;grid-template-rows:minmax(55vh,1fr) auto;border-radius:0}.post-modal-media{min-height:55vh}.post-modal-info{max-height:40vh}.expand-hint{opacity:1}.modal-nav{top:45%}.task-sheet{max-height:96vh}}
+
+/* Milestone 2: complete game mechanics */
+.mission-progress{padding:10px 14px 12px;background:#fff;border-bottom:1px solid var(--line,#e5e7eb)}
+.mission-progress>div:first-child{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#667085}
+.mission-progress strong{color:#071f50}
+.mission-track{height:7px;margin:7px 0;border-radius:999px;background:#edf0f5;overflow:hidden}
+.mission-track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#7c3aed,#db2777,#f97316);transition:width .35s ease}
+.mission-progress small{display:block;color:#7a8495;font-size:10px}
+.case-card{display:grid;grid-template-columns:1fr auto;gap:8px 12px}
+.case-answer{grid-column:1/-1;margin:0;color:#667085;font-size:12px;line-height:1.45}
+.run-summary-card{width:min(420px,92vw);padding:28px 22px;border-radius:24px;background:#fff;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.run-summary-card h2{margin:8px 0;color:#071f50}
+.run-summary-card p{color:#667085;line-height:1.5}
+.run-summary-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+.run-summary-stats div{padding:13px 8px;border-radius:14px;background:#f6f7fa;display:flex;flex-direction:column;gap:3px}
+.run-summary-stats strong{font-size:24px;color:#071f50}
+.run-summary-stats span{font-size:10px;text-transform:uppercase;color:#7a8495}
+.run-summary-card .secondary-action{width:100%;margin-top:10px}
+.task-sheet.task-liveCheck{border-top:5px solid #ef4444}
+.task-sheet.task-news{border-top:5px solid #2563eb}
+.task-sheet.task-perspective{border-top:5px solid #9333ea}
+.task-sheet.task-realityDefense{border-top:5px solid #059669}
+.content-pack-stats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.content-pack-stats span{padding:7px 10px;border-radius:999px;background:#eef2ff;color:#173b78;font-size:12px;font-weight:800}
+
+/* Milestone 4: responsive, accessible and installable app */
+:root{
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-right:env(safe-area-inset-right,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe-left:env(safe-area-inset-left,0px);
+}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
+body{min-width:320px;overscroll-behavior-y:none;padding-left:var(--safe-left);padding-right:var(--safe-right)}
+button,input,textarea{font:inherit}
+button{touch-action:manipulation}
+button:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid rgba(37,99,235,.38);outline-offset:3px}
+img{user-select:none;-webkit-user-drag:none}
+.topbar{padding-top:calc(10px + var(--safe-top))}
+.bottom-nav{padding-bottom:calc(8px + var(--safe-bottom));min-height:calc(64px + var(--safe-bottom))}
+.score-chip{bottom:calc(76px + var(--safe-bottom))}
+.comments-sheet,.task-sheet{padding-bottom:calc(18px + var(--safe-bottom))}
+.post-media img,.profile-grid img{content-visibility:auto}
+
+@media (hover:none) and (pointer:coarse){
+  button,.icon-button,.post-action-button,.navigation-button{min-width:44px;min-height:44px}
+  .expand-hint{opacity:1}
+  .post-card:hover{transform:none}
+}
+
+@media (min-width:761px) and (max-width:1100px){
+  .page{padding:18px}
+  .phone-shell{max-width:760px;border-radius:24px}
+  .post-media{max-height:72vh}
+  .post-media img{max-height:72vh;object-fit:contain;background:#0b0c0f}
+  .post-modal{width:min(94vw,980px)}
+  .dashboard-screen{padding:30px 28px}
+  .story-bar{padding-inline:18px}
+}
+
+@media (min-width:1101px){
+  .page{padding:28px}
+  .phone-shell{max-width:900px;border-radius:26px}
+  .feed-layout{display:grid;grid-template-columns:minmax(0,620px) 240px;gap:22px;align-items:start;padding:18px 18px 110px}
+  .feed-column{min-width:0}
+  .desktop-rail{display:block;position:sticky;top:92px}
+  .post{border:1px solid #e4e8ef;border-radius:18px;overflow:hidden;margin-bottom:18px}
+  .post-media{background:#0b0c0f}
+  .post-media img{max-height:72vh;object-fit:contain}
+  .bottom-nav{left:50%;max-width:900px}
+  .score-chip{right:calc(50% - 430px)}
+  .task-sheet,.comments-sheet{margin-bottom:18px;border-radius:24px}
+}
+
+@media (max-width:480px){
+  .brand{font-size:24px}
+  .topbar{min-height:58px;padding-inline:10px}
+  .story-bar{gap:10px;padding-inline:10px}
+  .story{min-width:62px}
+  .story-ring{width:56px;height:56px}
+  .post-header{padding:9px 11px}
+  .post-content{padding-inline:12px}
+  .post-actions{padding-inline:8px}
+  .task-sheet{padding:14px 13px calc(15px + var(--safe-bottom))}
+  .task-image-button img{max-height:260px}
+  .dashboard-screen{padding:20px 12px calc(90px + var(--safe-bottom))}
+  .profile-bio{padding-inline:16px}
+}
+
+@media (max-height:620px) and (orientation:landscape){
+  .post-modal{grid-template-columns:1.3fr .7fr;grid-template-rows:1fr}
+  .post-modal-media{min-height:100vh}
+  .post-modal-info{max-height:100vh}
+  .task-sheet{max-height:100vh;border-radius:0}
+  .comments-sheet{max-height:100vh;border-radius:0}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+
+@media (prefers-color-scheme:dark){
+  body{background:#111827}
+}
+
+@media print{
+  .topbar,.bottom-nav,.score-chip,.stories,.feed-tabs,.agency-toast{display:none!important}
+  .page,.phone-shell{padding:0;max-width:none;box-shadow:none;background:#fff}
+  .post{break-inside:avoid;border:1px solid #ccc}
+}
+
+/* Milestone 5: Research and local AI */
+.research-meta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}.research-meta-grid>div{padding:11px;border:1px solid var(--line,#e5e7eb);border-radius:12px;background:var(--soft,#f7f8fa);display:flex;flex-direction:column;gap:4px}.research-meta-grid span{font-size:11px;color:var(--muted,#667085);text-transform:uppercase;letter-spacing:.04em}.research-meta-grid strong{font-size:14px;overflow-wrap:anywhere}.status-ok{color:#16803c}.status-warn{color:#a15c00}.research-actions{display:flex;flex-wrap:wrap;gap:8px}.danger-lite{border-color:#f1b7b3!important;color:#b42318!important;background:#fff5f4!important}@media(max-width:420px){.research-meta-grid{grid-template-columns:1fr}}
+
+
+/* Prototype mechanic: investigate, decide, justify */
+.mechanic-step{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 10px;padding:10px 12px;border-radius:12px;background:#eef4ff;color:#173b78}.mechanic-step span{font-size:11px;font-weight:800;text-transform:uppercase}.mechanic-step strong{font-size:13px}.analysis-tools{display:grid;gap:10px;margin:12px 0 16px}.analysis-tools>button{width:100%;padding:13px 14px;border:1px solid #dbe2ec;border-radius:14px;background:#fff;text-align:left;transition:.2s ease}.analysis-tools>button:hover{border-color:#8ba9d6;background:#f8fbff}.analysis-tools>button.used{border-color:#6a93cf;background:#f1f6ff}.analysis-tool-title{display:flex;align-items:center;gap:9px;color:#17365f;font-weight:850}.analysis-tool-title svg:last-child{margin-left:auto;color:#16803c}.analysis-tools small{display:block;margin:9px 0 0 28px;color:#536174;line-height:1.45}.verdict-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.verdict-options button{padding:13px;border:1px solid #d7deea;border-radius:13px;background:#fff;color:#26364d;font-weight:850}.verdict-options button.selected{border-color:#245caa;background:#eaf2ff;color:#123d7b;box-shadow:0 0 0 2px rgba(36,92,170,.12)}.used-tool-summary{margin-bottom:10px;padding:9px 11px;border-radius:10px;background:#f6f7f9;color:#697386;font-size:11px}
+.feed-review-strip{margin:0 14px 14px;padding:11px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #d9e3f2;border-radius:12px;background:#f5f8fd}.feed-review-strip>div{display:flex;align-items:center;gap:9px;color:#123567}.feed-review-strip span{display:flex;flex-direction:column}.feed-review-strip strong{font-size:12px}.feed-review-strip small{margin-top:2px;color:#697588;font-size:10px;line-height:1.3}.feed-review-strip button{padding:8px 12px;border:0;border-radius:9px;background:#0b2c62;color:#fff;font-size:11px;font-weight:800}
+.source-check-card {
+  margin: 12px 0 0 28px;
+  border: 1px solid #d8e1ee;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.source-check-row {
+  display: grid;
+  grid-template-columns: 105px 1fr;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #edf1f6;
+}
+
+.source-check-row span,
+.source-check-assessment span {
+  color: #6b7788;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tip-info-btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;border:1px solid #cfd6e4;background:#eef2f9;color:#0d2c62;cursor:pointer;flex:0 0 auto}.tip-info-btn:hover{background:#e2e9f5}.tip-info-note{margin:8px 0 4px;padding:12px 14px;border-radius:12px;background:#eef4ff;border:1px solid #cfe0ff;color:#22314f;font-size:13px;line-height:1.45}.verdict-question{margin:14px 0 8px;font-weight:600;color:#0d2c62}
+
+
+
+.source-check-row strong {
+  color: #24344b;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.source-check-assessment {
+  padding: 11px 12px;
+  background: #f7faff;
+}
+
+.source-check-assessment p {
+  margin: 5px 0 0;
+  color: #3f4f64;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .source-check-card {
+    margin-left: 0;
+  }
+
+  .source-check-row {
+    grid-template-columns: 1fr;
+  }
+
+  .source-check-row span {
+    margin-bottom: -6px;
+  }
+}
+/* ===== Hotspot-Fehlersuche ===== */
+.hotspot-wrap { margin: 12px 0; }
+.hotspot-stage { position: relative; cursor: crosshair; border-radius: 12px; overflow: hidden; user-select: none; }
+.hotspot-stage img { display: block; width: 100%; height: auto; pointer-events: none; }
+.hotspot-found { position: absolute; border: 3px solid #22c55e; border-radius: 8px; background: rgba(34,197,94,0.18); box-shadow: 0 0 0 3px rgba(34,197,94,0.25); animation: hotspotPop 0.25s ease-out; }
+@keyframes hotspotPop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.hotspot-miss { position: absolute; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; border: 2px solid rgba(239,68,68,0.8); animation: hotspotFade 0.6s ease-out forwards; }
+@keyframes hotspotFade { from { transform: scale(0.6); opacity: 1; } to { transform: scale(1.4); opacity: 0; } }
+.hotspot-probe { position: absolute; transform: translate(-50%,-50%); display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; font-size: 12px; font-weight: 600; color: #fff; background: rgba(17,24,39,0.85); border-radius: 6px; white-space: nowrap; pointer-events: none; }
+.hotspot-status { margin-top: 8px; font-size: 14px; color: #374151; }
+.hotspot-status .ok { color: #15803d; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.hotspot-status.helper { color: #6d28d9; display: flex; align-items: center; gap: 6px; }
+.hotspot-hints { margin: 8px 0 0; padding-left: 18px; font-size: 13px; color: #4b5563; }
+.hotspot-hints li { margin: 4px 0; }
+.lang-switch { display: inline-flex; gap: 2px; margin-right: 8px; border: 1px solid #d1d5db; border-radius: 8px; overflow: hidden; }
+.lang-switch button { padding: 4px 8px; font-size: 12px; font-weight: 700; background: transparent; border: none; cursor: pointer; color: #6b7280; }
+.lang-switch button.active { background: #111827; color: #fff; }
+/* Analysis accordion and balanced checks */
+.analysis-tool-card{border:1px solid #dbe2ec;border-radius:14px;background:#fff;overflow:hidden;transition:.2s}.analysis-tool-card.used{border-color:#8ca9d2}.analysis-tool-card.open{box-shadow:0 8px 22px rgba(29,57,99,.09)}.analysis-tool-toggle{width:100%;border:0;background:#fff;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;text-align:left}.analysis-tool-card.open .analysis-tool-toggle{background:#f4f8ff}.analysis-tool-content{padding:0 13px 14px}.accordion-symbol{font-size:23px;color:#375d91;line-height:1}.tool-availability{margin:0 0 0 auto!important;padding:3px 7px;border-radius:999px;background:#f1f2f4;color:#747d89!important;font-size:9px!important}.analysis-tool-title svg:last-of-type{margin-left:auto}.source-unavailable{display:flex;gap:10px;align-items:flex-start;padding:13px;border-radius:12px;background:#f7f8fa;color:#596579}.source-unavailable p{margin:3px 0 0;font-size:12px;line-height:1.45}.source-browser{border:1px solid #d8e1ee;border-radius:14px;overflow:hidden;background:#fff}.source-browser-bar{display:flex;align-items:center;gap:5px;padding:9px 10px;background:#eef2f7}.source-browser-bar>span{width:8px;height:8px;border-radius:50%;background:#b9c1cc}.source-browser-bar>div{margin-left:5px;flex:1;padding:5px 9px;border-radius:7px;background:#fff;color:#596579;font-size:10px}.source-browser-body{padding:14px}.source-page-title{display:flex;gap:10px;align-items:flex-start}.source-page-title div{display:flex;flex-direction:column;min-width:0}.source-page-title small{color:#6a7890;font-size:9px;font-weight:900}.source-page-title strong{margin:3px 0;color:#162f57}.source-page-title span{font-size:10px;color:#6c7786;overflow-wrap:anywhere}.source-facts{display:grid;gap:8px;margin-top:14px}.source-facts>div{display:grid;grid-template-columns:22px 105px 1fr;align-items:center;padding:9px;border-radius:9px;background:#f7f9fc;font-size:11px}.source-facts span{color:#697587}.source-facts strong{color:#263750}.source-note{display:flex;gap:9px;margin-top:12px;padding:10px;border-radius:10px;background:#edf7f0;color:#245c38}.source-browser.warning .source-note{background:#fff5e6;color:#7a5200}.source-browser.ad .source-note{background:#f4efff;color:#61439a}.source-note p{margin:0;font-size:12px;line-height:1.45}.profile-check-panel{border:1px solid #dde4ee;border-radius:14px;overflow:hidden;background:#fff}.profile-check-head{display:flex;gap:10px;align-items:center;padding:13px;background:#f6f8fc}.profile-check-head>div:nth-child(2){display:flex;flex-direction:column;flex:1}.profile-check-head span{font-size:10px;color:#718096}.profile-check-avatar{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#173b70;color:#fff;font-weight:900}.profile-check-bio{margin:12px 13px;color:#4e5d70;font-size:12px}.profile-check-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #e5eaf1;border-bottom:1px solid #e5eaf1}.profile-check-stats>div{text-align:center;padding:10px 4px}.profile-check-stats strong,.profile-check-stats span{display:block}.profile-check-stats span{font-size:9px;color:#768191;text-transform:uppercase}.profile-check-details{display:grid;gap:1px;background:#e8edf3}.profile-check-details>div{display:grid;grid-template-columns:22px 105px 1fr;align-items:center;padding:9px 11px;background:#fff;font-size:11px}.profile-check-details span{color:#6e7988}.profile-locked{display:flex;gap:10px;padding:13px;color:#5f6875}.profile-locked p{margin:3px 0 0;font-size:11px}.recent-account-comments{display:grid;gap:7px}.recent-account-comments>strong{color:#213a61}.recent-account-comments p{margin:0;padding:9px 10px;border-radius:9px;background:#f7f8fa;font-size:11px;line-height:1.4}.image-analysis-basic img{width:100%;border-radius:11px;display:block}.image-analysis-basic p{font-size:12px;color:#596579;line-height:1.45}.mission-score-rule{font-size:11px}
+
+/* Guided demo and reliable image/source checks */
+.demo-card{max-height:92vh;overflow-y:auto}.demo-card h2{margin:8px 0 16px;color:#102b5b}.mission-rules{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:16px 0}.mission-rules strong{padding:10px;border-radius:11px;background:#f3f6fa;color:#17365f;font-size:12px}.demo-skip,.demo-back{margin-top:9px!important;background:#fff!important;color:#31547f!important;border:1px solid #cbd5e1!important}.demo-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.demo-actions button{margin-top:0!important}.demo-tool-preview{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:14px;background:#f4f8ff;text-align:left}.demo-tool-preview>svg{flex:0 0 auto;color:#174b87}.demo-tool-preview p{margin:5px 0 0;color:#596579;font-size:12px;line-height:1.5}.demo-link-example,.demo-profile-example,.demo-comments-example{margin-top:13px;padding:13px;border:1px solid #dce4ef;border-radius:13px;background:#fff;text-align:left}.demo-link-example{display:grid;gap:4px}.demo-link-example small{color:#64748b;font-weight:900}.demo-link-example b{color:#174b87;overflow-wrap:anywhere}.demo-link-example span,.demo-profile-example span{display:block;margin-top:5px;color:#596579;font-size:12px}.demo-profile-example{display:grid;gap:4px}.demo-comments-example p{margin:6px 0;padding:8px;border-radius:9px;background:#f7f8fa;font-size:11px}.source-open-page{width:100%;margin-top:13px;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid #cbd8e8;border-radius:10px;background:#f5f8fc;color:#173f72;font-weight:800}.linked-page-preview{margin-top:10px;padding:14px;border:1px solid #d9e1eb;border-radius:12px;background:#fff;text-align:left}.linked-page-kicker{font-size:9px;font-weight:900;color:#64748b;text-transform:uppercase}.linked-page-preview h3{margin:6px 0 8px;color:#172f55;font-size:16px}.linked-page-preview p,.linked-page-preview li{font-size:12px;line-height:1.5;color:#4f5f72}.linked-page-preview ul{margin:8px 0;padding-left:18px}.linked-page-preview small{display:block;margin-top:10px;padding-top:9px;border-top:1px solid #e5e9ef;color:#667085;line-height:1.4}.hotspot-stage img{transition:transform .2s;transform-origin:center}.hotspot-stage.inspection-only{overflow:auto;cursor:zoom-in}.image-inspection-controls{display:flex;align-items:center;justify-content:center;gap:8px;padding:9px;background:#f4f6f9}.image-inspection-controls button{display:flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid #d7dee8;border-radius:9px;background:#fff;color:#264a78;font-size:11px}.image-inspection-controls span{min-width:44px;text-align:center;font-size:11px;font-weight:800}.inspection-checklist{padding:12px;border:1px solid #dfe5ed;border-radius:0 0 12px 12px;background:#fff}.inspection-checklist>p{margin:5px 0 10px;color:#596579;font-size:11px;line-height:1.45}.inspection-checklist label{display:flex;align-items:center;gap:8px;padding:7px 0;font-size:11px}.inspection-checklist input{width:16px;height:16px}.inspection-checklist .hotspot-status{margin-top:8px}
+
+/* --- Verbesserte Bildanalyse (Evidenz-Prüfung) --- */
+.hotspot-viewport{overflow:auto;max-height:56vh;border-radius:12px;background:#0f172a}
+.hotspot-stage{width:100%;transition:transform .18s ease}
+.hotspot-missed{position:absolute;border:3px dashed #ef4444;border-radius:8px;background:rgba(239,68,68,0.14);box-shadow:0 0 0 3px rgba(239,68,68,0.18);animation:hotspotPop .25s ease-out}
+.hotspot-wrong-count{display:block;margin-top:2px;color:#b45309;font-size:11px;font-weight:700}
+.hotspot-reveal{width:100%;margin-top:9px;padding:9px 12px;display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid #cbd8e8;border-radius:10px;background:#f5f8fc;color:#173f72;font-weight:700;font-size:12px;cursor:pointer}
+.hotspot-reveal:hover{background:#eaf1fb}
+.hotspot-summary{margin-top:10px;padding:13px;border:1px solid #dfe5ed;border-radius:12px;background:#fff;text-align:left}
+.hotspot-summary>strong{display:flex;align-items:center;gap:7px;color:#172f55;font-size:14px}
+.hotspot-summary-block{margin-top:9px;font-size:12px}
+.hotspot-summary-block>span{font-weight:800}
+.hotspot-summary-block.ok>span{color:#15803d}
+.hotspot-summary-block.missed>span{color:#b91c1c}
+.hotspot-summary-block ul{margin:5px 0 0;padding-left:18px}
+.hotspot-summary-block li{margin:4px 0;color:#4b5563;line-height:1.4}
+.hotspot-summary-why{margin:11px 0 0;padding-top:9px;border-top:1px solid #e5e9ef;color:#667085;font-size:11px;line-height:1.45}
+.inspection-checklist>strong{display:inline-flex;align-items:center;gap:6px}
+
+/* v6: clearer checks, authentic zoom and compact didactic feedback */
+.hotspot-viewport{overflow:hidden;touch-action:none;position:relative;min-height:280px;background:#111;border-radius:16px}.hotspot-viewport.is-zoomed{cursor:grab}.hotspot-viewport.is-dragging{cursor:grabbing}.hotspot-stage{width:100%;height:100%;transition:transform .12s ease;will-change:transform}.hotspot-stage img{width:100%;height:auto;display:block;user-select:none;pointer-events:none}.image-inspection-controls{display:grid;grid-template-columns:1fr auto 1fr 1fr;gap:8px;align-items:center;margin-top:10px}.image-inspection-controls button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px}.image-inspection-controls button:disabled{opacity:.4}.zoom-help{font-size:.78rem;color:#697386;margin:7px 2px 12px}.hotspot-neutral-miss{display:block;margin-top:6px;color:#52606d}.inspection-actions{display:flex;gap:8px;flex-wrap:wrap}.analysis-tip-button{display:inline-flex;align-items:center;gap:7px;border:1px solid #d6dbe5;background:#fff;border-radius:10px;padding:9px 12px;font-weight:700}.analysis-tip,.analysis-takeaway{margin-top:10px;padding:12px;border-radius:12px;background:#f4f7ff;border:1px solid #dfe7ff}.analysis-tip strong{display:block;margin-bottom:4px}.analysis-tip p,.analysis-takeaway{font-size:.9rem;line-height:1.45}.analysis-takeaway{background:#f7faf8;border-color:#dcebe1}.feedback-remember{margin-top:10px;padding-top:9px;border-top:1px solid currentColor;font-size:.9rem}.profile-check-panel{display:grid;gap:12px}.profile-check-head{padding-bottom:4px}.profile-account-tag{display:inline-flex;align-items:center;gap:7px;width:max-content;padding:7px 10px;background:#f2f4f8;border-radius:999px;font-size:.84rem;font-weight:700}.profile-more{border:1px solid #e3e7ee;border-radius:12px;overflow:hidden}.profile-more summary{display:flex;justify-content:space-between;align-items:center;padding:12px;cursor:pointer;font-weight:700;list-style:none}.profile-more[open] summary svg{transform:rotate(180deg)}.profile-more .profile-check-details{padding:0 12px 12px}.source-browser{border-radius:16px;overflow:hidden}.source-browser-bar{display:flex;align-items:center;gap:8px;padding:9px 11px;background:#eef1f5}.source-browser-bar>button{border:0;background:transparent;font-size:1.5rem}.source-browser-bar>div{display:flex;align-items:center;gap:6px;min-width:0;flex:1;background:#fff;border-radius:9px;padding:7px 10px;font-size:.82rem}.source-browser-body{padding:14px;display:grid;gap:12px}.source-short-description{margin:0;line-height:1.45}.source-facts.compact{display:grid;grid-template-columns:1fr 1fr;gap:8px}.source-facts.compact>div{min-width:0}.source-question{padding:12px;background:#f7f8fa;border-radius:12px}.source-question p{margin:5px 0 10px}.source-assessment-options{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.source-assessment-options button{padding:9px 6px;border:1px solid #d7dce5;background:#fff;border-radius:9px;font-weight:700}.source-assessment-options button.selected{border-color:#4154d9;background:#eef0ff;color:#2736aa}.source-evaluation{padding:12px;border-radius:12px;background:#f5f7fa}.source-evaluation>strong{display:flex;align-items:center;gap:6px}.linked-page-preview{max-height:220px;overflow:auto}.recent-account-comments p{margin:8px 0;padding-bottom:8px;border-bottom:1px solid #eceff4}.verdict-options{grid-template-columns:repeat(3,minmax(0,1fr))}.verdict-options button{white-space:normal;line-height:1.2;min-height:52px}
+@media(max-width:600px){.image-inspection-controls{grid-template-columns:1fr auto 1fr}.image-inspection-controls button:last-child{grid-column:1/-1}.image-inspection-controls button span{font-size:.78rem}.source-facts.compact{grid-template-columns:1fr}.source-assessment-options{grid-template-columns:1fr}.verdict-options{grid-template-columns:1fr}}
+
+/* Version 6.2: unified analysis hints */
+.analysis-tip strong { display:flex; align-items:center; gap:7px; }
+.analysis-tip b { display:block; margin-top:10px; }
+.analysis-tip p { margin:6px 0 0; }
+.analysis-tip-disabled { margin-top:12px; padding:12px 14px; border-radius:12px; background:#f1f3f5; color:#5f6670; font-size:.9rem; line-height:1.4; }
+.profile-check-details-visible { display:grid; }
+.nav-icon-wrap{position:relative;display:inline-grid;place-items:center}.notification-badge{position:absolute;top:-8px;right:-11px;min-width:18px;height:18px;padding:0 5px;display:grid;place-items:center;border:2px solid #fff;border-radius:999px;background:#d92d20;color:#fff;font-size:9px;font-weight:900;line-height:1}.hint-resource-status{margin:0 0 12px;padding:10px 12px;display:flex;align-items:center;gap:8px;border:1px solid #dbe4f1;border-radius:12px;background:#f6f9fd;color:#29486f;font-size:12px;font-weight:750}.analysis-tip-button{margin-top:12px}.analysis-tip-button:disabled{cursor:not-allowed;opacity:.55}
+.task-post-caption{margin:10px 16px 0;padding:11px 12px;border:1px solid #e4e7ed;border-radius:11px;background:#fff;font-size:13px;line-height:1.45}.analysis-tip-collapse{margin-top:10px;padding:8px 10px;border:1px solid #d6dbe4;border-radius:8px;background:#fff;font-weight:700}.activity-post-list{display:grid;gap:10px;margin-top:10px}.activity-post{display:grid;grid-template-columns:72px 1fr;gap:10px;padding:9px;border:1px solid #e4e7ed;border-radius:11px;background:#fff}.activity-post img{width:72px;height:72px;object-fit:cover;border-radius:8px}.activity-post p{margin:4px 0;font-size:12px;line-height:1.35}.activity-post small{color:#7b8391}.account-activities>strong{display:block;margin-bottom:4px}
+
+.profile-help-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 4px}.profile-help-actions .secondary-action{margin-top:0}.current-activity-label{display:block;margin-top:3px;color:#315b97;font-weight:800}.activity-post>div{min-width:0}.activity-post p{overflow-wrap:anywhere}
+
+/* Requested navigation, activity history, demo post and notification list */
+.header-help-actions{display:flex;gap:6px}.header-help-actions button{display:flex;align-items:center;gap:4px;border:1px solid #ddd;border-radius:8px;background:#fff;padding:5px 7px;font-size:12px}.demo-real-post{border:1px solid #ddd;border-radius:12px;overflow:hidden;margin:12px 0;text-align:left;background:#fff}.demo-real-post>div{display:flex;justify-content:space-between;padding:9px 10px}.demo-real-post img{display:block;width:100%;max-height:240px;object-fit:cover}.demo-real-post p{padding:9px 10px;margin:0}.activity-explainer{font-size:13px;color:#666;margin:6px 0 12px}.account-comment-history{display:grid;gap:10px}.account-comment-entry{display:flex;gap:10px;padding:10px;border:1px solid #e5e5e5;border-radius:10px;background:#fff}.account-comment-entry p{margin:3px 0 5px}.account-comment-entry small{color:#777}.notification-center{margin-bottom:16px}.notification-center h3{display:flex;align-items:center;gap:7px}.notification-list{display:grid;gap:8px}.notification-list>button{display:grid;grid-template-columns:64px 1fr;gap:10px;text-align:left;border:1px solid #ddd;border-radius:12px;background:#fff;padding:8px;width:100%}.notification-list img{width:64px;height:64px;object-fit:cover;border-radius:8px}.notification-list span{min-width:0}.notification-list strong,.notification-list small,.notification-list em{display:block}.notification-list p{margin:4px 0}.notification-list em{font-size:12px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:normal}@media(max-width:520px){.header-help-actions span{display:none}.header-help-actions button{padding:5px}.header-actions{gap:4px}.lang-switch{transform:scale(.9)}}
+
+/* --- Bildherkunft (Lens) --- */
+.origin-check{display:flex;flex-direction:column;gap:.6rem}
+.origin-search-bar{display:flex;align-items:center;gap:.5rem;background:#f3f4f7;border:1px solid #e2e4ea;border-radius:10px;padding:.5rem .7rem;font-size:.72rem;letter-spacing:.05em;color:#555;font-weight:600}
+.origin-intro{font-size:.85rem;color:#555;margin:0}
+.origin-hits{display:flex;flex-direction:column;gap:.4rem}
+.origin-hits-label{font-size:.7rem;letter-spacing:.05em;color:#888;text-transform:uppercase}
+.origin-hit{display:flex;gap:.55rem;align-items:flex-start;background:#fff;border:1px solid #e6e8ee;border-radius:10px;padding:.55rem .7rem}
+.origin-hit svg{margin-top:.15rem;color:#7a7f8c;flex:none}
+.origin-hit>div{display:flex;flex-direction:column;gap:.1rem}
+.origin-hit b{font-size:.85rem}
+.origin-hit span{font-size:.85rem;color:#333}
+.origin-hit small{font-size:.72rem;color:#8a8f9a}
+.origin-empty{display:flex;gap:.6rem;align-items:flex-start;background:#f7f8fa;border:1px dashed #d7dae2;border-radius:10px;padding:.7rem}
+.origin-empty svg{margin-top:.15rem;color:#9aa0ac;flex:none}
+.origin-empty strong{display:block;font-size:.9rem;margin-bottom:.15rem}
+.origin-empty p{margin:0;font-size:.82rem;color:#666}
+
+/* --- 2-Punkte-Feedback --- */
+.feedback-scoreline{display:flex;gap:.6rem;flex-wrap:wrap;margin:.4rem 0}
+.feedback-scoreline span{font-size:.8rem;font-weight:600;padding:.2rem .55rem;border-radius:999px;background:#eef0f4}
+.feedback-scoreline span.ok{background:#e3f5e8;color:#1f7a3d}
+.feedback-scoreline span.no{background:#fdeaea;color:#b23b3b}
+.reason-compare{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem}
+.reason-compare>div{background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:.5rem .6rem}
+.reason-compare b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;opacity:.7;margin-bottom:.2rem}
+
+
+/* Vollbilddarstellung auf Smartphones */
+@media (max-width: 600px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .page {
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .phone-shell {
+    width: 100%;
+    max-width: none;
+    min-height: 100dvh;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+
+  .app-header {
+    padding-top: env(safe-area-inset-top);
+    height: calc(62px + env(safe-area-inset-top));
+  }
+
+  .bottom-nav {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(68px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    transform: none;
+    border-radius: 0;
+  }
+
+  .score-chip {
+    right: 12px;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+}
+.reason-compare p{margin:0;font-size:.85rem;white-space:pre-wrap}
+@media(max-width:520px){.reason-compare{grid-template-columns:1fr}}
+
+/* === Mobile-Fix: zuverlässiges Scrollen & Bild-Rendering (nur Smartphones) === */
+@media (max-width: 600px) {
+  html, body, #root {
+    overflow-x: clip;      /* verhindert Querscrollen, blockiert aber NICHT das vertikale Scrollen */
+    height: auto;
+    min-height: 100%;
+  }
+  body { -webkit-overflow-scrolling: touch; }
+
+  /* Weichzeichner auf Handys abschalten -> kein Ruckeln, Bilder bleiben nicht leer */
+  .app-header,
+  .bottom-nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: #fff;
+  }
+
+  /* kein Clipping, das Scrollen/Neuzeichnen stört */
+  .phone-shell { overflow: visible; }
+
+  /* content-visibility deaktivieren -> Bilder erscheinen zuverlässig */
+  .post-image,
+  .post-media img,
+  .profile-grid img { content-visibility: visible; }
+}
+
+/* ===== Intro: Sprache & Simulation ===== */
+
+.intro-language-switch {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px 0 22px;
+}
+
+.intro-language-switch button {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #d8dee8;
+  border-radius: 12px;
+  background: #fff;
+  color: #17365f;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.intro-language-switch button.active {
+  background: #092b61;
+  color: #fef1f5;
+  border-color: #092b61;
+}
+
+.simulation-notice {
+  margin: 22px 0;
+  padding: 18px;
+  border-radius: 16px;
+  background: #f5f8fc;
+  border: 1px solid #d9e2ef;
+  display: flex;
+  gap: 14px;
+  text-align: left;
+}
+
+.simulation-notice svg {
+  flex-shrink: 0;
+  color: #174b87;
+  margin-top: 2px;
+}
+
+.simulation-notice h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #102b5b;
+}
+
+.simulation-notice p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #596579;
+}
+
+.simulation-confirmation {
+  margin-top: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.simulation-confirmation input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.simulation-confirmation span {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #17365f;
+}
+
+.intro-card button:disabled {
+  background: #cbd5e1;
+  color: #fef1f5;
+  cursor: not-allowed;
+  opacity: .8;
+}
+
+.resume-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 4px}.resume-stats>div{padding:14px;border:1px solid #e0e4eb;border-radius:14px;background:#f7f9fc}.resume-stats strong{display:block;color:#0d2c62;font-size:26px}.resume-stats span{font-size:10px;color:#7c8490;text-transform:uppercase;letter-spacing:.04em}.resume-restart{margin-top:10px}
+.analysis-tip-toggle{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid #cfd6e4;background:#eef2f9;color:#0d2c62;cursor:pointer;padding:0}.analysis-tip-toggle:hover{background:#e2e9f5}.analysis-tip-toggle:disabled{opacity:.4;cursor:not-allowed}
+
+/* Feed-Hilfe-Zeile: passt sich an jede Breite an */
+.feed-help-row{
+  display:flex;
+  flex-wrap:wrap;                /* bricht auf schmalen Geräten um */
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin:12px 0;
+  width:100%;
+}
+.hint-resource-compact{
+  flex:0 1 auto;                 /* klein, darf schrumpfen */
+  width:auto;
+  min-width:0;
+  margin:0;
+  padding:6px 10px;
+  font-size:clamp(12px,3.4vw,14px);
+}
+.feed-help-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin:0;
+  min-width:0;
+}
+.feed-help-button{
+  max-width:100%;
+  padding:clamp(9px,2.6vw,11px) clamp(11px,3.4vw,14px);
+  border:0;
+  border-radius:11px;
+  background:#092b61;
+  color:#fff;
+  font-weight:800;
+  font-size:clamp(13px,3.6vw,15px);
+  line-height:1.2;
+  white-space:normal;            /* Text darf umbrechen statt zu überlaufen */
+  overflow-wrap:anywhere;
+}
+.feed-help-error{width:100%;margin:4px 0 0;color:#a42c24;font-size:12px}
+
+/* Fette Frage über den Urteils-Buttons */
+.verdict-question{
+  margin:4px 0 10px;
+  font-weight:800;
+  color:#0c2858;
+  font-size:clamp(14px,4vw,16px);
+  line-height:1.4;
+}
+
+/* Urteils-Buttons: nebeneinander, stapeln bei wenig Platz */
+.verdict-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.verdict-options button{
+  flex:1 1 120px;                /* teilen sich die Zeile, brechen bei Enge um */
+  min-width:0;
+  padding:clamp(10px,3vw,13px);
+  font-size:clamp(13px,3.6vw,15px);
+  line-height:1.2;
+  white-space:normal;
+}
+
+/* Sehr schmale Handys: alles sauber untereinander */
+@media (max-width:360px){
+  .feed-help-row{flex-direction:column;align-items:stretch}
+  .feed-help-wrap{justify-content:stretch}
+  .feed-help-button{width:100%}
+  .verdict-options button{flex:1 1 100%}
+}
+
+.hint-resource-status{cursor:pointer}
+.hint-info-note{margin:6px 0 0;padding:10px 12px;border-radius:10px;background:#eef2fb;color:#0c2858;font-size:clamp(12px,3.4vw,14px);line-height:1.45}
+
+
+/* =========================================================
+   Finale Korrektur: Außenhintergrund und echte Icon-Buttons
+   ========================================================= */
+
+/* Alter Außenhintergrund. Die Spielumgebung selbst bleibt weiß. */
+html,
+body,
+#root,
+.page{
+  background:#fef1f5;
+}
+
+.phone-shell{
+  background:#fff;
+}
+
+/* Überschreibt die automatische dunkle Außenfläche des Betriebssystems. */
+@media (prefers-color-scheme:dark){
+  html,
+  body,
+  #root,
+  .page{
+    background:#fef1f5;
+  }
+
+  .phone-shell{
+    background:#fff;
+  }
+}
+
+/* Nur die beiden echten oberen Icon-Buttons der Feedprüfung. */
+.feed-help-icon-button{
+  width:40px;
+  min-width:40px;
+  height:40px;
+  min-height:40px;
+  padding:0;
+  margin:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 40px;
+  border:1px solid #f3cdea;
+  border-radius:11px;
+  background:#fff;
+  color:#7a2d6e;
+  box-shadow:none;
+  cursor:pointer;
+  transition:background-color .18s ease,border-color .18s ease,transform .18s ease;
+}
+
+.feed-help-icon-button svg{
+  width:20px;
+  height:20px;
+  color:currentColor;
+  stroke-width:2.2;
+}
+
+.feed-help-icon-button:hover{
+  background:#fbe1f7;
+  border-color:#e8aadf;
+}
+
+.feed-help-icon-button:active{
+  background:#f5c2ef;
+  transform:scale(.96);
+}
+
+.feed-help-icon-button:focus-visible{
+  outline:3px solid rgba(200,116,179,.3);
+  outline-offset:2px;
+}
+
+.feed-help-icon-button:disabled{
+  cursor:not-allowed;
+  opacity:.45;
+}
+
+.feed-help-icon-button.is-listening{
+  background:#f5c2ef;
+  border-color:#c874b3;
+}
+
+/* Die kleinen i- beziehungsweise Tipp-Icons innerhalb der Analyse. */
+.tip-info-btn,
+.analysis-tip-toggle{
+  width:34px;
+  min-width:34px;
+  height:34px;
+  min-height:34px;
+  padding:0;
+  margin:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 34px;
+  border:1px solid #f3cdea;
+  border-radius:10px;
+  background:#fff;
+  color:#7a2d6e;
+  box-shadow:none;
+  cursor:pointer;
+  transition:background-color .18s ease,border-color .18s ease,transform .18s ease;
+}
+
+.tip-info-btn svg,
+.analysis-tip-toggle svg{
+  width:18px;
+  height:18px;
+  color:currentColor;
+  stroke-width:2.2;
+}
+
+.tip-info-btn:hover,
+.analysis-tip-toggle:hover{
+  background:#fbe1f7;
+  border-color:#e8aadf;
+}
+
+.tip-info-btn:active,
+.analysis-tip-toggle:active{
+  background:#f5c2ef;
+  transform:scale(.96);
+}
+
+.tip-info-btn:focus-visible,
+.analysis-tip-toggle:focus-visible{
+  outline:3px solid rgba(200,116,179,.3);
+  outline-offset:2px;
+}
+
+.tip-info-btn:disabled,
+.analysis-tip-toggle:disabled{
+  cursor:not-allowed;
+  opacity:.45;
+}
+
+/* Die Hilfezeile bleibt kompakt, ohne Textbuttons zu verkleinern. */
+.feed-help-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.feed-help-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  min-width:0;
+}
+
+/* Auf Smartphones füllt die App weiterhin den gesamten Bildschirm. */
+@media (max-width:600px){
+  html,
+  body,
+  #root,
+  .page{
+    background:#fff;
+  }
+
+  .phone-shell{
+    background:#fff;
+  }
+}
+
+/* =========================================================
+   Feedanalyse im For-You-Stil
+   ========================================================= */
+
+:root{
+  --analysis-blue:#092b61;
+  --analysis-blue-hover:#123d7b;
+  --analysis-blue-soft:#eef4ff;
+  --analysis-line:#dce3ee;
+  --analysis-text:#131722;
+  --analysis-muted:#667085;
+  --analysis-white:#ffffff;
+}
+
+/* Feedanalyse verwendet dieselben neutralen Farben wie die For-You-Seite. */
+.task-sheet{
+  background:var(--analysis-white);
+  border-top:0;
+  color:var(--analysis-text);
+}
+
+.task-sheet .task-top,
+.task-sheet .task-post-caption,
+.task-sheet .analysis-input-block,
+.task-sheet .confidence-control{
+  background:var(--analysis-white);
+}
+
+/* Analysewerkzeuge bleiben vollständig weiß. */
+.task-sheet .analysis-tools{
+  background:transparent;
+  border:0;
+  padding:0;
+}
+
+.task-sheet .analysis-tool-card{
+  background:var(--analysis-white);
+  border:1px solid var(--analysis-line);
+  box-shadow:none;
+}
+
+.task-sheet .analysis-tool-card.open,
+.task-sheet .analysis-tool-card.used{
+  background:var(--analysis-white);
+  border-color:#9db5d8;
+  box-shadow:0 7px 20px rgba(9,43,97,.08);
+}
+
+.task-sheet .analysis-tool-toggle,
+.task-sheet .analysis-tool-card.open .analysis-tool-toggle,
+.task-sheet .analysis-tool-content{
+  background:var(--analysis-white);
+}
+
+.task-sheet .analysis-tool-title{
+  color:#17365f;
+}
+
+/* Nur die Symbole der Analysewerkzeuge erhalten Farbe. */
+.task-sheet .analysis-tool-card:nth-child(1) .analysis-tool-title > svg:first-child{
+  color:#7c3aed;
+}
+
+.task-sheet .analysis-tool-card:nth-child(2) .analysis-tool-title > svg:first-child{
+  color:#2563eb;
+}
+
+.task-sheet .analysis-tool-card:nth-child(3) .analysis-tool-title > svg:first-child{
+  color:#db2777;
+}
+
+.task-sheet .analysis-tool-card:nth-child(4) .analysis-tool-title > svg:first-child{
+  color:#f97316;
+}
+
+.task-sheet .analysis-tool-card:nth-child(5) .analysis-tool-title > svg:first-child{
+  color:#059669;
+}
+
+.task-sheet .analysis-tool-title > svg:last-child{
+  color:#16803c;
+}
+
+.task-sheet .accordion-symbol{
+  color:var(--analysis-blue);
+}
+
+/* Alle echten Aktionsbuttons in der Analyse erhalten das Intro-Blau. */
+.task-sheet .primary,
+.task-sheet .feed-help-button,
+.task-sheet .analysis-tip-button,
+.task-sheet .analysis-tip-collapse,
+.task-sheet .hotspot-reveal,
+.task-sheet .source-open-page,
+.task-sheet .image-inspection-controls button,
+.task-sheet .source-assessment-options button,
+.task-sheet .research-actions button{
+  border:1px solid var(--analysis-blue);
+  background:var(--analysis-blue);
+  color:#fff;
+  font-weight:800;
+  box-shadow:none;
+}
+
+.task-sheet .primary:hover,
+.task-sheet .feed-help-button:hover,
+.task-sheet .analysis-tip-button:hover,
+.task-sheet .analysis-tip-collapse:hover,
+.task-sheet .hotspot-reveal:hover,
+.task-sheet .source-open-page:hover,
+.task-sheet .image-inspection-controls button:hover,
+.task-sheet .source-assessment-options button:hover,
+.task-sheet .research-actions button:hover{
+  border-color:var(--analysis-blue-hover);
+  background:var(--analysis-blue-hover);
+  color:#fff;
+}
+
+.task-sheet .primary:active,
+.task-sheet .feed-help-button:active,
+.task-sheet .analysis-tip-button:active,
+.task-sheet .analysis-tip-collapse:active,
+.task-sheet .hotspot-reveal:active,
+.task-sheet .source-open-page:active,
+.task-sheet .image-inspection-controls button:active,
+.task-sheet .source-assessment-options button:active,
+.task-sheet .research-actions button:active{
+  transform:scale(.98);
+}
+
+/* Tipp wird als vollständiger Button angezeigt, nicht nur als i-Symbol. */
+.task-sheet .analysis-tip-button,
+.task-sheet .analysis-tip-toggle{
+  width:auto;
+  min-width:max-content;
+  height:auto;
+  min-height:40px;
+  padding:9px 13px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:1px solid var(--analysis-blue);
+  border-radius:10px;
+  background:var(--analysis-blue);
+  color:#fff;
+  font-size:13px;
+  line-height:1.2;
+  font-weight:800;
+}
+
+.task-sheet .analysis-tip-toggle::after{
+  content:"Tipp einsetzen";
+  font-size:13px;
+  line-height:1.2;
+}
+
+.task-sheet .analysis-tip-button svg,
+.task-sheet .analysis-tip-toggle svg{
+  width:18px;
+  height:18px;
+  color:#fff;
+  stroke-width:2.2;
+}
+
+.task-sheet .analysis-tip-button:hover,
+.task-sheet .analysis-tip-toggle:hover{
+  background:var(--analysis-blue-hover);
+  border-color:var(--analysis-blue-hover);
+  color:#fff;
+}
+
+/* Informationsfläche bleibt hell und passt zum Feed. */
+.task-sheet .hint-resource-status{
+  background:#f5f8fd;
+  border:1px solid #d9e3f2;
+  color:#123567;
+}
+
+.task-sheet .hint-resource-status svg{
+  color:#2563eb;
+}
+
+/* Urteilsbuttons blau, mit sichtbaren Emojis. */
+.task-sheet .verdict-options{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+}
+
+.task-sheet .verdict-options button{
+  min-height:52px;
+  padding:12px 10px;
+  border:1px solid var(--analysis-blue);
+  border-radius:11px;
+  background:var(--analysis-blue);
+  color:#fff;
+  font-weight:850;
+  line-height:1.25;
+}
+
+.task-sheet .verdict-options button:hover{
+  background:var(--analysis-blue-hover);
+  border-color:var(--analysis-blue-hover);
+}
+
+.task-sheet .verdict-options button.selected{
+  background:#2563eb;
+  border-color:#2563eb;
+  color:#fff;
+  box-shadow:0 0 0 3px rgba(37,99,235,.20);
+}
+
+/* Reihenfolge: Echt, Suspekt, Manipuliert. */
+.task-sheet .verdict-options button:nth-child(1)::before{
+  content:"✅ ";
+}
+
+.task-sheet .verdict-options button:nth-child(2)::before{
+  content:"🤔 ";
+}
+
+.task-sheet .verdict-options button:nth-child(3)::before{
+  content:"⚠️ ";
+}
+
+/* Eingabefelder bleiben weiß und klar abgegrenzt. */
+.task-sheet textarea,
+.task-sheet input[type="text"],
+.task-sheet .analysis-input-block textarea{
+  background:#fff;
+  border-color:#d8deea;
+  color:var(--analysis-text);
+}
+
+.task-sheet textarea:focus,
+.task-sheet input[type="text"]:focus{
+  border-color:#2563eb;
+  outline:3px solid rgba(37,99,235,.16);
+}
+
+/* Rückmeldungen behalten semantische Farben. */
+.task-sheet .feedback.correct{
+  background:#ebf8ef;
+  color:#176c36;
+}
+
+.task-sheet .feedback.wrong,
+.task-sheet .feedback.warning{
+  background:#fff0ee;
+  color:#a42c24;
+}
+
+@media (max-width:600px){
+  .task-sheet .verdict-options{
+    grid-template-columns:1fr;
+  }
+
+  .task-sheet .analysis-tip-button,
+  .task-sheet .analysis-tip-toggle,
+  .task-sheet .feed-help-button{
+    width:100%;
+  }
+}
+
+
+/* =========================================================
+   FINALE FORMATIERUNG DER FEEDANALYSE
+   Blau für Hilfe und Aktionen.
+   Einheitliches komplementäres Orange für Analyse-Assets.
+   ========================================================= */
+
+:root{
+  --dd-blue:#092b61;
+  --dd-blue-hover:#123d7b;
+  --dd-blue-focus:rgba(9,43,97,.24);
+
+  --dd-orange:#f28c28;
+  --dd-orange-hover:#dc7415;
+  --dd-orange-soft:#fff4e6;
+  --dd-orange-line:#f4bd82;
+
+  --dd-white:#ffffff;
+  --dd-text:#172033;
+  --dd-muted:#667085;
+  --dd-line:#dde3ec;
+}
+
+/* Die Analysefläche bleibt wie der For-You-Feed weiß und neutral. */
+.task-sheet{
+  background:var(--dd-white) !important;
+  color:var(--dd-text);
+}
+
+/* ---------------------------------------------------------
+   1. Hilfe-Buttons i und ?
+   --------------------------------------------------------- */
+
+/* Beide oberen Hilfe-Buttons als blaue Kästen. */
+.task-sheet .feed-help-icon-button,
+.feed-help-icon-button{
+  width:42px;
+  min-width:42px;
+  height:42px;
+  min-height:42px;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--dd-blue) !important;
+  border-radius:11px;
+  background:var(--dd-blue) !important;
+  color:#fff !important;
+  box-shadow:none;
+}
+
+.task-sheet .feed-help-icon-button:hover,
+.feed-help-icon-button:hover{
+  border-color:var(--dd-blue-hover) !important;
+  background:var(--dd-blue-hover) !important;
+}
+
+.task-sheet .feed-help-icon-button:active,
+.feed-help-icon-button:active{
+  transform:scale(.96);
+}
+
+.task-sheet .feed-help-icon-button:focus-visible,
+.feed-help-icon-button:focus-visible{
+  outline:3px solid var(--dd-blue-focus);
+  outline-offset:2px;
+}
+
+/* Vorhandenes Linien-Icon ausblenden, damit nur das Emoji sichtbar ist. */
+.feed-help-wrap .feed-help-icon-button svg{
+  display:none;
+}
+
+/* Erster Button = Information, zweiter Button = Hilfe. */
+.feed-help-wrap .feed-help-icon-button:nth-of-type(1)::before{
+  content:"ℹ️";
+  font-size:20px;
+  line-height:1;
+}
+
+.feed-help-wrap .feed-help-icon-button:nth-of-type(2)::before{
+  content:"❓";
+  font-size:20px;
+  line-height:1;
+}
+
+/* Falls die Buttons nicht gemeinsam in feed-help-wrap liegen. */
+.feed-help-icon-button[aria-label*="Info" i]::before,
+.feed-help-icon-button[title*="Info" i]::before{
+  content:"ℹ️";
+  font-size:20px;
+}
+
+.feed-help-icon-button[aria-label*="Hilfe" i]::before,
+.feed-help-icon-button[title*="Hilfe" i]::before,
+.feed-help-icon-button[aria-label*="Help" i]::before,
+.feed-help-icon-button[title*="Help" i]::before{
+  content:"❓";
+  font-size:20px;
+}
+
+/* ---------------------------------------------------------
+   2. Vier Analysewerkzeuge
+   --------------------------------------------------------- */
+
+.task-sheet .analysis-tools{
+  display:grid;
+  gap:10px;
+  margin:12px 0 16px;
+  padding:0;
+  background:transparent;
+}
+
+/* Alle Analysewerkzeuge erhalten exakt dieselbe Gestaltung. */
+.task-sheet .analysis-tool-card{
+  overflow:hidden;
+  border:1px solid var(--dd-orange-line) !important;
+  border-radius:14px;
+  background:var(--dd-white) !important;
+  box-shadow:none;
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+
+.task-sheet .analysis-tool-card:hover{
+  border-color:var(--dd-orange) !important;
+}
+
+.task-sheet .analysis-tool-card.open,
+.task-sheet .analysis-tool-card.used{
+  border-color:var(--dd-orange) !important;
+  background:var(--dd-white) !important;
+  box-shadow:0 7px 20px rgba(242,140,40,.12);
+}
+
+.task-sheet .analysis-tool-toggle,
+.task-sheet .analysis-tool-card.open .analysis-tool-toggle,
+.task-sheet .analysis-tool-content{
+  background:var(--dd-white) !important;
+}
+
+.task-sheet .analysis-tool-title{
+  color:var(--dd-text) !important;
+}
+
+/* Jedes Werkzeug-Asset erhält dasselbe komplementäre Orange. */
+.task-sheet .analysis-tool-title > svg,
+.task-sheet .analysis-tool-title > img,
+.task-sheet .analysis-tool-title .tool-icon,
+.task-sheet .analysis-tool-title .analysis-tool-icon{
+  color:var(--dd-orange) !important;
+  fill:none;
+}
+
+/* Ein vorhandener Status-Haken bleibt semantisch grün. */
+.task-sheet .analysis-tool-title > svg:last-child{
+  color:#16803c !important;
+}
+
+/* Das Auf- und Zuklappsymbol ist ebenfalls orange. */
+.task-sheet .accordion-symbol{
+  color:var(--dd-orange) !important;
+}
+
+/* Die Inhalte der Werkzeuge bleiben vollständig weiß. */
+.task-sheet .source-browser,
+.task-sheet .profile-check-panel,
+.task-sheet .origin-check,
+.task-sheet .image-analysis-basic,
+.task-sheet .inspection-checklist,
+.task-sheet .source-check-card,
+.task-sheet .linked-page-preview{
+  background:var(--dd-white) !important;
+}
+
+/* ---------------------------------------------------------
+   3. Tipp einsetzen und einheitliche Tipp-Blöcke
+   --------------------------------------------------------- */
+
+/* Vollständiger blauer Tipp-Button. */
+.task-sheet .analysis-tip-button,
+.task-sheet .analysis-tip-toggle{
+  width:auto;
+  min-width:max-content;
+  min-height:42px;
+  height:auto;
+  margin-top:12px;
+  padding:10px 14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid var(--dd-blue) !important;
+  border-radius:11px;
+  background:var(--dd-blue) !important;
+  color:#fff !important;
+  font-size:13px;
+  line-height:1.2;
+  font-weight:800;
+  box-shadow:none;
+}
+
+.task-sheet .analysis-tip-button::before,
+.task-sheet .analysis-tip-toggle::before{
+  content:"💡";
+  font-size:17px;
+  line-height:1;
+}
+
+/* Verhindert eine doppelte CSS-Beschriftung aus einer älteren Regel. */
+.task-sheet .analysis-tip-toggle::after{
+  content:"Tipp einsetzen";
+  font-size:13px;
+  line-height:1.2;
+}
+
+.task-sheet .analysis-tip-button:hover,
+.task-sheet .analysis-tip-toggle:hover{
+  border-color:var(--dd-blue-hover) !important;
+  background:var(--dd-blue-hover) !important;
+  color:#fff !important;
+}
+
+.task-sheet .analysis-tip-button svg,
+.task-sheet .analysis-tip-toggle svg{
+  color:#fff !important;
+}
+
+/* Einheitliches Design für alle sichtbaren Tipp- und Hinweisblöcke. */
+.task-sheet .analysis-tip,
+.task-sheet .analysis-takeaway,
+.task-sheet .analysis-tip-disabled,
+.task-sheet .tip-info-note,
+.task-sheet .hint-info-note,
+.task-sheet .hint-resource-status{
+  margin-top:10px;
+  padding:13px 14px;
+  border:1px solid #cbd9ee !important;
+  border-radius:12px;
+  background:#f3f7fd !important;
+  color:#22314f !important;
+  font-size:.9rem;
+  line-height:1.45;
+  box-shadow:none;
+}
+
+.task-sheet .analysis-tip strong,
+.task-sheet .analysis-takeaway strong,
+.task-sheet .tip-info-note strong,
+.task-sheet .hint-info-note strong{
+  color:var(--dd-blue);
+}
+
+/* Tipp schließen bleibt eine sekundäre weiße Aktion. */
+.task-sheet .analysis-tip-collapse{
+  margin-top:10px;
+  padding:9px 12px;
+  border:1px solid var(--dd-blue) !important;
+  border-radius:9px;
+  background:#fff !important;
+  color:var(--dd-blue) !important;
+  font-weight:800;
+}
+
+.task-sheet .analysis-tip-collapse:hover{
+  background:#eef4ff !important;
+}
+
+/* ---------------------------------------------------------
+   4. Urteil, Echt, Manipuliert und Suspekt
+   --------------------------------------------------------- */
+
+.task-sheet .verdict-options{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+}
+
+/* Weiß lassen, keine Emojis. */
+.task-sheet .verdict-options button{
+  min-height:56px;
+  padding:11px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid var(--dd-orange-line) !important;
+  border-radius:12px;
+  background:#fff !important;
+  color:var(--dd-text) !important;
+  font-weight:850;
+  line-height:1.25;
+  box-shadow:none;
+}
+
+/* Alte Emoji-Regeln vollständig entfernen. */
+.task-sheet .verdict-options button::before,
+.task-sheet .verdict-options button::after{
+  content:none !important;
+}
+
+/* Vorhandene SVG-, Bild- oder Asset-Symbole werden einheitlich orange. */
+.task-sheet .verdict-options button svg,
+.task-sheet .verdict-options button img,
+.task-sheet .verdict-options button .verdict-icon,
+.task-sheet .verdict-options button .verdict-asset{
+  width:21px;
+  height:21px;
+  flex:0 0 21px;
+  color:var(--dd-orange) !important;
+  fill:none;
+}
+
+.task-sheet .verdict-options button:hover{
+  border-color:var(--dd-orange) !important;
+  background:var(--dd-orange-soft) !important;
+}
+
+.task-sheet .verdict-options button.selected{
+  border-color:var(--dd-orange) !important;
+  background:var(--dd-orange-soft) !important;
+  color:var(--dd-text) !important;
+  box-shadow:0 0 0 3px rgba(242,140,40,.18) !important;
+}
+
+/* ---------------------------------------------------------
+   5. Weitere klickbare Analyse-Aktionen
+   --------------------------------------------------------- */
+
+.task-sheet .primary,
+.task-sheet .feed-help-button,
+.task-sheet .hotspot-reveal,
+.task-sheet .source-open-page{
+  border:1px solid var(--dd-blue) !important;
+  background:var(--dd-blue) !important;
+  color:#fff !important;
+  font-weight:800;
+}
+
+.task-sheet .primary:hover,
+.task-sheet .feed-help-button:hover,
+.task-sheet .hotspot-reveal:hover,
+.task-sheet .source-open-page:hover{
+  border-color:var(--dd-blue-hover) !important;
+  background:var(--dd-blue-hover) !important;
+}
+
+/* Werkzeuginterne Auswahlbuttons bleiben weiß und werden orange markiert. */
+.task-sheet .source-assessment-options button,
+.task-sheet .image-inspection-controls button{
+  border:1px solid var(--dd-orange-line) !important;
+  background:#fff !important;
+  color:var(--dd-text) !important;
+}
+
+.task-sheet .source-assessment-options button:hover,
+.task-sheet .image-inspection-controls button:hover{
+  border-color:var(--dd-orange) !important;
+  background:var(--dd-orange-soft) !important;
+}
+
+.task-sheet .source-assessment-options button.selected{
+  border-color:var(--dd-orange) !important;
+  background:var(--dd-orange-soft) !important;
+  color:var(--dd-text) !important;
+}
+
+/* ---------------------------------------------------------
+   6. Mobile Darstellung
+   --------------------------------------------------------- */
+
+@media (max-width:600px){
+  .task-sheet .verdict-options{
+    grid-template-columns:1fr;
+  }
+
+  .task-sheet .analysis-tip-button,
+  .task-sheet .analysis-tip-toggle,
+  .task-sheet .feed-help-button{
+    width:100%;
+  }
+
+  .feed-help-wrap{
+    width:100%;
+    justify-content:flex-end;
+  }
+}
+
+
+/* =========================================================
+   JSX-ABGLEICH UND EINHEITLICHE GRÖSSE DES PRÜFBEITRAGS
+   ========================================================= */
+
+/* Emojis befinden sich jetzt direkt in der JSX. */
+.feed-help-wrap .feed-help-icon-button svg{
+  display:initial;
+}
+
+.feed-help-icon-button::before,
+.feed-help-icon-button::after,
+.feed-help-wrap .feed-help-icon-button:nth-of-type(1)::before,
+.feed-help-wrap .feed-help-icon-button:nth-of-type(2)::before,
+.feed-help-icon-button[aria-label*="Info" i]::before,
+.feed-help-icon-button[title*="Info" i]::before,
+.feed-help-icon-button[aria-label*="Hilfe" i]::before,
+.feed-help-icon-button[title*="Hilfe" i]::before,
+.feed-help-icon-button[aria-label*="Help" i]::before,
+.feed-help-icon-button[title*="Help" i]::before{
+  content:none !important;
+}
+
+.help-button-emoji{
+  display:block;
+  font-size:20px;
+  line-height:1;
+}
+
+/* Das Glühbirnen-Emoji kommt jetzt aus hintButtonLabel in der JSX. */
+.task-sheet .analysis-tip-button::before,
+.task-sheet .analysis-tip-toggle::before,
+.task-sheet .analysis-tip-toggle::after{
+  content:none !important;
+}
+
+/* Einheitliche Feedgröße innerhalb jeder Analyse:
+   300 px hoch, vollständiges Bild, keine Verzerrung. */
+.task-sheet .task-feed-post{
+  width:100%;
+  margin:14px 0;
+  overflow:hidden;
+  border:1px solid #e1e5ec;
+  border-radius:14px;
+  background:#fff;
+}
+
+.task-sheet .task-feed-post .post-image-button{
+  width:100%;
+  height:300px;
+  max-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#111;
+}
+
+.task-sheet .task-feed-post .post-image{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* Auch die kompakte Bilddarstellung anderer Aufgabentypen
+   überschreitet 300 px nicht. */
+.task-sheet .task-image-button{
+  width:100%;
+  height:300px;
+  max-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#111;
+}
+
+.task-sheet .task-image-button img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* Orange Assets in den weißen Urteilsbuttons. */
+.task-sheet .verdict-options .verdict-asset{
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
+  color:var(--dd-orange) !important;
+  stroke:currentColor;
+}
+
+@media (max-width:600px){
+  .task-sheet .task-feed-post .post-image-button,
+  .task-sheet .task-image-button{
+    height:240px;
+    max-height:240px;
+  }
+}
+
+
+/* =========================================================
+   KORREKTUR: KEINE FARBIGEN RÄNDER
+   Orange nur noch für Icons und dezente Zustände.
+   ========================================================= */
+
+/* Analysewerkzeuge: neutraler, sehr dezenter Rand */
+.task-sheet .analysis-tool-card,
+.task-sheet .analysis-tool-card:hover,
+.task-sheet .analysis-tool-card.open,
+.task-sheet .analysis-tool-card.used{
+  border:1px solid #e3e7ed !important;
+}
+
+.task-sheet .analysis-tool-card:hover,
+.task-sheet .analysis-tool-card.open,
+.task-sheet .analysis-tool-card.used{
+  background:#fff !important;
+  box-shadow:0 6px 18px rgba(17,24,39,.07) !important;
+}
+
+/* Keine orange Umrandung am geöffneten Werkzeug */
+.task-sheet .analysis-tool-card.open .analysis-tool-toggle{
+  background:#fafbfc !important;
+}
+
+/* Urteilsoptionen: weiß, neutraler Rand */
+.task-sheet .verdict-options button,
+.task-sheet .verdict-options button:hover,
+.task-sheet .verdict-options button.selected{
+  border:1px solid #e3e7ed !important;
+}
+
+/* Hover nur über eine sehr dezente Fläche */
+.task-sheet .verdict-options button:hover{
+  background:#fafbfc !important;
+  box-shadow:none !important;
+}
+
+/* Auswahl ohne farbigen Rand */
+.task-sheet .verdict-options button.selected{
+  background:#f7f8fa !important;
+  color:var(--dd-text) !important;
+  box-shadow:0 0 0 2px rgba(17,24,39,.06) !important;
+}
+
+/* Auch interne Auswahlbuttons ohne orange Rand */
+.task-sheet .source-assessment-options button,
+.task-sheet .source-assessment-options button:hover,
+.task-sheet .source-assessment-options button.selected,
+.task-sheet .image-inspection-controls button,
+.task-sheet .image-inspection-controls button:hover{
+  border:1px solid #e3e7ed !important;
+}
+
+.task-sheet .source-assessment-options button:hover,
+.task-sheet .source-assessment-options button.selected,
+.task-sheet .image-inspection-controls button:hover{
+  background:#f7f8fa !important;
+}
+
+/* Orange bleibt ausschließlich bei Symbolen/Assets */
+.task-sheet .analysis-tool-title > svg,
+.task-sheet .analysis-tool-title > img,
+.task-sheet .analysis-tool-title .tool-icon,
+.task-sheet .analysis-tool-title .analysis-tool-icon,
+.task-sheet .accordion-symbol,
+.task-sheet .verdict-options .verdict-asset{
+  color:var(--dd-orange) !important;
+}
+
+
+/* =========================================================
+   FINALE KORREKTUR NACH LAYOUT-VORGABE
+   Keine Ränder an Analysewerkzeugen oder Urteilsoptionen.
+   Keine strukturellen Änderungen an den Werkzeugen.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Hilfe und Iris-Hilfe: alte sichtbare Beschriftungen
+   --------------------------------------------------------- */
+
+.task-sheet .feed-help-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:14px 0 18px;
+}
+
+.task-sheet .feed-help-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  margin:0;
+}
+
+.task-sheet .feed-help-icon-button{
+  width:auto;
+  min-width:0;
+  height:auto;
+  min-height:42px;
+  padding:9px 12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:0 !important;
+  border-radius:11px;
+  background:var(--dd-blue) !important;
+  color:#fff !important;
+  font-size:13px;
+  font-weight:800;
+  white-space:normal;
+  box-shadow:none;
+}
+
+.task-sheet .feed-help-icon-button:hover{
+  border:0 !important;
+  background:var(--dd-blue-hover) !important;
+}
+
+.task-sheet .feed-help-icon-button::before,
+.task-sheet .feed-help-icon-button::after{
+  content:none !important;
+}
+
+.task-sheet .help-button-emoji{
+  flex:0 0 auto;
+  font-size:18px;
+}
+
+/* ---------------------------------------------------------
+   Analysewerkzeuge: vollständig ohne Rand
+   --------------------------------------------------------- */
+
+.task-sheet .analysis-tools{
+  gap:12px;
+  margin:14px 0 0;
+}
+
+.task-sheet .analysis-tool-card,
+.task-sheet .analysis-tool-card:hover,
+.task-sheet .analysis-tool-card.open,
+.task-sheet .analysis-tool-card.used{
+  border:0 !important;
+  border-color:transparent !important;
+  border-radius:14px;
+  background:#fff !important;
+  box-shadow:0 2px 10px rgba(17,24,39,.09) !important;
+}
+
+.task-sheet .analysis-tool-card:hover{
+  box-shadow:0 4px 14px rgba(17,24,39,.11) !important;
+}
+
+.task-sheet .analysis-tool-card.open{
+  box-shadow:0 6px 18px rgba(17,24,39,.12) !important;
+}
+
+.task-sheet .analysis-tool-toggle,
+.task-sheet .analysis-tool-card.open .analysis-tool-toggle{
+  padding:14px 15px;
+  border:0 !important;
+  background:#fff !important;
+}
+
+.task-sheet .analysis-tool-content{
+  padding:4px 15px 17px;
+  border:0 !important;
+  background:#fff !important;
+}
+
+/* Sämtliche Icons im Werkzeugkopf sind orange – auch Statussymbol und +/- */
+.task-sheet .analysis-tool-title > svg,
+.task-sheet .analysis-tool-title > svg:last-child,
+.task-sheet .analysis-tool-title > img,
+.task-sheet .analysis-tool-title .tool-icon,
+.task-sheet .analysis-tool-title .analysis-tool-icon,
+.task-sheet .accordion-symbol{
+  color:var(--dd-orange) !important;
+  stroke:currentColor !important;
+}
+
+/* Mehr Übersicht innerhalb eines geöffneten Werkzeugs,
+   ohne dessen Aufbau oder Form zu verändern. */
+.task-sheet .analysis-tool-content > *{
+  margin-top:12px;
+}
+
+.task-sheet .analysis-tool-content > *:first-child{
+  margin-top:4px;
+}
+
+.task-sheet .analysis-tool-content p{
+  line-height:1.55;
+}
+
+.task-sheet .analysis-tool-content .analysis-tip,
+.task-sheet .analysis-tool-content .analysis-takeaway,
+.task-sheet .analysis-tool-content .tip-info-note,
+.task-sheet .analysis-tool-content .hint-info-note{
+  margin-top:14px;
+}
+
+/* ---------------------------------------------------------
+   Urteilsfrage: mehr Abstand und ruhige Einbettung
+   --------------------------------------------------------- */
+
+.task-sheet .verdict-question{
+  margin:30px 0 14px;
+  padding:14px 16px;
+  border:0 !important;
+  border-radius:12px;
+  background:#f4f6f9;
+  color:#0c2858;
+  font-size:clamp(15px,4vw,17px);
+  font-weight:800;
+  line-height:1.45;
+}
+
+.task-sheet .verdict-question strong{
+  font-weight:800;
+}
+
+/* ---------------------------------------------------------
+   Urteilsoptionen: vollständig ohne Rand
+   --------------------------------------------------------- */
+
+.task-sheet .verdict-options{
+  gap:10px;
+  margin:0 0 14px;
+}
+
+.task-sheet .verdict-options button,
+.task-sheet .verdict-options button:hover,
+.task-sheet .verdict-options button.selected{
+  border:0 !important;
+  border-color:transparent !important;
+  border-radius:13px;
+  background:#fff !important;
+  box-shadow:0 2px 10px rgba(17,24,39,.09) !important;
+}
+
+.task-sheet .verdict-options button:hover{
+  background:#fafbfc !important;
+  box-shadow:0 4px 14px rgba(17,24,39,.11) !important;
+}
+
+.task-sheet .verdict-options button.selected{
+  background:#f5f6f8 !important;
+  box-shadow:0 0 0 3px rgba(17,24,39,.07) !important;
+}
+
+/* Orange bleibt ausschließlich bei den Assets. */
+.task-sheet .verdict-options .verdict-asset{
+  color:var(--dd-orange) !important;
+  stroke:currentColor !important;
+}
+
+/* ---------------------------------------------------------
+   Smartphone
+   --------------------------------------------------------- */
+
+@media (max-width:600px){
+  .task-sheet .feed-help-row{
+    align-items:stretch;
+  }
+
+  .task-sheet .feed-help-wrap{
+    flex:1;
+  }
+
+  .task-sheet .feed-help-icon-button{
+    min-height:42px;
+  }
+
+  .task-sheet .feed-help-wrap .feed-help-icon-button{
+    width:100%;
+  }
+
+  .task-sheet .verdict-question{
+    margin-top:26px;
+  }
+}
+
+
+/* =========================================================
+   FINALE FEINKORREKTUR DER ANALYSESEITE
+   Nur: Schatten entfernen, Inhalte ordnen, Urteilsfrage einbinden.
+   ========================================================= */
+
+/* Analysewerkzeuge ohne sichtbaren Rand- oder Karten-Schatten. */
+.task-sheet .analysis-tool-card,
+.task-sheet .analysis-tool-card:hover,
+.task-sheet .analysis-tool-card.open,
+.task-sheet .analysis-tool-card.used{
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+/* Geöffnete Inhalte lediglich über Abstände lesbarer machen. */
+.task-sheet .analysis-tool-content{
+  padding-top:6px;
+}
+
+.task-sheet .analysis-tool-content > *{
+  margin-top:0;
+}
+
+.task-sheet .analysis-tool-content > * + *{
+  margin-top:14px;
+}
+
+.task-sheet .analysis-tool-content p{
+  margin-bottom:0;
+  line-height:1.55;
+}
+
+.task-sheet .analysis-tool-content .analysis-tip,
+.task-sheet .analysis-tool-content .analysis-takeaway,
+.task-sheet .analysis-tool-content .tip-info-note,
+.task-sheet .analysis-tool-content .hint-info-note{
+  margin-top:16px;
+}
+
+.task-sheet .analysis-tool-content .analysis-tip-collapse{
+  margin-top:14px;
+}
+
+/* Mehr Abstand nach den Werkzeugen; Frage ohne zusätzlichen Kasten. */
+.task-sheet .verdict-question{
+  margin:34px 0 14px;
+  padding:0;
+  border:0 !important;
+  border-radius:0;
+  background:transparent;
+  color:#0c2858;
+  font-size:clamp(15px,4vw,17px);
+  font-weight:800;
+  line-height:1.45;
+}
+
+/* Urteilsoptionen ohne sichtbaren Rand- oder Karten-Schatten. */
+.task-sheet .verdict-options button,
+.task-sheet .verdict-options button:hover,
+.task-sheet .verdict-options button.selected{
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+.task-sheet .verdict-options button:hover{
+  background:#fafbfc !important;
+}
+
+.task-sheet .verdict-options button.selected{
+  background:#f5f6f8 !important;
+  box-shadow:inset 0 0 0 2px rgba(17,24,39,.06) !important;
+}
+
+
+/* ============================================================
+   START-SPLASH — Deepfake-Defender-Logo, dynamisch, nur beim Öffnen.
+   Komplett in CSS (Logo als eingebettetes Bild). Spielt einmal beim
+   Laden, blendet sich dann weg und blockiert nichts mehr.
+   ============================================================ */
+@keyframes df-splash-bg{
+  0%{opacity:1}
+  78%{opacity:1}
+  100%{opacity:0;visibility:hidden}
+}
+@keyframes df-splash-logo{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.82) translateY(8px)}
+  16%{opacity:1}
+  42%{transform:translate(-50%,-50%) scale(1.03) translateY(0)}
+  58%{transform:translate(-50%,-50%) scale(.985)}
+  72%{transform:translate(-50%,-50%) scale(1)}
+  80%{opacity:1}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.05)}
+}
+@keyframes df-splash-glow{
+  0%,100%{filter:drop-shadow(0 0 10px rgba(59,150,220,.15))}
+  50%{filter:drop-shadow(0 0 34px rgba(59,190,180,.45))}
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:99998;
+  pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% 42%, #16305c 0%, #0c1b3a 45%, #070f22 100%);
+  animation:df-splash-bg 2.7s ease forwards;
+}
+body::after{
+  content:"";
+  position:fixed;
+  top:44%;
+  left:50%;
+  z-index:99999;
+  pointer-events:none;
+  width:min(72vw,300px);
+  height:min(72vw,300px);
+  background:url('data:image/webp;base64,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') center/contain no-repeat;
+  transform:translate(-50%,-50%);
+  animation:df-splash-logo 2.7s cubic-bezier(.2,.8,.25,1) forwards,
+            df-splash-glow 2.7s ease-in-out;
+}
+
+/* Nutzer, die Animationen reduziert haben: kurzer statischer Splash, kein Zappeln */
+@media (prefers-reduced-motion:reduce){
+  body::after{animation:df-splash-bg 2.2s ease forwards}
+  body::before{animation:df-splash-bg 2.2s ease forwards}
+}
+
+/* ============================================================
+   FINALE KORREKTUR der Iris-Hilfe-Zeile.
+   Überschreibt ALLE älteren, sich widersprechenden .feed-help-*
+   Regeln (space-between, align-items:stretch, Icon-Button-Größe).
+   Nichts mehr danach einfügen.
+   ============================================================ */
+.task-sheet .feed-help-row{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:8px !important;
+  width:100% !important;
+  margin:12px 0 !important;
+  padding:0 !important;
+}
+.task-sheet .feed-help-wrap{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  flex:1 1 200px !important;
+  min-width:0 !important;
+  margin:0 !important;
+  gap:8px !important;
+}
+/* Beide Hilfe-Buttons: gleicher Stil, echte Größe (kein kleiner Icon-Knopf mehr) */
+.task-sheet .feed-help-icon-button{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  width:auto !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  height:auto !important;
+  min-height:46px !important;
+  padding:10px 16px !important;
+  border-radius:12px !important;
+  font-weight:800 !important;
+  font-size:14px !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+  writing-mode:horizontal-tb !important;
+  text-orientation:mixed !important;
+}
+/* Linker "Hilfe"-Button: kompakt, wächst nicht */
+.task-sheet .feed-help-row > .feed-help-icon-button{
+  flex:0 0 auto !important;
+}
+/* Rechter "Frag Iris"-Button: füllt den Rest, darf notfalls umbrechen statt abzuschneiden */
+.task-sheet .feed-help-wrap > .feed-help-icon-button{
+  flex:1 1 auto !important;
+  width:100% !important;
+  white-space:normal !important;
+  overflow-wrap:anywhere !important;
+}
+/* Emoji + Text normal darstellen, keine erzeugten Pseudo-Icons, kein vertikaler Text */
+.task-sheet .feed-help-icon-button .help-button-emoji{display:inline !important;font-size:18px !important;line-height:1 !important}
+.task-sheet .feed-help-icon-button::before,
+.task-sheet .feed-help-icon-button::after{content:none !important}
+.task-sheet .feed-help-icon-button > span{writing-mode:horizontal-tb !important;white-space:normal !important}
+
+/* Sehr schmale Handys: beide Buttons je eine volle Zeile */
+@media (max-width:420px){
+  .task-sheet .feed-help-row > .feed-help-icon-button,
+  .task-sheet .feed-help-wrap{flex:1 1 100% !important;width:100% !important}
+  .task-sheet .feed-help-wrap > .feed-help-icon-button{width:100% !important}
+}
+
+/* ============================================================
+   Analyse-Tool-Icons + "erledigt"-Häkchen: GRÜN (komplementär
+   zum rosa Umfeld). Beide Hilfe-Buttons einheitlich.
+   ============================================================ */
+.task-sheet .analysis-tool-title > svg:first-child{color:#1f9e78 !important}   /* Werkzeug-Icon grün */
+.task-sheet .analysis-tool-title > svg:nth-of-type(2){color:#1f9e78 !important} /* Häkchen grün */
+.task-sheet .analysis-tool-card.used{border-color:#bfe6d7 !important}
+
+/* Beide Hilfe-Buttons exakt gleicher Look (einheitlich) */
+.task-sheet .feed-help-icon-button{
+  background:#0b2c62 !important;
+  color:#ffffff !important;
+  border:1px solid #0b2c62 !important;
+}
+.task-sheet .feed-help-icon-button:hover{
+  background:#123a7a !important;
+  border-color:#123a7a !important;
+}

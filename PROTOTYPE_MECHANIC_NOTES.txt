@@ -1,0 +1,30 @@
+Deepfake Defender prototype. Normal gameplay logic
+
+1. Voluntary feed review
+Five posts in the scrolling feed display a Review button.
+Players decide themselves whether to inspect a post.
+They are not told in advance whether it is trustworthy or suspicious.
+
+2. Push review
+Concrete agency notifications still appear while scrolling.
+The notification does not open automatically.
+Players may open it or dismiss it.
+
+3. Open analysis
+Image analysis, source check, profile check, and comments are simultaneously available.
+Each button reveals additional case-specific information.
+No tool is mandatory.
+
+4. Submission
+Players choose Trustworthy or Suspicious.
+They provide a written justification.
+They submit a confidence rating from 1 to 5.
+
+5. Scoring
+A news review is correct only when both the verdict and the written justification are correct.
+Confidence is recorded for research but does not change the points.
+The task origin, feed or push, is also recorded.
+
+6. Prototype content
+The feed currently contains both suspicious and trustworthy review cases.
+Push missions and voluntary feed reviews use the same core review interface.

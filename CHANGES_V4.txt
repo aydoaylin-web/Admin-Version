@@ -1,0 +1,22 @@
+Deepfake Defender – Änderungen V4
+
+1. Bildanalyse funktioniert bei jedem Post.
+   - Posts mit definierten Fehlerstellen behalten die Hotspot-Suche.
+   - Alle anderen Posts erhalten eine vergrößerbare, systematische Bildprüfung mit Checkliste.
+
+2. Quellenprüfung wurde erweitert.
+   - Nur Posts mit sichtbarem Link können eine Webseite prüfen.
+   - Die verlinkte Seite lässt sich als übersichtliche Artikelvorschau öffnen.
+   - Die Seite enthält die ursprüngliche bzw. genauere Information, sodass sie mit der Behauptung im Post verglichen werden kann.
+   - Enthalten sind offizielle, seriöse, werbliche und fragwürdige Seiten.
+
+3. Überspringbare Einführung mit fünf Demoseiten.
+   - Bildanalyse
+   - Quellenprüfung
+   - Profilprüfung
+   - Kommentare
+   - Entscheidung und Punktesystem
+
+4. Spielziel bleibt:
+   - Sieg bei 20 Punkten.
+   - Niederlage bei minus 10 Punkten.

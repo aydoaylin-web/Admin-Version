@@ -1,0 +1,13 @@
+DEEPFAKE DEFENDER — START
+
+1. Open this folder in Visual Studio Code.
+2. Open Terminal > New Terminal.
+3. Run: npm install
+4. Run: npm run dev
+5. Open the Local URL shown by Vite, for example http://localhost:5173
+
+Optional local AI backend:
+- Open a second terminal and run: npm run dev:api
+- Or run both together with: npm run dev:full
+
+The normal social-network feed works with npm run dev even when the AI backend is offline.

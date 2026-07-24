@@ -1,0 +1,45 @@
+Deepfake Defender – Änderungen V5 (Review, Konsistenz & Verbesserungen)
+
+GROUNDTRUTH / LOGIK
+- Balance bestätigt: 6 Echt / 6 Manipuliert / 6 Irreführend.
+- post_104 (digitale Zeugnisse): war widersprüchlich (Text „überall", Quelle „nur Pilot",
+  Konto unverifiziert, Verdikt „echt"). Jetzt sauber ECHT: Text korrekt eingegrenzt (Pilot),
+  verifiziertes Bildungskonto, Quelle bestätigt den Pilotversuch. Feedback/Tell angepasst.
+- post_105 (Mona Lisa): tool=source, hatte aber keine Quelle. Jetzt mit seriöser Lexikon-
+  Quelle, die die wahre Aussage bestätigt. Lektion bleibt: KI-Bild ≠ automatisch Falschmeldung.
+- post_118 (Handyregeln „Eilmeldung"): Tell/Feedback sagten „keine Quelle", obwohl eine
+  seriöse Quelle verlinkt ist. Jetzt korrekt: reißerisches Framing einer banalen, echten Regel.
+- post_106: Sichtbarkeit „Privat" (irreführendes Signal bei einem Echt-Fall) -> „Öffentlich".
+- post_113: gefälschter Verifiziert-Haken im Feed entfernt (Pseudo-News tarnt sich nur).
+- post_114: Werbe-Konto jetzt klar als „Werbekonto (Marke) / Anzeige" im Profil erkennbar.
+
+WERKZEUGE
+- Profilprüfung zeigt jetzt den KONTOTYP an (entscheidend für Profil-Fälle 101/104/112/114).
+- Bildanalyse überarbeitet:
+  * Klick-Erkennung jetzt korrekt bei jeder Zoomstufe (Viewport + skalierte Bühne).
+  * Fehlklicks werden gezählt; Klicks auf bereits gefundene Zonen zählen nicht als Fehler.
+  * „Auswertung anzeigen"-Button: zeigt gefundene UND übersehene Auffälligkeiten (rot markiert)
+    samt Erklärung, warum sie zählen – wie eine digitale Spurensicherung.
+
+KOMMENTARE
+- Pro Beitrag 2–6 statt immer 3; authentische Sprache, Emojis, Tippfehler, Zweifel,
+  Fehlannahmen, unterschiedliche Meinungen, passend zum Kontotyp – nicht jeder Kommentar
+  ist ein Hinweis.
+
+AUFRÄUMEN
+- Toter Code entfernt (NEWS_ANALYSIS mit veralteten Task-IDs, ungenutzte sourceChecks.js).
+- Demo-Beispiel von einem realen Post entkoppelt.
+
+PROFIL-MIX (realistischer Kinder-Feed)
+- Früher wirkten fast alle Autoren wie Nachrichten-/Werbekonten. Der Feed bildet jetzt nach,
+  was 10–12-Jährige wirklich sehen:
+  * ~7 Creator/Influencer (Gaming, Beauty, Tech, Lernen, News-Erklärer)
+  * ~7 Gleichaltrige/Schüler (Meme-, Hobby-, Klassenkameraden-, Schul-Konten)
+  * 2 offizielle Konten (Plattform, Schule) + 1 Elternkonto + 1 Marke/Werbung
+- Wichtig: Die Post-INHALTE und die Lösungslogik bleiben gleich. Nur WER postet, ändert sich.
+- Dadurch lässt sich ein Fall NICHT mehr am Kontotyp allein lösen:
+  * echt kommt jetzt auch von Creators/Kindern/Eltern (nicht nur „offiziell").
+  * manipuliert/irreführend kommt auch von VERIFIZIERTEN Influencern (z. B. Beauty-Werbung 110).
+  * ein unverifizierter Creator kann Richtiges posten (103) – Quelle prüfen, nicht den Haken.
+- Werbe-/Marken-Posts (110, 114) tragen jetzt das Label „Gesponsert".
+- Feedback-Texte an die neuen Kontotypen angepasst; alle Diagnose-Werkzeuge bleiben gültig.

@@ -1,0 +1,16 @@
+{
+  "name": "AiGram – Deepfake Defender",
+  "short_name": "AiGram",
+  "description": "A social-media simulation for analysing manipulated posts and deepfakes.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f6f9",
+  "theme_color": "#ffffff",
+  "lang": "en",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
