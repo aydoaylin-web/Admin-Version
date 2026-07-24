@@ -35,6 +35,8 @@ import { ladeZipHerunter } from './zipExport.js';
    ============================================================ */
 
 const INHALT_SCHLUESSEL = 'dd-admin-inhalte-v4';
+const ADMIN_PASSWORT_SCHLUESSEL = 'dd-admin-passwort-sha256-v1';
+const ADMIN_SITZUNG_SCHLUESSEL = 'dd-admin-entsperrt-v1';
 
 const CONTENT_DATEIEN = [
   'settings',
@@ -203,6 +205,200 @@ function setzeZweisprachigenWert(wert, code, neuerWert) {
     de: code === 'de' ? neuerWert : (wert ?? ''),
     en: code === 'en' ? neuerWert : '',
   };
+}
+
+
+async function sha256(text) {
+  const daten = new TextEncoder().encode(String(text));
+  const hash = await crypto.subtle.digest('SHA-256', daten);
+
+  return Array.from(new Uint8Array(hash))
+    .map((wert) => wert.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function PasswortDialog({
+  modus = 'anmelden',
+  onErfolg,
+  onAbbrechen,
+}) {
+  const [passwort, setPasswort] = useState('');
+  const [wiederholung, setWiederholung] = useState('');
+  const [fehler, setFehler] = useState('');
+  const [arbeitet, setArbeitet] = useState(false);
+
+  const istEinrichtung = modus === 'einrichten';
+  const istAenderung = modus === 'aendern';
+
+  async function absenden(event) {
+    event.preventDefault();
+    setFehler('');
+
+    if (passwort.length < 6) {
+      setFehler('Das Passwort muss mindestens 6 Zeichen enthalten.');
+      return;
+    }
+
+    if ((istEinrichtung || istAenderung) && passwort !== wiederholung) {
+      setFehler('Die beiden Passwörter stimmen nicht überein.');
+      return;
+    }
+
+    setArbeitet(true);
+
+    try {
+      const hash = await sha256(passwort);
+      const gespeichert = localStorage.getItem(ADMIN_PASSWORT_SCHLUESSEL);
+
+      if (istEinrichtung || istAenderung) {
+        localStorage.setItem(ADMIN_PASSWORT_SCHLUESSEL, hash);
+        sessionStorage.setItem(ADMIN_SITZUNG_SCHLUESSEL, '1');
+        onErfolg();
+        return;
+      }
+
+      if (!gespeichert || gespeichert !== hash) {
+        setFehler('Das Passwort ist falsch.');
+        return;
+      }
+
+      sessionStorage.setItem(ADMIN_SITZUNG_SCHLUESSEL, '1');
+      onErfolg();
+    } catch (error) {
+      setFehler(
+        error instanceof Error
+          ? error.message
+          : 'Das Passwort konnte nicht geprüft werden.',
+      );
+    } finally {
+      setArbeitet(false);
+    }
+  }
+
+  return (
+    <div
+      data-admin-schutz
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 2147483640,
+        display: 'grid',
+        placeItems: 'center',
+        padding: 18,
+        background: 'rgba(7,13,27,.72)',
+        fontFamily: 'system-ui, sans-serif',
+      }}
+    >
+      <form
+        onSubmit={absenden}
+        style={{
+          width: 'min(420px, 94vw)',
+          padding: 22,
+          borderRadius: 16,
+          background: '#fff',
+          boxShadow: '0 20px 70px rgba(0,0,0,.28)',
+        }}
+      >
+        <h1 style={{ margin: 0, fontSize: 21 }}>
+          {istEinrichtung
+            ? 'Adminpasswort festlegen'
+            : istAenderung
+              ? 'Adminpasswort ändern'
+              : 'Adminbereich'}
+        </h1>
+
+        <p
+          style={{
+            margin: '8px 0 16px',
+            fontSize: 13,
+            lineHeight: 1.5,
+            color: '#5a6b86',
+          }}
+        >
+          {istEinrichtung
+            ? 'Lege beim ersten Start ein Passwort für diese Adminversion fest.'
+            : istAenderung
+              ? 'Das neue Passwort ersetzt das bisherige Passwort auf diesem Gerät.'
+              : 'Gib das Adminpasswort ein, um die Bearbeitungsfunktionen zu öffnen.'}
+        </p>
+
+        <label style={beschriftung}>
+          {istAenderung ? 'Neues Passwort' : 'Passwort'}
+
+          <input
+            autoFocus
+            type="password"
+            autoComplete={
+              istEinrichtung || istAenderung
+                ? 'new-password'
+                : 'current-password'
+            }
+            style={feld}
+            value={passwort}
+            onChange={(event) => setPasswort(event.target.value)}
+          />
+        </label>
+
+        {(istEinrichtung || istAenderung) && (
+          <label style={beschriftung}>
+            Passwort wiederholen
+
+            <input
+              type="password"
+              autoComplete="new-password"
+              style={feld}
+              value={wiederholung}
+              onChange={(event) => setWiederholung(event.target.value)}
+            />
+          </label>
+        )}
+
+        {fehler && (
+          <p
+            role="alert"
+            style={{
+              margin: '10px 0 0',
+              fontSize: 12.5,
+              color: '#a3382c',
+            }}
+          >
+            {fehler}
+          </p>
+        )}
+
+        <div
+          style={{
+            display: 'flex',
+            gap: 8,
+            justifyContent: 'flex-end',
+            marginTop: 18,
+          }}
+        >
+          {onAbbrechen && (
+            <button
+              type="button"
+              onClick={onAbbrechen}
+            >
+              Abbrechen
+            </button>
+          )}
+
+          <button
+            type="submit"
+            disabled={arbeitet}
+          >
+            {arbeitet
+              ? 'Prüfen …'
+              : istEinrichtung
+                ? 'Passwort speichern'
+                : istAenderung
+                  ? 'Passwort ändern'
+                  : 'Anmelden'}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 /* ============================================================
@@ -721,6 +917,114 @@ function VollstaendigesObjekt({
           />
         </div>
       )}
+    </section>
+  );
+}
+
+
+function DirektFelderEditor({
+  titel,
+  wert,
+  onChange,
+}) {
+  const objekt = objektOderLeer(wert);
+  const eintraege = Object.entries(objekt);
+
+  function setze(schluessel, neuerWert) {
+    onChange({
+      ...objekt,
+      [schluessel]: neuerWert,
+    });
+  }
+
+  if (!eintraege.length) {
+    return (
+      <div style={block}>
+        <strong style={{ fontSize: 13 }}>{titel}</strong>
+        <p style={{ margin: '6px 0 0', fontSize: 12.5, color: '#5a6b86' }}>
+          Dieses Objekt enthält noch keine Felder. Nutze „Alles bearbeiten“, um neue Felder anzulegen.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <section style={block}>
+      <strong style={{ fontSize: 13 }}>{titel}</strong>
+
+      {eintraege.map(([schluessel, aktuellerWert]) => {
+        if (typeof aktuellerWert === 'boolean') {
+          return (
+            <label
+              key={schluessel}
+              style={{
+                ...beschriftung,
+                display: 'flex',
+                gap: 8,
+                alignItems: 'center',
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={aktuellerWert}
+                onChange={(event) =>
+                  setze(schluessel, event.target.checked)
+                }
+              />
+              {schluessel}
+            </label>
+          );
+        }
+
+        if (typeof aktuellerWert === 'number') {
+          return (
+            <label key={schluessel} style={beschriftung}>
+              {schluessel}
+
+              <input
+                type="number"
+                style={feld}
+                value={aktuellerWert}
+                onChange={(event) =>
+                  setze(schluessel, Number(event.target.value))
+                }
+              />
+            </label>
+          );
+        }
+
+        if (
+          aktuellerWert &&
+          typeof aktuellerWert === 'object'
+        ) {
+          return (
+            <label key={schluessel} style={beschriftung}>
+              {schluessel}
+
+              <JsonFeld
+                wert={aktuellerWert}
+                onChange={(neu) => setze(schluessel, neu)}
+                zeilen={8}
+              />
+            </label>
+          );
+        }
+
+        return (
+          <label key={schluessel} style={beschriftung}>
+            {schluessel}
+
+            <textarea
+              rows={String(aktuellerWert ?? '').length > 100 ? 4 : 2}
+              style={feld}
+              value={aktuellerWert ?? ''}
+              onChange={(event) =>
+                setze(schluessel, event.target.value)
+              }
+            />
+          </label>
+        );
+      })}
     </section>
   );
 }
@@ -2519,6 +2823,12 @@ function AnalysewerkzeugeAnsicht({
                 <h2 style={{ marginTop: 0, fontSize: 18 }}>Quellenprüfung</h2>
                 {verfuegbarkeit(sourceCheck, (neu) => setzePostTeil('sourceCheck', neu))}
 
+                <DirektFelderEditor
+                  titel="Alle vorhandenen Felder direkt bearbeiten"
+                  wert={sourceCheck}
+                  onChange={(neu) => setzePostTeil('sourceCheck', neu)}
+                />
+
                 <label style={beschriftung}>Status
                   <select
                     style={feld}
@@ -2594,6 +2904,12 @@ function AnalysewerkzeugeAnsicht({
                 ) : (
                   <>
                     {verfuegbarkeit(profileCheck, (neu) => ersetzeProfil({ ...profil, profileCheck: neu }))}
+
+                    <DirektFelderEditor
+                      titel="Alle vorhandenen Felder direkt bearbeiten"
+                      wert={profileCheck}
+                      onChange={(neu) => ersetzeProfil({ ...profil, profileCheck: neu })}
+                    />
 
                     {[
                       ['bio', 'Biografie in der Profilprüfung'],
@@ -2679,6 +2995,12 @@ function AnalysewerkzeugeAnsicht({
                 <h2 style={{ marginTop: 0, fontSize: 18 }}>Bildherkunft und Rückwärtssuche</h2>
                 {verfuegbarkeit(originCheck, (neu) => setzePostTeil('imageOriginCheck', neu))}
 
+                <DirektFelderEditor
+                  titel="Alle vorhandenen Felder direkt bearbeiten"
+                  wert={originCheck}
+                  onChange={(neu) => setzePostTeil('imageOriginCheck', neu)}
+                />
+
                 <p style={{ fontSize: 12.5, lineHeight: 1.5, color: '#5a6b86' }}>
                   Hier bearbeitest du den vollständigen Inhalt der Rückwärtssuche. Listen, Treffer,
                   Bilder, Datumsangaben, Hinweise und Meldungen können direkt im JSON verändert werden.
@@ -2707,6 +3029,12 @@ function AnalysewerkzeugeAnsicht({
                 <p style={{ fontSize: 12.5, lineHeight: 1.5, color: '#5a6b86' }}>
                   Änderungen an Hotspots und Hinweistexten werden direkt in der Vorschau neben dem Editor angezeigt.
                 </p>
+
+                <DirektFelderEditor
+                  titel="Alle Bildanalysefelder direkt bearbeiten"
+                  wert={zonen || { errorCount: 0, hotspots: [] }}
+                  onChange={setzeZonen}
+                />
 
                 <label style={beschriftung}>Hotspots und Hinweisinhalt
                   <JsonFeld
@@ -2931,6 +3259,17 @@ function CodeAnsicht({
    ============================================================ */
 
 export default function InlineAdmin() {
+  const [passwortVorhanden, setPasswortVorhanden] = useState(
+    () => Boolean(localStorage.getItem(ADMIN_PASSWORT_SCHLUESSEL)),
+  );
+
+  const [entsperrt, setEntsperrt] = useState(
+    () => sessionStorage.getItem(ADMIN_SITZUNG_SCHLUESSEL) === '1',
+  );
+
+  const [zeigePasswortAendern, setZeigePasswortAendern] =
+    useState(false);
+
   const [modus, setModus] =
     useState('spielen');
 
@@ -3178,6 +3517,27 @@ export default function InlineAdmin() {
     );
   }
 
+  if (!passwortVorhanden) {
+    return (
+      <PasswortDialog
+        modus="einrichten"
+        onErfolg={() => {
+          setPasswortVorhanden(true);
+          setEntsperrt(true);
+        }}
+      />
+    );
+  }
+
+  if (!entsperrt) {
+    return (
+      <PasswortDialog
+        modus="anmelden"
+        onErfolg={() => setEntsperrt(true)}
+      />
+    );
+  }
+
   if (meldung) {
     return (
       <div
@@ -3353,6 +3713,24 @@ export default function InlineAdmin() {
           Zurücksetzen
         </button>
 
+        <button
+          type="button"
+          onClick={() => setZeigePasswortAendern(true)}
+        >
+          Passwort ändern
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            sessionStorage.removeItem(ADMIN_SITZUNG_SCHLUESSEL);
+            setEntsperrt(false);
+            setZiel(null);
+          }}
+        >
+          Sperren
+        </button>
+
         <p
           style={{
             width: '100%',
@@ -3424,7 +3802,14 @@ export default function InlineAdmin() {
           }
         />
       )}
+
+      {zeigePasswortAendern && (
+        <PasswortDialog
+          modus="aendern"
+          onErfolg={() => setZeigePasswortAendern(false)}
+          onAbbrechen={() => setZeigePasswortAendern(false)}
+        />
+      )}
     </div>
   );
 }
-
