@@ -98,7 +98,7 @@ function createUuid() {
 }
 
 
-export default function App({ contentOverride = null, previewMode = false, onOpenAdmin = null }) {
+export default function App({ contentOverride = null, previewMode = false, onOpenAdmin = null, imageHotspotsOverride = null }) {
   const saved = loadState();
   const irisAudioRef = useRef(null);
   const speechRecognitionRef = useRef(null);
@@ -202,6 +202,16 @@ useEffect(() => {
   const totalMissionCount=tasks.length;
   const progressPercent=totalMissionCount?Math.min(100,Math.round((completed.length/totalMissionCount)*100)):0;
   const profileMap=useMemo(()=>Object.fromEntries(profiles.map(profile=>[profile.id,profile])),[profiles]);
+  const liveActiveTask = activeTask?.id
+    ? taskMap[activeTask.id] || activeTask
+    : activeTask;
+  const liveActivePost = activePost?.id
+    ? postMap[activePost.id] || activePost
+    : activePost;
+  const liveActiveProfile = liveActivePost?.profileId
+    ? profileMap[liveActivePost.profileId] || null
+    : null;
+  const aktiveBildHotspots = imageHotspotsOverride || IMAGE_HOTSPOTS;
   const stories=useMemo(()=>[...dataStories].sort((a,b)=>(a.priority??99)-(b.priority??99)).map((story,index)=>{const profile=profileMap[story.profileId]||{};return {name:story.label||profile.displayName||profile.username||'Story',letter:index===0?<Plus size={20}/>:String(profile.displayName||profile.username||'?').slice(0,2).toUpperCase(),className:profile.accent||'blue',status:story.status||'new'};}),[dataStories,profileMap]);
   const taskMeta=contentSettings.taskTypes||TASK_META;
   const targetScore=Number(contentSettings.targetScore)||TARGET_SCORE;
@@ -1218,20 +1228,62 @@ function reopenDemo(){
     const Icon = tool.icon;
     const used = usedTools.includes(tool.id);
     const open = openTool === tool.id;
-    const sourceAvailable = activePost?.sourceCheck?.available;
+    const sourceAvailable = liveActivePost?.sourceCheck?.available;
     return (
       <div className={`analysis-tool-card ${used ? "used" : ""} ${open ? "open" : ""}`} key={tool.id}>
         <button type="button" className="analysis-tool-toggle" onClick={() => useAnalysisTool(tool.id)}>
           <span className="analysis-tool-title"><Icon size={19} />{t(`tool_${tool.id}`)}{tool.id==='source'&&!sourceAvailable&&<small className="tool-availability">kein Link</small>}{used && <CheckCircle2 size={18} />}</span>
           <span className="accordion-symbol">{open?'−':'+'}</span>
         </button>
-        {open && <div className="analysis-tool-content">
-          {tool.id === "source" ? <SourceCheckPanel data={activePost?.sourceCheck} hintMode={hintMode} hintRevealed={revealedHints.includes('source')} onUseHint={()=>useHint('source')} hintButtonLabel={hintButtonLabel} t={t} />
-          : tool.id === "image" ? <HotspotImage src={imagePath(activePost.media)} alt={activePost.imageAlt} config={IMAGE_HOTSPOTS[activePost?.id] || { inspectionOnly:true }} hintMode={hintMode} hintRevealed={revealedHints.includes('image')} onUseHint={()=>useHint('image')} hintButtonLabel={hintButtonLabel} t={t} />
-          : tool.id === "profile" ? <ProfileCheckPanel profile={profileMap[activePost?.profileId]} hintMode={hintMode} hintRevealed={revealedHints.includes('profile')} onUseHint={()=>useHint('profile')} hintButtonLabel={hintButtonLabel} t={t} />
-          : tool.id === "origin" ? <OriginCheckPanel data={activePost?.imageOriginCheck} hintMode={hintMode} hintRevealed={revealedHints.includes('origin')} onUseHint={()=>useHint('origin')} hintButtonLabel={hintButtonLabel} t={t} />
-          : <small>{t('noInfoCheck')}</small>}
-        </div>}
+        {open && (
+          <div className="analysis-tool-content">
+            {tool.id === 'source' ? (
+              <SourceCheckPanel
+                data={liveActivePost?.sourceCheck}
+                hintMode={hintMode}
+                hintRevealed={revealedHints.includes('source')}
+                onUseHint={() => useHint('source')}
+                hintButtonLabel={hintButtonLabel}
+                t={t}
+              />
+            ) : tool.id === 'image' ? (
+              <HotspotImage
+                src={imagePath(liveActivePost?.media)}
+                alt={liveActivePost?.imageAlt || ''}
+                config={
+                  aktiveBildHotspots[liveActivePost?.id] || {
+                    inspectionOnly: true,
+                  }
+                }
+                hintMode={hintMode}
+                hintRevealed={revealedHints.includes('image')}
+                onUseHint={() => useHint('image')}
+                hintButtonLabel={hintButtonLabel}
+                t={t}
+              />
+            ) : tool.id === 'profile' ? (
+              <ProfileCheckPanel
+                profile={liveActiveProfile}
+                hintMode={hintMode}
+                hintRevealed={revealedHints.includes('profile')}
+                onUseHint={() => useHint('profile')}
+                hintButtonLabel={hintButtonLabel}
+                t={t}
+              />
+            ) : tool.id === 'origin' ? (
+              <OriginCheckPanel
+                data={liveActivePost?.imageOriginCheck}
+                hintMode={hintMode}
+                hintRevealed={revealedHints.includes('origin')}
+                onUseHint={() => useHint('origin')}
+                hintButtonLabel={hintButtonLabel}
+                t={t}
+              />
+            ) : (
+              <small>{t('noInfoCheck')}</small>
+            )}
+          </div>
+        )}
       </div>
     );
   })}
@@ -1275,3 +1327,4 @@ function reopenDemo(){
     </>}</section></div>}
   </div>;
 }
+
