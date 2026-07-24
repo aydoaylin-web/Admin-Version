@@ -141,8 +141,62 @@ export default function App({ contentOverride = null, previewMode = false, onOpe
   const [runOrder,setRunOrder]=useState(saved.runOrder||[]); const [runId,setRunId]=useState(saved.runId||createUuid()); const [runSummary,setRunSummary]=useState(null); const [tipsRemaining,setTipsRemaining]=useState(saved.tipsRemaining??MAX_TIPS); const [revealedHints,setRevealedHints]=useState([]);
   const notificationTimeout=useRef(null); const loaderRef=useRef(null); const taskStartedAt=useRef(null);
 
-  const taskMap=useMemo(()=>Object.fromEntries(tasks.map(t=>[t.id,t])),[tasks]);
-  const feedPosts=useMemo(()=>feedMode==='following'?posts.filter((_,i)=>i%2===0):posts,[posts,feedMode]);
+  const taskMap = useMemo(
+      () => Object.fromEntries(tasks.map((task) => [task.id, task])),
+      [tasks],
+    );
+    
+    const postMap = useMemo(
+      () => Object.fromEntries(posts.map((post) => [post.id, post])),
+      [posts],
+    );
+    
+    const feedPosts = useMemo(
+      () =>
+        feedMode === 'following'
+          ? posts.filter((_, index) => index % 2 === 0)
+          : posts,
+      [posts, feedMode],
+    );
+  useEffect(() => {
+  setActiveTask((aktuellerTask) => {
+    if (!aktuellerTask?.id) {
+      return aktuellerTask;
+    }
+
+    return taskMap[aktuellerTask.id] || aktuellerTask;
+  });
+}, [taskMap]);
+
+useEffect(() => {
+  setActivePost((aktuellerPost) => {
+    if (!aktuellerPost?.id) {
+      return aktuellerPost;
+    }
+
+    return postMap[aktuellerPost.id] || aktuellerPost;
+  });
+}, [postMap]);
+
+useEffect(() => {
+  setSelectedPost((aktuellerPost) => {
+    if (!aktuellerPost?.id) {
+      return aktuellerPost;
+    }
+
+    return postMap[aktuellerPost.id] || aktuellerPost;
+  });
+}, [postMap]);
+
+useEffect(() => {
+  setCommentsPost((aktuellerPost) => {
+    if (!aktuellerPost?.id) {
+      return aktuellerPost;
+    }
+
+    return postMap[aktuellerPost.id] || aktuellerPost;
+  });
+}, [postMap]);
   const visiblePosts=feedPosts.slice(0,visibleCount);
   const nextMissionId=useMemo(()=>runOrder.find(id=>!completed.includes(id))||null,[runOrder,completed]);
   const totalMissionCount=tasks.length;
@@ -208,7 +262,11 @@ export default function App({ contentOverride = null, previewMode = false, onOpe
           ],
         }));
 
-        setPosts(settings.randomizeFeed === false ? postsWithSavedComments : shuffle(postsWithSavedComments));
+setPosts(
+  previewMode || settings.randomizeFeed === false
+    ? postsWithSavedComments
+    : shuffle(postsWithSavedComments),
+);
         setTasks(sourceTasks);
         setProfiles(profileData);
         setDataStories(storyData);
