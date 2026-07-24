@@ -1,128 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import InlineAdmin from './admin/InlineAdmin.jsx';
+import InlineAdmin, { AdminKopfKnopf } from './admin/InlineAdmin.jsx';
 import './styles.css';
 
 /* ============================================================
-   EINSTELLUNGEN — hier oben alles, was du anfassen willst.
+   EINSTIEG
 
    ADMIN_KNOPF_SICHTBAR
-     true  = der Knopf "Admin" schwebt unten links in der App.
-             Praktisch beim Vorbereiten.
-     false = kein Knopf. Fuer den Unterricht empfohlen, dann
-             kommen die Kinder gar nicht erst auf die Idee.
-             Du selbst kommst weiterhin ueber die Geste rein.
+     true  = der Knopf "Admin" sitzt in der Kopfleiste der App,
+             direkt neben Sprachumschalter und Herz.
+     false = kein Knopf. Fuer den Unterricht. Du selbst kommst
+             dann ueber Strg+Alt+A oder die Adresse .../#/admin
+             hinein.
 
-   HALTEDAUER
-     Millisekunden, die der Finger auf der linken oberen Ecke
-     liegen muss. 2000 = zwei Sekunden.
+   Schueler- und Adminansicht sind dieselbe App. Der Adminmodus
+   rendert exakt dieselbe Oberflaeche und legt nur die
+   Bearbeitung darueber.
    ============================================================ */
 const ADMIN_KNOPF_SICHTBAR = true;
-const HALTEDAUER = 2000;
 
-/* ============================================================
-   DREI WEGE IN DEN ADMINBEREICH
-   1. der Knopf unten links (wenn oben eingeschaltet)
-   2. zwei Sekunden auf die linke obere Ecke druecken
-   3. am Rechner: Strg + Alt + A
-   Zusaetzlich weiterhin ueber die Adresse:
-      .../#/admin   .../#admin   .../#/Admin   .../?admin
-   ============================================================ */
-function isAdminRoute() {
+function istAdminAdresse() {
   const hash = (window.location.hash || '').toLowerCase();
-  const search = (window.location.search || '').toLowerCase();
-  const path = (window.location.pathname || '').toLowerCase();
-  return hash.replace(/^#\/?/, '').startsWith('admin')
-    || search === '?admin'
-    || /\/admin\/?$/.test(path);
+  const suche = (window.location.search || '').toLowerCase();
+  return hash.replace(/^#\/?/, '').startsWith('admin') || suche === '?admin';
 }
 
-/* Sichtbarer Knopf. Er sitzt unten links und damit
-   ueber der unteren Navigationsleiste (die endet bei 86 Punkten)
-   und neben dem Punktestand, der rechts sitzt.
-   Die Ebene 45 liegt ueber der Navigation, aber unter Dialogen -
-   sobald eine Feed-Pruefung offen ist, verschwindet er also. */
-function AdminKnopf({ onOpen }) {
-  return (
-    <button
-      type="button"
-      onClick={onOpen}
-      title="Adminbereich oeffnen"
-      style={{
-        position: 'fixed', bottom: 96, left: 12, zIndex: 45,
-        padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6,
-        minHeight: 36, border: '1px solid rgba(9,43,97,.18)', borderRadius: 999,
-        background: 'rgba(255,255,255,.92)', color: '#092b61',
-        font: 'inherit', fontSize: 12, fontWeight: 800, cursor: 'pointer',
-        boxShadow: '0 6px 18px rgba(13,36,79,.14)',
-        WebkitBackdropFilter: 'blur(8px)', backdropFilter: 'blur(8px)',
-        WebkitTapHighlightColor: 'transparent',
-      }}
-    >
-      <span aria-hidden="true">🔒</span> Admin
-    </button>
-  );
-}
-
-/* Unsichtbare Flaeche in der linken oberen Ecke, ueber dem
-   Schriftzug im Kopf der App. Dort ist nichts anklickbar,
-   im normalen Gebrauch merkt niemand etwas davon. */
-function AdminGeste({ onOpen }) {
-  const timer = useRef(null);
-  const stop = () => { if (timer.current) { clearTimeout(timer.current); timer.current = null; } };
-  const start = () => { stop(); timer.current = setTimeout(onOpen, HALTEDAUER); };
-  useEffect(() => stop, []);
-  return (
-    <div
-      aria-hidden="true"
-      onPointerDown={start}
-      onPointerUp={stop}
-      onPointerLeave={stop}
-      onPointerCancel={stop}
-      onContextMenu={(e) => e.preventDefault()}
-      style={{
-        position: 'fixed', top: 0, left: 0, width: 60, height: 60,
-        zIndex: 2147483647, background: 'transparent',
-        touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent',
-        WebkitUserSelect: 'none', userSelect: 'none',
-      }}
-    />
-  );
-}
-
-/* Rueckweg fuer den Fall, dass der Adminbereich ueber Knopf,
-   Geste oder Tastenkuerzel geoeffnet wurde. Wichtig, weil die
-   Knoepfe innerhalb des Adminbereichs die Adresse zuruecksetzen -
-   und wenn dort ohnehin nichts stand, passiert dabei nichts. */
-function ZurueckKnopf({ onBack }) {
-  return (
-    <button
-      type="button"
-      onClick={onBack}
-      style={{
-        position: 'fixed', top: 12, right: 12, zIndex: 2147483646,
-        padding: '9px 13px', minHeight: 38,
-        border: '1px solid #cbd5e1', borderRadius: 999,
-        background: '#fff', color: '#182235',
-        font: 'inherit', fontSize: 13, fontWeight: 700, cursor: 'pointer',
-        boxShadow: '0 6px 18px rgba(13,36,79,.14)',
-      }}
-    >
-      ← Zur Schueler-App
-    </button>
-  );
-}
-
-/* ============================================================
-   FEHLERGRENZE
-   Ohne sie wird die Seite bei einem Fehler beim Aufbauen einfach
-   weiss, ohne jeden Hinweis. Mit ihr steht die Ursache lesbar auf
-   dem Bildschirm - wichtig, wenn im Unterricht etwas klemmt und
-   keine Entwicklerkonsole zur Hand ist. Die Gestaltung steht
-   absichtlich direkt im Element, damit sie auch dann greift, wenn
-   das Stylesheet nicht geladen wurde.
-   ============================================================ */
 class Fehlergrenze extends React.Component {
   constructor(props) {
     super(props);
@@ -139,14 +42,11 @@ class Fehlergrenze extends React.Component {
     return (
       <div style={{ maxWidth: 640, margin: '48px auto', padding: 24, fontFamily: 'system-ui, sans-serif', lineHeight: 1.5 }}>
         <h1 style={{ fontSize: 20, margin: '0 0 12px' }}>Da ist etwas schiefgelaufen</h1>
-        <p style={{ margin: '0 0 12px' }}>Die Seite konnte nicht dargestellt werden. Die technische Ursache:</p>
         <pre style={{ padding: 12, background: '#f3f6fb', border: '1px solid #dce3ee', borderRadius: 10, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontSize: 13 }}>
           {String(this.state.error?.message || this.state.error)}
         </pre>
-        <button
-          style={{ marginTop: 12, padding: '10px 14px', border: '1px solid #cbd5e1', borderRadius: 10, background: '#fff', cursor: 'pointer', font: 'inherit' }}
-          onClick={() => { window.location.hash = ''; window.location.reload(); }}
-        >
+        <button style={{ marginTop: 12, padding: '10px 14px', borderRadius: 10, border: '1px solid #cbd5e1', background: '#fff', font: 'inherit', cursor: 'pointer' }}
+          onClick={() => { window.location.hash = ''; window.location.reload(); }}>
           Neu laden
         </button>
       </div>
@@ -154,47 +54,34 @@ class Fehlergrenze extends React.Component {
   }
 }
 
-function RootRouter() {
-  const [adminUeberAdresse, setAdminUeberAdresse] = useState(isAdminRoute);
-  const [adminManuell, setAdminManuell] = useState(false);
-  const admin = adminUeberAdresse || adminManuell;
+function Wurzel() {
+  const [admin, setAdmin] = useState(istAdminAdresse);
 
   useEffect(() => {
-    const onRoute = () => setAdminUeberAdresse(isAdminRoute());
-    window.addEventListener('hashchange', onRoute);
-    window.addEventListener('popstate', onRoute);
-    const onKey = (e) => {
-      if (e.ctrlKey && e.altKey && (e.key === 'a' || e.key === 'A')) setAdminManuell(true);
+    const beiAdresse = () => setAdmin(istAdminAdresse());
+    const beiTaste = (e) => {
+      if (e.ctrlKey && e.altKey && (e.key === 'a' || e.key === 'A')) setAdmin(true);
     };
-    window.addEventListener('keydown', onKey);
+    window.addEventListener('hashchange', beiAdresse);
+    window.addEventListener('keydown', beiTaste);
     return () => {
-      window.removeEventListener('hashchange', onRoute);
-      window.removeEventListener('popstate', onRoute);
-      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('hashchange', beiAdresse);
+      window.removeEventListener('keydown', beiTaste);
     };
   }, []);
 
-  function zurueckZurApp() {
-    setAdminManuell(false);
-    if (window.location.hash) window.location.hash = '';
-    setAdminUeberAdresse(false);
-  }
-
-  if (admin) return <>
-    <InlineAdmin />
-    <ZurueckKnopf onBack={zurueckZurApp} />
-  </>;
+  if (admin) return <InlineAdmin />;
 
   return <>
-    <App onOpenAdmin={ADMIN_KNOPF_SICHTBAR ? () => setAdminManuell(true) : null} />
-    <AdminGeste onOpen={() => setAdminManuell(true)} />
+    <App />
+    {ADMIN_KNOPF_SICHTBAR && <AdminKopfKnopf aktiv={false} onClick={() => setAdmin(true)} />}
   </>;
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Fehlergrenze>
-      <RootRouter />
+      <Wurzel />
     </Fehlergrenze>
   </React.StrictMode>
 );
@@ -202,17 +89,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     if (import.meta.env.DEV) {
-      const registrations = await navigator.serviceWorker.getRegistrations();
-      await Promise.all(registrations.map((registration) => registration.unregister()));
-      const cacheKeys = await caches.keys();
-      await Promise.all(cacheKeys.filter((key) => key.startsWith('deepfake-defender')).map((key) => caches.delete(key)));
+      const anmeldungen = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(anmeldungen.map((a) => a.unregister()));
+      const schluessel = await caches.keys();
+      await Promise.all(schluessel.filter((k) => k.startsWith('deepfake-defender')).map((k) => caches.delete(k)));
       return;
     }
     try {
-      const registration = await navigator.serviceWorker.register(`${import.meta.env.BASE_URL}service-worker.js`, { updateViaCache: 'none' });
-      await registration.update();
-    } catch (error) {
-      console.warn('Service worker registration failed.', error);
+      const anmeldung = await navigator.serviceWorker.register(`${import.meta.env.BASE_URL}service-worker.js`, { updateViaCache: 'none' });
+      await anmeldung.update();
+    } catch (fehler) {
+      console.warn('Service worker registration failed.', fehler);
     }
   });
 }
