@@ -1,4 +1,4 @@
-const CACHE_NAME = 'deepfake-defender-v9-fixes-20260720';
+const CACHE_NAME = 'deepfake-defender-v9-live-admin-20260724';
 
 const APP_SHELL = [
   './',
