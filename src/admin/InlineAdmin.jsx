@@ -3013,24 +3013,6 @@ export default function InlineAdmin() {
     }
   }, [inhalte]);
 
-  useEffect(() => {
-    speichereEntwurf(entwurf);
-  }, [entwurf]);
-
-  useEffect(() => {
-    if (!inhalte) {
-      return undefined;
-    }
-
-    const timer = window.setTimeout(() => {
-      setVorschauSchluessel((aktuell) => aktuell + 1);
-    }, 350);
-
-    return () => {
-      window.clearTimeout(timer);
-    };
-  }, [inhalte, entwurf]);
-
   const geaenderteContentDateien = useMemo(
     () =>
       ermittleGeaenderteContentDateien(
