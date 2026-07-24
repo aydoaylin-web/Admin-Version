@@ -2377,34 +2377,54 @@ function AnalysewerkzeugeAnsicht({
 
   if (!posts.length) {
     return (
-      <div data-admin-schutz style={{ position: 'fixed', inset: 0, zIndex: 2147483200, background: 'rgba(7,13,27,.64)', padding: 18 }}>
-        <section style={{ maxWidth: 900, margin: '0 auto', background: '#fff', borderRadius: 14, padding: 18 }}>
-          <strong>Analysewerkzeuge</strong>
-          <p>Es sind keine Beiträge vorhanden.</p>
-          <button type="button" onClick={onSchliessen}>Schließen</button>
-        </section>
-      </div>
+      <aside
+        data-admin-schutz
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: 'min(520px, 45vw)',
+          zIndex: 2147483200,
+          background: '#fff',
+          borderRight: '1px solid #dce3ee',
+          boxShadow: '8px 0 28px rgba(13,36,79,.16)',
+          padding: 18,
+          overflowY: 'auto',
+        }}
+      >
+        <strong>Analysewerkzeuge</strong>
+        <p>Es sind keine Beiträge vorhanden.</p>
+        <button type="button" onClick={onSchliessen}>Schließen</button>
+      </aside>
     );
   }
 
   return (
-    <div
+    <aside
       data-admin-schutz
-      onClick={onSchliessen}
-      style={{ position: 'fixed', inset: 0, zIndex: 2147483200, background: 'rgba(7,13,27,.64)', padding: 18 }}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        width: 'min(520px, 45vw)',
+        zIndex: 2147483200,
+        background: '#fff',
+        borderRight: '1px solid #dce3ee',
+        boxShadow: '8px 0 28px rgba(13,36,79,.16)',
+        overflow: 'hidden',
+      }}
     >
       <section
-        onClick={(event) => event.stopPropagation()}
         style={{
-          maxWidth: 1180,
           height: '100%',
-          margin: '0 auto',
           display: 'flex',
           flexDirection: 'column',
           background: '#fff',
-          borderRadius: 14,
           padding: 18,
           overflow: 'hidden',
+          boxSizing: 'border-box',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
@@ -2416,8 +2436,23 @@ function AnalysewerkzeugeAnsicht({
           <button type="button" onClick={onSchliessen} style={{ marginLeft: 'auto' }}>Schließen</button>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(230px, 300px) 1fr', gap: 16, flex: 1, minHeight: 0, marginTop: 14 }}>
-          <aside style={{ overflowY: 'auto', borderRight: '1px solid #dce3ee', paddingRight: 12 }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 12,
+            flex: 1,
+            minHeight: 0,
+            marginTop: 14,
+          }}
+        >
+          <div
+            style={{
+              flex: '0 0 auto',
+              borderBottom: '1px solid #dce3ee',
+              paddingBottom: 12,
+            }}
+          >
             <label style={{ ...beschriftung, marginTop: 0 }}>
               Beitrag auswählen
               <select
@@ -2436,7 +2471,14 @@ function AnalysewerkzeugeAnsicht({
               </select>
             </label>
 
-            <div style={{ marginTop: 14, display: 'grid', gap: 6 }}>
+            <div
+              style={{
+                marginTop: 14,
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                gap: 6,
+              }}
+            >
               {ANALYSE_WERKZEUGE.map((werkzeug) => (
                 <button
                   key={werkzeug.id}
@@ -2462,16 +2504,16 @@ function AnalysewerkzeugeAnsicht({
               ))}
             </div>
 
-            <div style={{ ...block, marginTop: 16 }}>
+            <div style={{ ...block, marginTop: 12 }}>
               <strong style={{ fontSize: 12.5 }}>Ausgewählter Beitrag</strong>
               <p style={{ margin: '6px 0 0', fontSize: 12, lineHeight: 1.45 }}>
                 <b>ID:</b> {post?.id}<br />
                 <b>Profil:</b> {profil?.username || post?.profileId || 'nicht verknüpft'}
               </p>
             </div>
-          </aside>
+          </div>
 
-          <main style={{ overflowY: 'auto', paddingRight: 4 }}>
+          <main style={{ overflowY: 'auto', paddingRight: 4, minHeight: 0, flex: 1 }}>
             {aktiv === 'quelle' && (
               <>
                 <h2 style={{ marginTop: 0, fontSize: 18 }}>Quellenprüfung</h2>
@@ -2663,9 +2705,7 @@ function AnalysewerkzeugeAnsicht({
                 <h2 style={{ marginTop: 0, fontSize: 18 }}>Bildanalyse und Hotspots</h2>
 
                 <p style={{ fontSize: 12.5, lineHeight: 1.5, color: '#5a6b86' }}>
-                  Die Hotspots liegen derzeit in src/data/imageHotspots.js. Änderungen werden gespeichert
-                  und in der Codeansicht sowie im ZIP sichtbar. Für eine echte Liveanzeige der Hotspots muss
-                  App.jsx zusätzlich einen imageHotspotsOverride an HotspotImage weiterreichen.
+                  Änderungen an Hotspots und Hinweistexten werden direkt in der Vorschau neben dem Editor angezeigt.
                 </p>
 
                 <label style={beschriftung}>Hotspots und Hinweisinhalt
@@ -2701,7 +2741,7 @@ function AnalysewerkzeugeAnsicht({
           </main>
         </div>
       </section>
-    </div>
+    </aside>
   );
 }
 
@@ -3183,11 +3223,20 @@ export default function InlineAdmin() {
         <style>{MARKIER_CSS}</style>
       )}
 
-      <App
-        key={vorschauSchluessel}
-        contentOverride={inhalte}
-        previewMode
-      />
+      <div
+        style={{
+          marginLeft: zeigeAnalysewerkzeuge ? 'min(520px, 45vw)' : 0,
+          transition: 'margin-left .2s ease',
+          minHeight: '100vh',
+        }}
+      >
+        <App
+          key={vorschauSchluessel}
+          contentOverride={inhalte}
+          imageHotspotsOverride={entwurf.imageHotspots}
+          previewMode
+        />
+      </div>
 
       <AdminKopfKnopf
         aktiv
