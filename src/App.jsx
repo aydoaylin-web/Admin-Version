@@ -1228,16 +1228,63 @@ function reopenDemo(){
     const Icon = tool.icon;
     const used = usedTools.includes(tool.id);
     const open = openTool === tool.id;
-    const sourceAvailable = liveActivePost?.sourceCheck?.available;
+
+    // Fehlt das Feld "available", bleibt das Werkzeug wie bisher verfügbar.
+    // Erst ein ausdrücklich gesetztes "available: false" deaktiviert es.
+    const toolAvailable = {
+      source: liveActivePost?.sourceCheck?.available !== false,
+      image: liveActivePost?.imageCheck?.available !== false,
+      profile: liveActivePost?.profileCheck?.available !== false,
+      origin: liveActivePost?.imageOriginCheck?.available !== false,
+    }[tool.id];
+
+    const unavailableLabel = lang === 'de' ? 'nicht verfügbar' : 'not available';
+    const unavailableTitle = lang === 'de'
+      ? 'Für diesen Beitrag nicht verfügbar'
+      : 'Not available for this post';
+    const unavailableText = lang === 'de'
+      ? 'Für diese Überprüfung liegen bei diesem Beitrag keine Informationen vor.'
+      : 'No information is available for this type of analysis in this post.';
+
     return (
       <div className={`analysis-tool-card ${used ? "used" : ""} ${open ? "open" : ""}`} key={tool.id}>
         <button type="button" className="analysis-tool-toggle" onClick={() => useAnalysisTool(tool.id)}>
-          <span className="analysis-tool-title"><Icon size={19} />{t(`tool_${tool.id}`)}{tool.id==='source'&&!sourceAvailable&&<small className="tool-availability">kein Link</small>}{used && <CheckCircle2 size={18} />}</span>
-          <span className="accordion-symbol">{open?'−':'+'}</span>
+          <span className="analysis-tool-title">
+            <Icon size={19} />
+            {t(`tool_${tool.id}`)}
+            {!toolAvailable && (
+              <small className="tool-availability">{unavailableLabel}</small>
+            )}
+            {used && <CheckCircle2 size={18} />}
+          </span>
+          <span className="accordion-symbol">{open ? '−' : '+'}</span>
         </button>
+
         {open && (
           <div className="analysis-tool-content">
-            {tool.id === 'source' ? (
+            {!toolAvailable ? (
+              <div
+                className="analysis-unavailable-box"
+                role="status"
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '12px',
+                  padding: '14px',
+                  border: '1px solid rgba(148, 163, 184, 0.45)',
+                  borderRadius: '12px',
+                  background: 'rgba(248, 250, 252, 0.92)',
+                }}
+              >
+                <TriangleAlert size={21} aria-hidden="true" />
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '4px' }}>
+                    {unavailableTitle}
+                  </strong>
+                  <p style={{ margin: 0 }}>{unavailableText}</p>
+                </div>
+              </div>
+            ) : tool.id === 'source' ? (
               <SourceCheckPanel
                 data={liveActivePost?.sourceCheck}
                 hintMode={hintMode}
@@ -1327,4 +1374,3 @@ function reopenDemo(){
     </>}</section></div>}
   </div>;
 }
-
