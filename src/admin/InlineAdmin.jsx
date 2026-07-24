@@ -42,6 +42,12 @@ import { ladeZipHerunter, baueDateiListe } from './zipExport.js';
 const INHALT_SCHLUESSEL = 'dd-admin-inhalte-v4';
 const CONTENT_DATEIEN = ['settings', 'posts', 'tasks', 'profiles', 'stories', 'guides'];
 const VERDICTS = ['echt', 'suspekt', 'manipuliert'];
+const ANALYSE_WERKZEUGE = [
+  { id: 'quelle', label: 'Quellenprüfung', datei: 'content/posts.json' },
+  { id: 'profil', label: 'Profilprüfung', datei: 'content/profiles.json' },
+  { id: 'herkunft', label: 'Bildherkunft', datei: 'content/posts.json' },
+  { id: 'bild', label: 'Bildanalyse und Hotspots', datei: 'src/data/imageHotspots.js' },
+];
 
 /* Bedienelemente. Ein Klick darauf loest im Bearbeitenmodus die
    normale Aktion aus, damit die App bedienbar bleibt. Zum
@@ -584,6 +590,418 @@ function AlleDatenAnsicht({ inhalte, setInhalte, onSchliessen }) {
   );
 }
 
+
+/* ---------- Zentrale Bearbeitung aller Analysewerkzeuge ---------- */
+function AnalysewerkzeugeAnsicht({
+  inhalte,
+  setInhalte,
+  entwurf,
+  setEntwurf,
+  onSchliessen,
+  onVorschau,
+}) {
+  const posts = alsListe(inhalte.posts);
+  const [postId, setPostId] = useState(() => String(posts[0]?.id ?? ''));
+  const [aktiv, setAktiv] = useState('quelle');
+  const [fehler, setFehler] = useState('');
+
+  useEffect(() => {
+    if (!posts.some((post) => String(post.id) === String(postId))) {
+      setPostId(String(posts[0]?.id ?? ''));
+    }
+  }, [posts, postId]);
+
+  const post = posts.find((eintrag) => String(eintrag.id) === String(postId)) || null;
+  const profil = post
+    ? alsListe(inhalte.profiles).find((eintrag) => String(eintrag.id) === String(post.profileId)) || null
+    : null;
+  const zonen = post ? (entwurf?.imageHotspots?.[post.id] || { errorCount: 0, hotspots: [] }) : null;
+
+  const ersetzePost = (neu) => {
+    if (!post) return;
+    setInhalte((alt) => ({
+      ...alt,
+      posts: alsListe(alt.posts).map((eintrag) => (
+        String(eintrag.id) === String(post.id) ? neu : eintrag
+      )),
+    }));
+  };
+
+  const setzePostTeil = (schluessel, wert) => {
+    if (!post) return;
+    ersetzePost({ ...post, [schluessel]: wert });
+  };
+
+  const ersetzeProfil = (neu) => {
+    if (!profil) return;
+    setInhalte((alt) => ({
+      ...alt,
+      profiles: alsListe(alt.profiles).map((eintrag) => (
+        String(eintrag.id) === String(profil.id) ? neu : eintrag
+      )),
+    }));
+  };
+
+  const setzeZonen = (neu) => {
+    if (!post) return;
+    setEntwurf((alt) => ({
+      ...alt,
+      imageHotspots: {
+        ...alsObjekt(alt.imageHotspots),
+        [post.id]: neu,
+      },
+    }));
+  };
+
+  const sourceCheck = alsObjekt(post?.sourceCheck);
+  const profileCheck = alsObjekt(profil?.profileCheck);
+  const originCheck = alsObjekt(post?.imageOriginCheck);
+  const genericAnalysisTools = alsObjekt(post?.analysisTools);
+
+  function verfuegbarkeit(wert, onChange) {
+    return (
+      <label style={{ ...beschriftung, display: 'flex', gap: 8, alignItems: 'center' }}>
+        <input
+          type="checkbox"
+          checked={wert?.available !== false}
+          onChange={(event) => onChange({ ...alsObjekt(wert), available: event.target.checked })}
+        />
+        Werkzeug für diesen Beitrag verfügbar
+      </label>
+    );
+  }
+
+  if (!posts.length) {
+    return (
+      <div data-admin-schutz style={{ position: 'fixed', inset: 0, zIndex: 2147483200, background: 'rgba(7,13,27,.64)', padding: 18 }}>
+        <section style={{ maxWidth: 900, margin: '0 auto', background: '#fff', borderRadius: 14, padding: 18 }}>
+          <strong>Analysewerkzeuge</strong>
+          <p>Es sind keine Beiträge vorhanden.</p>
+          <button type="button" onClick={onSchliessen}>Schließen</button>
+        </section>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      data-admin-schutz
+      onClick={onSchliessen}
+      style={{ position: 'fixed', inset: 0, zIndex: 2147483200, background: 'rgba(7,13,27,.64)', padding: 18 }}
+    >
+      <section
+        onClick={(event) => event.stopPropagation()}
+        style={{
+          maxWidth: 1180,
+          height: '100%',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          background: '#fff',
+          borderRadius: 14,
+          padding: 18,
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          <strong>Alle Analysewerkzeuge bearbeiten</strong>
+          <span style={{ fontSize: 12, color: '#5a6b86' }}>
+            Änderungen werden direkt in die Vorschau übernommen.
+          </span>
+          <button type="button" onClick={onVorschau}>Vorschau neu laden</button>
+          <button type="button" onClick={onSchliessen} style={{ marginLeft: 'auto' }}>Schließen</button>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(230px, 300px) 1fr', gap: 16, flex: 1, minHeight: 0, marginTop: 14 }}>
+          <aside style={{ overflowY: 'auto', borderRight: '1px solid #dce3ee', paddingRight: 12 }}>
+            <label style={{ ...beschriftung, marginTop: 0 }}>
+              Beitrag auswählen
+              <select
+                style={feld}
+                value={postId}
+                onChange={(event) => {
+                  setPostId(event.target.value);
+                  setFehler('');
+                }}
+              >
+                {posts.map((eintrag) => (
+                  <option key={eintrag.id} value={String(eintrag.id)}>
+                    {eintrag.username || eintrag.id} · {String(zwei(eintrag.caption, 'de') || '').slice(0, 48)}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <div style={{ marginTop: 14, display: 'grid', gap: 6 }}>
+              {ANALYSE_WERKZEUGE.map((werkzeug) => (
+                <button
+                  key={werkzeug.id}
+                  type="button"
+                  onClick={() => {
+                    setAktiv(werkzeug.id);
+                    setFehler('');
+                  }}
+                  style={{
+                    textAlign: 'left',
+                    padding: '9px 10px',
+                    borderRadius: 9,
+                    cursor: 'pointer',
+                    border: '1px solid #dce3ee',
+                    background: aktiv === werkzeug.id ? '#092b61' : '#fff',
+                    color: aktiv === werkzeug.id ? '#fff' : '#182235',
+                    fontWeight: 750,
+                  }}
+                >
+                  {werkzeug.label}
+                  <small style={{ display: 'block', marginTop: 2, opacity: 0.75 }}>{werkzeug.datei}</small>
+                </button>
+              ))}
+            </div>
+
+            <div style={{ ...block, marginTop: 16 }}>
+              <strong style={{ fontSize: 12.5 }}>Ausgewählter Beitrag</strong>
+              <p style={{ margin: '6px 0 0', fontSize: 12, lineHeight: 1.45 }}>
+                <b>ID:</b> {post?.id}<br />
+                <b>Profil:</b> {profil?.username || post?.profileId || 'nicht verknüpft'}
+              </p>
+            </div>
+          </aside>
+
+          <main style={{ overflowY: 'auto', paddingRight: 4 }}>
+            {aktiv === 'quelle' && (
+              <>
+                <h2 style={{ marginTop: 0, fontSize: 18 }}>Quellenprüfung</h2>
+                {verfuegbarkeit(sourceCheck, (neu) => setzePostTeil('sourceCheck', neu))}
+
+                <label style={beschriftung}>Status
+                  <select
+                    style={feld}
+                    value={sourceCheck.status || ''}
+                    onChange={(event) => setzePostTeil('sourceCheck', { ...sourceCheck, status: event.target.value })}
+                  >
+                    <option value="">Standard</option>
+                    <option value="good">Vertrauenswürdig</option>
+                    <option value="warning">Warnung</option>
+                    <option value="mixed">Gemischt</option>
+                    <option value="ad">Werbung</option>
+                  </select>
+                </label>
+
+                {[
+                  ['domain', 'Domain'],
+                  ['title', 'Titel'],
+                  ['url', 'URL'],
+                  ['pageType', 'Seitentyp'],
+                  ['articleHeadline', 'Artikelüberschrift'],
+                  ['author', 'Verantwortliche Person oder Redaktion'],
+                  ['published', 'Veröffentlichungsdatum'],
+                  ['unavailableTitle', 'Titel bei Nichtverfügbarkeit'],
+                  ['unavailableMessage', 'Meldung bei Nichtverfügbarkeit'],
+                  ['previewLabel', 'Beschriftung Vorschau öffnen'],
+                  ['lessLabel', 'Beschriftung Vorschau schließen'],
+                  ['authorLabel', 'Beschriftung Verantwortlich'],
+                  ['publishedLabel', 'Beschriftung Veröffentlicht'],
+                  ['hintTitle', 'Tippüberschrift'],
+                  ['hintQuestion', 'Tippfrage'],
+                  ['hintImportanceTitle', 'Überschrift Warum wichtig'],
+                  ['hintText', 'Tipptext'],
+                  ['collapseLabel', 'Beschriftung Tipp schließen'],
+                ].map(([schluessel, label]) => (
+                  <label key={schluessel} style={beschriftung}>{label}
+                    <textarea
+                      rows={schluessel.includes('Message') || schluessel.includes('Text') || schluessel.includes('Question') ? 3 : 2}
+                      style={feld}
+                      value={sourceCheck[schluessel] ?? ''}
+                      onChange={(event) => setzePostTeil('sourceCheck', { ...sourceCheck, [schluessel]: event.target.value })}
+                    />
+                  </label>
+                ))}
+
+                <label style={beschriftung}>Kernaussagen, vollständige Liste als JSON
+                  <JsonFeld
+                    wert={alsListe(sourceCheck.keyFacts)}
+                    onChange={(neu) => setzePostTeil('sourceCheck', { ...sourceCheck, keyFacts: neu })}
+                    zeilen={8}
+                    onFehler={setFehler}
+                  />
+                </label>
+
+                <VollstaendigesObjekt
+                  titel="Vollständige Quellenprüfung"
+                  datei="content/posts.json"
+                  wert={sourceCheck}
+                  onChange={(neu) => setzePostTeil('sourceCheck', neu)}
+                />
+              </>
+            )}
+
+            {aktiv === 'profil' && (
+              <>
+                <h2 style={{ marginTop: 0, fontSize: 18 }}>Profilprüfung</h2>
+                {!profil ? (
+                  <div style={block}>
+                    <strong>Kein Profil verknüpft</strong>
+                    <p style={{ fontSize: 12.5, lineHeight: 1.5 }}>
+                      Dieser Beitrag verweist auf kein vorhandenes Profil. Trage im Beitrag eine gültige profileId ein.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    {verfuegbarkeit(profileCheck, (neu) => ersetzeProfil({ ...profil, profileCheck: neu }))}
+
+                    {[
+                      ['bio', 'Biografie in der Profilprüfung'],
+                      ['accountType', 'Kontotyp'],
+                      ['created', 'Erstellungsdatum'],
+                      ['visibility', 'Sichtbarkeit'],
+                      ['verification', 'Verifizierungsstatus'],
+                      ['unavailableTitle', 'Titel bei Nichtverfügbarkeit'],
+                      ['unavailableMessage', 'Meldung bei Nichtverfügbarkeit'],
+                      ['lockedTitle', 'Titel bei gesperrtem Profil'],
+                      ['lockedMessage', 'Meldung bei gesperrtem Profil'],
+                      ['postsLabel', 'Beschriftung Beiträge'],
+                      ['followersLabel', 'Beschriftung Follower'],
+                      ['followingLabel', 'Beschriftung Folgt'],
+                      ['accountTypeLabel', 'Beschriftung Kontotyp'],
+                      ['createdLabel', 'Beschriftung Erstellt'],
+                      ['visibilityLabel', 'Beschriftung Sichtbarkeit'],
+                      ['verificationLabel', 'Beschriftung Verifizierung'],
+                      ['hintTitle', 'Tippüberschrift'],
+                      ['hintQuestion', 'Tippfrage'],
+                      ['hintImportanceTitle', 'Überschrift Warum wichtig'],
+                      ['hintText1', 'Erster Tipptext'],
+                      ['hintText2', 'Zweiter Tipptext'],
+                      ['collapseLabel', 'Beschriftung Tipp schließen'],
+                    ].map(([schluessel, label]) => (
+                      <label key={schluessel} style={beschriftung}>{label}
+                        <textarea
+                          rows={schluessel.includes('Message') || schluessel.includes('Text') || schluessel.includes('Question') || schluessel === 'bio' ? 3 : 2}
+                          style={feld}
+                          value={profileCheck[schluessel] ?? ''}
+                          onChange={(event) => ersetzeProfil({
+                            ...profil,
+                            profileCheck: { ...profileCheck, [schluessel]: event.target.value },
+                          })}
+                        />
+                      </label>
+                    ))}
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 8 }}>
+                      {[
+                        ['posts', 'Beiträge'],
+                        ['followers', 'Follower'],
+                        ['following', 'Folgt'],
+                      ].map(([schluessel, label]) => (
+                        <label key={schluessel} style={beschriftung}>{label}
+                          <input
+                            style={feld}
+                            value={profileCheck[schluessel] ?? ''}
+                            onChange={(event) => ersetzeProfil({
+                              ...profil,
+                              profileCheck: { ...profileCheck, [schluessel]: event.target.value },
+                            })}
+                          />
+                        </label>
+                      ))}
+                    </div>
+
+                    <label style={{ ...beschriftung, display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <input
+                        type="checkbox"
+                        checked={profileCheck.inaccessible === true}
+                        onChange={(event) => ersetzeProfil({
+                          ...profil,
+                          profileCheck: { ...profileCheck, inaccessible: event.target.checked },
+                        })}
+                      />
+                      Profil als nicht erreichbar darstellen
+                    </label>
+
+                    <VollstaendigesObjekt
+                      titel="Vollständige Profilprüfung"
+                      datei="content/profiles.json"
+                      wert={profileCheck}
+                      onChange={(neu) => ersetzeProfil({ ...profil, profileCheck: neu })}
+                    />
+                  </>
+                )}
+              </>
+            )}
+
+            {aktiv === 'herkunft' && (
+              <>
+                <h2 style={{ marginTop: 0, fontSize: 18 }}>Bildherkunft und Rückwärtssuche</h2>
+                {verfuegbarkeit(originCheck, (neu) => setzePostTeil('imageOriginCheck', neu))}
+
+                <p style={{ fontSize: 12.5, lineHeight: 1.5, color: '#5a6b86' }}>
+                  Hier bearbeitest du den vollständigen Inhalt der Rückwärtssuche. Listen, Treffer,
+                  Bilder, Datumsangaben, Hinweise und Meldungen können direkt im JSON verändert werden.
+                </p>
+
+                <JsonFeld
+                  wert={originCheck}
+                  onChange={(neu) => setzePostTeil('imageOriginCheck', neu)}
+                  zeilen={28}
+                  onFehler={setFehler}
+                />
+
+                <VollstaendigesObjekt
+                  titel="Vollständigen Beitrag bearbeiten"
+                  datei="content/posts.json"
+                  wert={post}
+                  onChange={ersetzePost}
+                />
+              </>
+            )}
+
+            {aktiv === 'bild' && (
+              <>
+                <h2 style={{ marginTop: 0, fontSize: 18 }}>Bildanalyse und Hotspots</h2>
+
+                <p style={{ fontSize: 12.5, lineHeight: 1.5, color: '#5a6b86' }}>
+                  Die Hotspots liegen derzeit in src/data/imageHotspots.js. Änderungen werden gespeichert
+                  und in der Codeansicht sowie im ZIP sichtbar. Für eine echte Liveanzeige der Hotspots muss
+                  App.jsx zusätzlich einen imageHotspotsOverride an HotspotImage weiterreichen.
+                </p>
+
+                <label style={beschriftung}>Hotspots und Hinweisinhalt
+                  <JsonFeld
+                    wert={zonen || { errorCount: 0, hotspots: [] }}
+                    onChange={setzeZonen}
+                    zeilen={28}
+                    onFehler={setFehler}
+                  />
+                </label>
+
+                <label style={beschriftung}>Optionales allgemeines analysisTools-Objekt des Beitrags
+                  <JsonFeld
+                    wert={genericAnalysisTools}
+                    onChange={(neu) => setzePostTeil('analysisTools', neu)}
+                    zeilen={16}
+                    onFehler={setFehler}
+                  />
+                </label>
+
+                <VollstaendigesObjekt
+                  titel="Vollständigen Beitrag bearbeiten"
+                  datei="content/posts.json"
+                  wert={post}
+                  onChange={ersetzePost}
+                />
+              </>
+            )}
+
+            <div style={{ marginTop: 12, fontSize: 12, color: fehler ? '#a3382c' : '#1e6b4f' }}>
+              {fehler ? 'Ungültiges JSON wird noch nicht übernommen.' : 'Alle gültigen Änderungen sind übernommen.'}
+            </div>
+          </main>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
 /* ---------- Codeansicht: immer die GANZE Datei ---------- */
 function CodeAnsicht({ inhalte, entwurf, geaenderte, startDatei, onSchliessen }) {
   const dateien = useMemo(() => ({
@@ -653,6 +1071,7 @@ export default function InlineAdmin() {
   const [zeigeCode, setZeigeCode] = useState(false);
   const [startDatei, setStartDatei] = useState(null);
   const [zeigeAlleDaten, setZeigeAlleDaten] = useState(false);
+  const [zeigeAnalysewerkzeuge, setZeigeAnalysewerkzeuge] = useState(false);
   const [meldung, setMeldung] = useState('');
   const [status, setStatus] = useState('');
   const [vorschauSchluessel, setVorschauSchluessel] = useState(0);
@@ -690,15 +1109,18 @@ export default function InlineAdmin() {
 
   useEffect(() => { speichereEntwurf(entwurf); }, [entwurf]);
 
-  /* Liveansicht. App.jsx haelt den gerade geprueften Beitrag als
-     Momentaufnahme im eigenen Zustand - solange eine Feed-Pruefung
-     offen ist, wuerde ein Neuaufbau sie schliessen. Deshalb nur
-     dann automatisch neu aufbauen, wenn keine offen ist. */
+  /* Liveansicht:
+     Jede gültige Contentänderung baut die Vorschau neu auf. Dadurch
+     werden auch bereits geöffnete Analysewerkzeuge mit den neuen Daten
+     geladen. Eine gerade offene Prüfung wird dabei geschlossen, weil
+     App.jsx activePost und activeTask als Momentaufnahme speichert. */
   useEffect(() => {
     if (!inhalte) return;
     if (ersterLauf.current) { ersterLauf.current = false; return; }
-    if (document.querySelector('.task-sheet')) return;
-    setVorschauSchluessel((k) => k + 1);
+    const uhr = window.setTimeout(() => {
+      setVorschauSchluessel((k) => k + 1);
+    }, 180);
+    return () => window.clearTimeout(uhr);
   }, [inhalte]);
 
   const geaenderteInhalte = useMemo(() => {
@@ -832,6 +1254,7 @@ export default function InlineAdmin() {
           ))}
         </div>
         <button type="button" onClick={() => setVorschauSchluessel((k) => k + 1)}>Vorschau aktualisieren</button>
+        <button type="button" onClick={() => setZeigeAnalysewerkzeuge(true)}>Analysewerkzeuge</button>
         <button type="button" onClick={() => setZeigeAlleDaten(true)}>Alle Daten</button>
         <button type="button" onClick={() => { setStartDatei(null); setZeigeCode(true); }}>Code</button>
         <button type="button" onClick={speichern}>{status || 'Speichern'}</button>
@@ -874,6 +1297,17 @@ export default function InlineAdmin() {
           onAlleDaten={() => { setZiel(null); setZeigeAlleDaten(true); }}
           onZeigeDatei={zeigeGanzeDatei}
           onVerwerfen={verwerfeElement} />
+      )}
+
+      {zeigeAnalysewerkzeuge && (
+        <AnalysewerkzeugeAnsicht
+          inhalte={inhalte}
+          setInhalte={setInhalte}
+          entwurf={entwurf}
+          setEntwurf={setEntwurf}
+          onSchliessen={() => setZeigeAnalysewerkzeuge(false)}
+          onVorschau={() => setVorschauSchluessel((k) => k + 1)}
+        />
       )}
 
       {zeigeAlleDaten && (
