@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "packId": "deepfake-defender-core",
+  "name": "Deepfake Defender Core Pack",
+  "version": "1.0.0",
+  "files": {
+    "settings": "content/settings.json",
+    "profiles": "content/profiles.json",
+    "stories": "content/stories.json",
+    "posts": "content/posts.json",
+    "tasks": "content/tasks.json",
+    "guides": "content/guides.json"
+  }
+}

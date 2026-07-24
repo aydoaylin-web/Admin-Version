@@ -1,0 +1,37 @@
+[
+  {
+    "id": "guide_training",
+    "title": "Agent Training Guide",
+    "type": "training",
+    "image": "assets/guides/trainingsleitfaden.png",
+    "enabled": true
+  },
+  {
+    "id": "guide_news",
+    "title": "News Card Guide",
+    "type": "news",
+    "image": "assets/guides/newskarte_anleitung.png",
+    "enabled": true
+  },
+  {
+    "id": "guide_perspective",
+    "title": "Perspective Shift Guide",
+    "type": "perspective",
+    "image": "assets/guides/perspektivwechsel_anleitung.png",
+    "enabled": true
+  },
+  {
+    "id": "guide_defense",
+    "title": "Reality Defense Guide",
+    "type": "realityDefense",
+    "image": "assets/guides/reality_defense_anleitung.png",
+    "enabled": true
+  },
+  {
+    "id": "guide_source",
+    "title": "Source Review Guide",
+    "type": "reference",
+    "image": "assets/guides/quellencheck.png",
+    "enabled": true
+  }
+]

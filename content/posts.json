@@ -1,0 +1,3104 @@
+[
+  {
+    "id": "post_101",
+    "username": "aigram",
+    "displayName": "AiGram",
+    "verified": true,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_2_App.png",
+    "imageAlt": {
+      "de": "Vier Jugendliche schauen auf Handys, dahinter Bildschirm mit Jugendschutz-Symbolen von AiGram",
+      "en": "Four teenagers looking at their phones, an AiGram youth protection screen behind them"
+    },
+    "caption": {
+      "de": "AiGram bekommt neue Jugendschutz-Funktionen 🛡️ Was haltet ihr davon?",
+      "en": "AiGram is getting new youth protection features 🛡️ What do you think?"
+    },
+    "source": "aigram",
+    "likes": 1842,
+    "time": {
+      "de": "2 Std.",
+      "en": "2 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_101",
+    "comments": [
+      {
+        "username": "emma.b",
+        "text": {
+          "de": "find ich gut 👍",
+          "en": "i like it 👍"
+        }
+      },
+      {
+        "username": "mxxdrago",
+        "text": {
+          "de": "endlich, brauchte eh keiner die nachtscrollerei 😂",
+          "en": "finally, nobody needed the night scrolling anyway 😂"
+        }
+      },
+      {
+        "username": "lea__",
+        "text": {
+          "de": "muss das echt sein? 🙄",
+          "en": "does it have to be like this? 🙄"
+        }
+      },
+      {
+        "username": "frau_berger",
+        "text": {
+          "de": "Als Mutter finde ich solche Funktionen wichtig.",
+          "en": "As a mum I think features like this matter."
+        }
+      }
+    ],
+    "profileId": "ai.news_official",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_101",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Mehr erfahren",
+        "en": "Find out more"
+      },
+      "url": "https://help.aigram.example/jugendschutz-2026",
+      "domain": "help.aigram.example",
+      "title": {
+        "de": "Neue Schutzfunktionen für Jugendliche",
+        "en": "New protection features for young people"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "AiGram Safety Team",
+        "en": "AiGram Safety Team"
+      },
+      "published": {
+        "de": "12. Juli 2026",
+        "en": "12 July 2026"
+      },
+      "status": "official",
+      "note": {
+        "de": "Die Seite gehört zum offiziellen Hilfebereich der Plattform.",
+        "en": "The page belongs to the platform's official help section."
+      },
+      "pageType": {
+        "de": "Offizieller Hilfebeitrag",
+        "en": "Official help article"
+      },
+      "articleHeadline": {
+        "de": "Jugendschutzfunktionen werden schrittweise eingeführt.",
+        "en": "Youth protection features are being rolled out step by step."
+      },
+      "articleSummary": {
+        "de": "Offizielle Hilfeseite erklärt, welche Konten betroffen sind und wann die Funktionen starten.",
+        "en": "The official help page explains which accounts are affected and when the features start."
+      },
+      "keyFacts": [
+        {
+          "de": "Private Konten für jüngere Nutzer",
+          "en": "Private accounts for younger users"
+        },
+        {
+          "de": "Zeitlimits können aktiviert werden",
+          "en": "Time limits can be switched on"
+        },
+        {
+          "de": "Einführung erfolgt schrittweise",
+          "en": "Rollout happens step by step"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "find ich gut 👍",
+          "en": "i like it 👍"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "endlich, brauchte eh keiner die nachtscrollerei 😂",
+          "en": "finally, nobody needed the night scrolling anyway 😂"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "muss das echt sein? 🙄",
+          "en": "does it have to be like this? 🙄"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Als Mutter finde ich solche Funktionen wichtig.",
+          "en": "As a mum I think features like this matter."
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "confirm",
+      "hits": [
+        {
+          "date": {
+            "de": "9. Juli 2026",
+            "en": "9 July 2026"
+          },
+          "source": "help.aigram.example",
+          "title": {
+            "de": "Neue Jugendschutz-Funktionen offiziell angekündigt",
+            "en": "New youth protection features officially announced"
+          }
+        },
+        {
+          "date": {
+            "de": "9. Juli 2026",
+            "en": "9 July 2026"
+          },
+          "source": "technik-news.example",
+          "title": {
+            "de": "AiGram führt Jugendschutz-Funktionen ein",
+            "en": "AiGram introduces youth protection features"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_102",
+    "username": "paul.erklaerts",
+    "displayName": "Paul erklärt's",
+    "verified": true,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_4_App.png",
+    "imageAlt": {
+      "de": "Foto vor dem EU-Parlament mit einem Schild „Neue Regeln für Künstliche Intelligenz\"",
+      "en": "Photo in front of the EU Parliament with a sign reading \"New rules for Artificial Intelligence\""
+    },
+    "caption": {
+      "de": "⚠️🚨Achtung: Neue KI-Regeln der EU – betrifft fast alle Apps 🤖⚖️ Für nähere Informationen informiert euch hier: https://europa.example/ki-regeln",
+      "en": "⚠️🚨Careful: new EU rules for AI – affects almost every app 🤖⚖️ For more information look here: https://europa.example/ki-regeln"
+    },
+    "source": "paul.erklaerts",
+    "likes": 2389,
+    "time": {
+      "de": "3 Std.",
+      "en": "3 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_102",
+    "comments": [
+      {
+        "username": "niko.p",
+        "text": {
+          "de": "gut dass da mal was passiert",
+          "en": "good that something's finally happening"
+        }
+      },
+      {
+        "username": "sara2013",
+        "text": {
+          "de": "versteh ich ehrlich gesagt nich so ganz",
+          "en": "honestly i don't really get it"
+        }
+      },
+      {
+        "username": "lukas.w",
+        "text": {
+          "de": "steht auch so im artikel, hab nachgeschaut ✅",
+          "en": "the article says the same, i checked ✅"
+        }
+      }
+    ],
+    "profileId": "weltblick.news",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_102",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Zum Bericht",
+        "en": "Read the report"
+      },
+      "url": "https://europa.example/ki-regeln",
+      "domain": "europa.example",
+      "title": {
+        "de": "Neue europäische Regeln für KI",
+        "en": "New European rules for AI"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "EU-Informationsdienst",
+        "en": "EU information service"
+      },
+      "published": {
+        "de": "8. Juli 2026",
+        "en": "8 July 2026"
+      },
+      "status": "reliable",
+      "note": {
+        "de": "Die Seite nennt die zuständige Institution und verlinkt das vollständige Dokument.",
+        "en": "The page names the responsible institution and links the full document."
+      },
+      "pageType": {
+        "de": "Informationsseite einer Institution",
+        "en": "An institution's information page"
+      },
+      "articleHeadline": {
+        "de": "Die EU arbeitet an Regeln für KI-Systeme.",
+        "en": "The EU is working on rules for AI systems."
+      },
+      "articleSummary": {
+        "de": "Die Seite beschreibt den Stand des Gesetzgebungsverfahrens und nennt das Originaldokument.",
+        "en": "The page describes where the law currently stands and names the original document."
+      },
+      "keyFacts": [
+        {
+          "de": "Regeln betreffen verschiedene Risikostufen",
+          "en": "The rules cover different risk levels"
+        },
+        {
+          "de": "Nicht jede KI-Anwendung ist gleich geregelt",
+          "en": "Not every AI application is regulated the same way"
+        },
+        {
+          "de": "Der Text ist keine Schulregel",
+          "en": "The text is not a school rule"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "gut dass da mal was passiert",
+          "en": "good that something's finally happening"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "versteh ich ehrlich gesagt nich so ganz",
+          "en": "honestly i don't really get it"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "steht auch so im artikel, hab nachgeschaut ✅",
+          "en": "the article says the same, i checked ✅"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Hat jemand dafür noch eine zweite Quelle?",
+          "en": "Has anyone got a second source for this?"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "confirm",
+      "hits": [
+        {
+          "date": {
+            "de": "9. Juli 2026",
+            "en": "9 July 2026"
+          },
+          "source": "europa.example",
+          "title": {
+            "de": "Neue europäische Regeln für KI",
+            "en": "New European rules for AI"
+          }
+        },
+        {
+          "date": {
+            "de": "9. Juli 2026",
+            "en": "9 July 2026"
+          },
+          "source": "news360.example",
+          "title": {
+            "de": "EU stellt KI-Regeln vor",
+            "en": "EU presents AI rules"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_103",
+    "username": "technik.tim",
+    "displayName": "Technik Tim",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_5_App.png",
+    "imageAlt": {
+      "de": "Laptop mit Bild-Symbol und Label „KI-generiert\", davor eine EU-Flagge",
+      "en": "A laptop showing an image icon labelled \"AI-generated\", with an EU flag in front"
+    },
+    "caption": {
+      "de": "KI-Bilder sollen leichter erkennbar werden. Reicht eine Kennzeichnung wirklich?",
+      "en": "AI images should become easier to spot. Is labelling really enough?"
+    },
+    "source": "technik.tim",
+    "likes": 3124,
+    "time": {
+      "de": "2 Std.",
+      "en": "2 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_103",
+    "comments": [
+      {
+        "username": "mia.k",
+        "text": {
+          "de": "endlich sieht man dann was KI ist 🙌",
+          "en": "finally you'll be able to tell what's AI 🙌"
+        }
+      },
+      {
+        "username": "t.o.m",
+        "text": {
+          "de": "ob sich da echt alle dran halten? 🤔",
+          "en": "will everyone actually stick to it? 🤔"
+        }
+      },
+      {
+        "username": "j.wagner",
+        "text": {
+          "de": "Wichtige Regel, betrifft uns alle.",
+          "en": "An important rule, it affects all of us."
+        }
+      },
+      {
+        "username": "realtalk_99",
+        "text": {
+          "de": "glaub ich erst wenns soweit is",
+          "en": "i'll believe it when it happens"
+        }
+      }
+    ],
+    "profileId": "news360_official",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_103",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Seht selbst",
+        "en": "See for yourself"
+      },
+      "url": "https://news360.example/eu-kennzeichnung",
+      "domain": "news360.example",
+      "title": {
+        "de": "Kennzeichnungspflichten für KI-Inhalte",
+        "en": "Labelling duties for AI content"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "Mara Klein, Redaktion",
+        "en": "Mara Klein, editorial team"
+      },
+      "published": {
+        "de": "10. Juli 2026",
+        "en": "10 July 2026"
+      },
+      "status": "reliable",
+      "note": {
+        "de": "Autor, Datum und weiterführende Originalquelle sind sichtbar.",
+        "en": "Author, date and the original source are all visible."
+      },
+      "pageType": {
+        "de": "Nachrichtenartikel",
+        "en": "News article"
+      },
+      "articleHeadline": {
+        "de": "Kennzeichnungspflichten gelten nicht ausnahmslos für jedes KI-Bild.",
+        "en": "Labelling duties do not apply to every AI image without exception."
+      },
+      "articleSummary": {
+        "de": "Der Artikel erklärt, welche Anbieter KI-Inhalte kennzeichnen sollen und welche Ausnahmen diskutiert werden.",
+        "en": "The article explains which providers should label AI content and which exceptions are being discussed."
+      },
+      "keyFacts": [
+        {
+          "de": "Kennzeichnung hängt vom Nutzungskontext ab",
+          "en": "Labelling depends on how it is used"
+        },
+        {
+          "de": "Umsetzung erfolgt durch Plattformen und Anbieter",
+          "en": "Platforms and providers handle the rollout"
+        },
+        {
+          "de": "Der Post formuliert stärker als der Artikel",
+          "en": "The post puts it more strongly than the article"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "endlich sieht man dann was KI ist 🙌",
+          "en": "finally you'll be able to tell what's AI 🙌"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "ob sich da echt alle dran halten? 🤔",
+          "en": "will everyone actually stick to it? 🤔"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Wichtige Regel, betrifft uns alle.",
+          "en": "An important rule, it affects all of us."
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "glaub ich erst wenns soweit is",
+          "en": "i'll believe it when it happens"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "confirm",
+      "hits": [
+        {
+          "date": {
+            "de": "10. Juli 2026",
+            "en": "10 July 2026"
+          },
+          "source": "bundesministerium.example",
+          "title": {
+            "de": "Kennzeichnung von KI-Inhalten – offizielle Mitteilung",
+            "en": "Labelling of AI content – official announcement"
+          }
+        },
+        {
+          "date": {
+            "de": "10. Juli 2026",
+            "en": "10 July 2026"
+          },
+          "source": "news360.example",
+          "title": {
+            "de": "Kennzeichnungspflichten für KI-Inhalte",
+            "en": "Labelling duties for AI content"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_104",
+    "username": "luna.vibes",
+    "displayName": "luna.vibes",
+    "verified": true,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_7_App.png",
+    "imageAlt": {
+      "de": "Hände halten ein Tablet, auf dem ein digitales Zeugnis angezeigt wird",
+      "en": "Hands holding a tablet showing a digital school report"
+    },
+    "caption": {
+      "de": "Leute hahahaha wir kriegen bald digitale Zeugnisse lol 🤣🤣🤣 https://bildung-digital/zeugnisse.de",
+      "en": "guys hahaha we're getting digital school reports soon lol 🤣🤣🤣 https://bildung-digital/zeugnisse.de"
+    },
+    "source": "luna.vibes",
+    "likes": 3892,
+    "time": {
+      "de": "2 Std.",
+      "en": "2 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_104",
+    "comments": [
+      {
+        "username": "moruk.208",
+        "text": {
+          "de": "als ob laber nicht.",
+          "en": "yeah right, as if"
+        }
+      },
+      {
+        "username": "ben_2012",
+        "text": {
+          "de": "kein papier mehr, nice 🎉",
+          "en": "no more paper, nice 🎉"
+        }
+      },
+      {
+        "username": "kimm",
+        "text": {
+          "de": "gilt das jetzt für alle oder nur ein paar schulen?",
+          "en": "does that go for everyone or just a few schools?"
+        }
+      }
+    ],
+    "profileId": "news.update_official",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_104",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Weitere Infos",
+        "en": "More information"
+      },
+      "url": "https://bildung-digital/zeugnisse.de",
+      "domain": "bildung-digital.de",
+      "title": {
+        "de": "Pilotprojekt zu digitalen Zeugnissen",
+        "en": "Pilot scheme for digital school reports"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "Luna Riese",
+        "en": "Luna Riese"
+      },
+      "published": {
+        "de": "12. Juli",
+        "en": "12 July"
+      },
+      "status": "mixed",
+      "note": {
+        "de": "Die verlinkte Seite beschreibt nur einen Test an wenigen Schulen – der Beitrag behauptet dagegen, es gelte für alle.",
+        "en": "The linked page only describes a test at a few schools — the post claims it applies to everyone."
+      },
+      "pageType": {
+        "de": "Fachartikel",
+        "en": "Specialist article"
+      },
+      "articleHeadline": {
+        "de": "Digitale Zeugnisse werden in einem Pilotprojekt getestet.",
+        "en": "Digital school reports are being tested in a pilot scheme."
+      },
+      "articleSummary": {
+        "de": "Die Seite beschreibt einen Pilotversuch an ausgewählten Schulen. Von einer bundesweiten Einführung steht dort nichts.",
+        "en": "The page describes a pilot scheme at selected schools. It says nothing about a nationwide rollout."
+      },
+      "keyFacts": [
+        {
+          "de": "Nur ausgewählte Schulen nehmen teil",
+          "en": "Only selected schools take part"
+        },
+        {
+          "de": "Papierzeugnisse bleiben vorerst bestehen",
+          "en": "Paper reports will stay for now"
+        },
+        {
+          "de": "Kein bundesweiter Beschluss",
+          "en": "No nationwide decision"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "An unserer Schule läuft der Test schon, klappt gut.",
+          "en": "Our school is already testing it, works fine."
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "kein papier mehr, nice 🎉",
+          "en": "no more paper, nice 🎉"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "gilt das jetzt für alle oder nur ein paar schulen?",
+          "en": "does that go for everyone or just a few schools?"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Hat jemand dafür noch eine zweite Quelle?",
+          "en": "Has anyone got a second source for this?"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "mismatch",
+      "hits": [
+        {
+          "date": {
+            "de": "8. Juli 2026",
+            "en": "8 July 2026"
+          },
+          "source": "bildgenerator-ki.example",
+          "title": {
+            "de": "Galerie erzeugter Bilder – „Tablet mit digitalem Zeugnis“",
+            "en": "Gallery of generated images – \"Tablet showing a digital school report\""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_105",
+    "username": "lea.malt",
+    "displayName": "Lea 🎨",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_10_App.png",
+    "imageAlt": {
+      "de": "Gemälde der Mona Lisa in einem gemütlichen Innenraum mit Fenster und Pflanzen",
+      "en": "A painting of the Mona Lisa in a cosy room with a window and plants"
+    },
+    "caption": {
+      "de": "Digga, die Mona Lisa hängt einfach in Paris 😭🎨 War da schon mal jemand?",
+      "en": "Bruh the Mona Lisa is literally just in Paris 😭🎨 has anyone actually been?"
+    },
+    "source": "lea.malt",
+    "likes": 18700,
+    "time": {
+      "de": "2 Std.",
+      "en": "2 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_105",
+    "comments": [
+      {
+        "username": "mila_6c",
+        "text": {
+          "de": "bro die guckt einen überall an 💀",
+          "en": "bro she stares at you from everywhere 💀"
+        }
+      },
+      {
+        "username": "jonas.kickt",
+        "text": {
+          "de": "safe voll klein in echt",
+          "en": "it's tiny in real life for sure"
+        }
+      },
+      {
+        "username": "kunst_ella",
+        "text": {
+          "de": "Die hängt wirklich im Louvre.",
+          "en": "It really does hang in the Louvre."
+        }
+      },
+      {
+        "username": "noah.zockt",
+        "text": {
+          "de": "hä warum ist die so berühmt",
+          "en": "huh why is it so famous"
+        }
+      }
+    ],
+    "profileId": "art.world",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_105",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Mehr zum Bild",
+        "en": "More about the image"
+      },
+      "url": "https://kunst-lexikon.example/mona-lisa",
+      "domain": "kunst-lexikon.example",
+      "title": {
+        "de": "Die Mona Lisa im Louvre",
+        "en": "The Mona Lisa at the Louvre"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "Kunst-Lexikon Redaktion",
+        "en": "Art encyclopaedia editors"
+      },
+      "published": {
+        "de": "Aktualisiert 2026",
+        "en": "Updated 2026"
+      },
+      "status": "reliable",
+      "note": {
+        "de": "Ein seriöses Nachschlagewerk bestätigt: Die Mona Lisa hängt im Louvre in Paris.",
+        "en": "A trustworthy reference work confirms it: the Mona Lisa hangs in the Louvre in Paris."
+      },
+      "pageType": {
+        "de": "Lexikon-Artikel",
+        "en": "Encyclopaedia entry"
+      },
+      "articleHeadline": {
+        "de": "Die Mona Lisa hängt im Louvre in Paris.",
+        "en": "The Mona Lisa hangs in the Louvre in Paris."
+      },
+      "articleSummary": {
+        "de": "Das Nachschlagewerk bestätigt Ort und Bedeutung des Gemäldes – die Aussage im Beitrag stimmt.",
+        "en": "The reference work confirms where the painting hangs and why it matters — the claim in the post is correct."
+      },
+      "keyFacts": [
+        {
+          "de": "Gemälde von Leonardo da Vinci",
+          "en": "Painting by Leonardo da Vinci"
+        },
+        {
+          "de": "Ausgestellt im Louvre in Paris",
+          "en": "On display at the Louvre in Paris"
+        },
+        {
+          "de": "Weltberühmtes Original",
+          "en": "World-famous original"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "bro die guckt einen überall an 💀",
+          "en": "bro she stares at you from everywhere 💀"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "safe voll klein in echt",
+          "en": "it's tiny in real life for sure"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Die hängt wirklich im Louvre.",
+          "en": "It really does hang in the Louvre."
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "hä warum ist die so berühmt",
+          "en": "huh why is it so famous"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "confirm",
+      "hits": [
+        {
+          "date": {
+            "de": "2015",
+            "en": "2015"
+          },
+          "source": "kunst-lexikon.example",
+          "title": {
+            "de": "Mona Lisa im Louvre",
+            "en": "The Mona Lisa at the Louvre"
+          }
+        },
+        {
+          "date": {
+            "de": "2019",
+            "en": "2019"
+          },
+          "source": "reise-blog.example",
+          "title": {
+            "de": "Die Mona Lisa in Paris besuchen",
+            "en": "Visiting the Mona Lisa in Paris"
+          }
+        },
+        {
+          "date": {
+            "de": "2023",
+            "en": "2023"
+          },
+          "source": "museum-magazin.example",
+          "title": {
+            "de": "Warum alle die Mona Lisa fotografieren",
+            "en": "Why everyone photographs the Mona Lisa"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_106",
+    "username": "schulnews.aktuell",
+    "displayName": "Schulnews aktuell",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/a0bb4052-68e4-42cc-bafa-837054e4780f.png",
+    "imageAlt": {
+      "de": "Eilmeldungs-Grafik: „Eine Stadt führt Handyregeln an Schulen ein\", Klassenzimmer im Hintergrund",
+      "en": "Breaking news graphic: \"City introduces phone rules at schools\", a classroom in the background"
+    },
+    "caption": {
+      "de": "❗❗In unserer Stadt gelten neue Handyregeln an Schulen. Bitte prüft zusätzlich die Regelung an eurer eigenen Schule: https://stadt.presseamt/handyregeln-schulen",
+      "en": "❗❗New phone rules apply at schools in our city. Please also check the rules at your own school: https://stadt.presseamt/handyregeln-schulen"
+    },
+    "source": "elternrat.aktuell",
+    "likes": 4200,
+    "time": {
+      "de": "1 Std.",
+      "en": "1 hr"
+    },
+    "postType": "news",
+    "taskId": "task_post_106",
+    "comments": [
+      {
+        "username": "schüler_max",
+        "text": {
+          "de": "nur in den pausen?? boah 😩",
+          "en": "only during breaks?? ugh 😩"
+        }
+      },
+      {
+        "username": "dilari_ott",
+        "text": {
+          "de": "wie lost is das bitte",
+          "en": "how lame is that"
+        }
+      },
+      {
+        "username": "lisa.m",
+        "text": {
+          "de": "an welcher schule denn genau?",
+          "en": "which school exactly?"
+        }
+      },
+      {
+        "username": "toni_r",
+        "text": {
+          "de": "steht im link, ist wohl offiziell von der stadt",
+          "en": "it's in the link, seems to be official from the city"
+        }
+      }
+    ],
+    "profileId": "stadt.news",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_106",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Regeln nachlesen",
+        "en": "Read the rules"
+      },
+      "url": "https://stadt.presseamt/handyregeln-schulen",
+      "domain": "stadt.presseamt",
+      "title": {
+        "de": "Neue Handyregel an städtischen Schulen",
+        "en": "New phone rule at city schools"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "Presseamt der Stadt",
+        "en": "City press office"
+      },
+      "published": {
+        "de": "1. Juli 2026",
+        "en": "1 July 2026"
+      },
+      "status": "official",
+      "note": {
+        "de": "Die offizielle Seite beschreibt genau, für welche Schulen die Regel gilt.",
+        "en": "The official page states exactly which schools the rule applies to."
+      },
+      "pageType": {
+        "de": "Städtische Bekanntmachung",
+        "en": "City announcement"
+      },
+      "articleHeadline": {
+        "de": "Die Stadt führt Regeln an einigen kommunalen Schulen ein.",
+        "en": "The city is introducing rules at some council-run schools."
+      },
+      "articleSummary": {
+        "de": "Die Originalseite beschreibt die genaue Reichweite und den Starttermin der Maßnahme.",
+        "en": "The original page describes exactly how far the measure reaches and when it starts."
+      },
+      "keyFacts": [
+        {
+          "de": "Regel gilt für die gesamte Stadt",
+          "en": "The rule applies across the whole city"
+        },
+        {
+          "de": "Schulen können Ausnahmen festlegen",
+          "en": "Schools can set exceptions"
+        },
+        {
+          "de": "Start zum kommenden Schuljahr",
+          "en": "Starts with the coming school year"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "nur in den pausen?? boah 😩",
+          "en": "only during breaks?? ugh 😩"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Endlich mal eine klare Regel.",
+          "en": "Finally a clear rule."
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "an welcher schule denn genau?",
+          "en": "which school exactly?"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "steht im link, ist wohl offiziell von der stadt",
+          "en": "it's in the link, seems to be official from the city"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "confirm",
+      "hits": [
+        {
+          "date": {
+            "de": "1. Juli 2026",
+            "en": "1 July 2026"
+          },
+          "source": "stadt.presseamt",
+          "title": {
+            "de": "Neue Handyregel an städtischen Schulen – Bekanntmachung",
+            "en": "New phone rule at city schools – official notice"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_107",
+    "username": "noah.clips_offical",
+    "displayName": "Clip Central",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_8_App.png",
+    "imageAlt": {
+      "de": "Foto: Junger Mann im NoahX-Hoodie wird von zwei Polizisten festgehalten, blaue Lichter",
+      "en": "Photo: a young man in a NoahX hoodie held by two police officers, blue lights"
+    },
+    "caption": {
+      "de": "⚠️🚨An alle die mir nicht geglaubt haben: NoahX wurde heute tatsächlich verhaftet❗❗",
+      "en": "⚠️🚨To everyone who didn't believe me: NoahX really was arrested today❗❗"
+    },
+    "source": "clip.central",
+    "likes": 25400,
+    "time": {
+      "de": "1 Std.",
+      "en": "1 hr"
+    },
+    "postType": "news",
+    "taskId": "task_post_107",
+    "comments": [
+      {
+        "username": "benji_12",
+        "text": {
+          "de": "niemals bro",
+          "en": "no way bro"
+        }
+      },
+      {
+        "username": "lina_x",
+        "text": {
+          "de": "😳 ist das echt oder nur clickbait",
+          "en": "😳 is that real or just clickbait"
+        }
+      },
+      {
+        "username": "maxplays",
+        "text": {
+          "de": "hab das auch auf tiktok gesehen",
+          "en": "i saw that on tiktok too"
+        }
+      },
+      {
+        "username": "sara.6b",
+        "text": {
+          "de": "nur weil es viele posten muss es nicht stimmen",
+          "en": "just because loads of people post it doesn't make it true"
+        }
+      },
+      {
+        "username": "toni",
+        "text": {
+          "de": "safe fake 😂",
+          "en": "def fake 😂"
+        }
+      }
+    ],
+    "profileId": "gaming.news24",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_107",
+    "sourceCheck": {
+      "available": false
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "niemals bro",
+          "en": "no way bro"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "wo ist die quelle??",
+          "en": "where's the source??"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "hab das auch auf tiktok gesehen",
+          "en": "i saw that on tiktok too"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "nur weil es viele posten muss es nicht stimmen",
+          "en": "just because loads of people post it doesn't make it true"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_108",
+    "username": "lisa.clips_offical",
+    "displayName": "NewsFlash Clips",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_9_App.png",
+    "imageAlt": {
+      "de": "Videostandbild einer computeranimierten Moderatorin „Mira Lennox\" im Nachrichtenstudio",
+      "en": "A video still of a computer-animated presenter called \"Mira Lennox\" in a news studio"
+    },
+    "caption": {
+      "de": "Leute selbst Mira Lennox ist für KI bei Prüfungen 😳 Was haltet ihr davon?",
+      "en": "guys even Mira Lennox is for AI in exams 😳 what do you think?"
+    },
+    "source": "newsflash.clips",
+    "likes": 43281,
+    "time": {
+      "de": "2 Std.",
+      "en": "2 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_108",
+    "comments": [
+      {
+        "username": "zay.pixel",
+        "text": {
+          "de": "die lehrer cheken ki eh nicht leute",
+          "en": "the teachers can't spot ai anyway guys"
+        }
+      },
+      {
+        "username": "luka_zocken23",
+        "text": {
+          "de": "habe ich auf tiktok gesehen",
+          "en": "i saw it on tiktok"
+        }
+      },
+      {
+        "username": "lauraaa",
+        "text": {
+          "de": "wär ja cool wenn man ki benutzen dürfte 😅",
+          "en": "would be cool if we were allowed to use ai 😅"
+        }
+      }
+    ],
+    "profileId": "news.flash24",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_108",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Seht selber",
+        "en": "See for yourself"
+      },
+      "url": "https://newsflash-now.example/mira-ki-pruefung",
+      "domain": "newsflash-now.example",
+      "title": {
+        "de": "Mira fordert KI bei jeder Prüfung",
+        "en": "Mira calls for AI in every exam"
+      },
+      "imprint": {
+        "de": "Nicht auffindbar",
+        "en": "Not found"
+      },
+      "published": {
+        "de": "vor 2 Stunden",
+        "en": "2 hours ago"
+      },
+      "status": "warning",
+      "note": {
+        "de": "Die Seite zeigt nur denselben kurzen Ausschnitt. Ein vollständiges Interview fehlt.",
+        "en": "The page only shows the same short clip. A full interview is missing."
+      },
+      "pageType": {
+        "de": "Unbekannter Blog",
+        "en": "Unknown blog"
+      },
+      "articleHeadline": {
+        "de": "Angebliches Interview mit Mira Lennox",
+        "en": "Alleged interview with Mira Lennox"
+      },
+      "articleSummary": {
+        "de": "Die Seite nennt keine überprüfbare Originalaufnahme und übernimmt nur einen kurzen Ausschnitt.",
+        "en": "The page offers no verifiable original recording and only reuses a short clip."
+      },
+      "keyFacts": [
+        {
+          "de": "Keine vollständige Rede verlinkt",
+          "en": "No full speech linked"
+        },
+        {
+          "de": "Kein eindeutiger Veranstaltungsort",
+          "en": "No clear venue"
+        },
+        {
+          "de": "Autor nur mit Kürzel angegeben",
+          "en": "Author given only as initials"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "hat sie das echt so gesagt? quelle?",
+          "en": "did she really say that? source?"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "mira ist doch ne animierte figur, kein echter mensch 🤖",
+          "en": "mira is an animated character though, not a real person 🤖"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "wär ja cool wenn man ki benutzen dürfte 😅",
+          "en": "would be cool if we were allowed to use ai 😅"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Hat jemand dafür noch eine zweite Quelle?",
+          "en": "Has anyone got a second source for this?"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_109",
+    "username": "pausenhof.memes",
+    "displayName": "Meme Kingz 👑",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_11_App.png",
+    "imageAlt": {
+      "de": "Schwarz-weißes Foto: Der Papst mit Kopfhörern an einem DJ-Pult, jubelnde Menschen dahinter",
+      "en": "A black-and-white photo: the Pope wearing headphones at a DJ desk, a cheering crowd behind him"
+    },
+    "caption": {
+      "de": "POV: Der Papst legt auf der Klassenparty auf 💀🎧",
+      "en": "POV: the Pope is DJing at the school party 💀🎧"
+    },
+    "source": "meme.kingz",
+    "likes": 24700,
+    "time": {
+      "de": "3 Std.",
+      "en": "3 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_109",
+    "comments": [
+      {
+        "username": "jonas_6b",
+        "text": {
+          "de": "digga hahaha",
+          "en": "bruh hahaha"
+        }
+      },
+      {
+        "username": "mila_x",
+        "text": {
+          "de": "das bild sieht irgendwie komisch aus",
+          "en": "that picture looks kinda off"
+        }
+      },
+      {
+        "username": "noah.zockt",
+        "text": {
+          "de": "safe echt bro 😭",
+          "en": "that's def real bro 😭"
+        }
+      },
+      {
+        "username": "lea.malt",
+        "text": {
+          "de": "guckt mal auf seine hand",
+          "en": "look at his hand"
+        }
+      },
+      {
+        "username": "benji",
+        "text": {
+          "de": "zu wild",
+          "en": "way too wild"
+        }
+      },
+      {
+        "username": "sara.2013",
+        "text": {
+          "de": "KI kann sowas machen",
+          "en": "AI can do stuff like that"
+        }
+      }
+    ],
+    "profileId": "world.news24",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_109",
+    "sourceCheck": {
+      "available": false
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "digga hahaha",
+          "en": "bruh hahaha"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "das bild sieht irgendwie komisch aus",
+          "en": "that picture looks kinda off"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "safe echt bro 😭",
+          "en": "that's def real bro 😭"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "guckt mal auf seine hand",
+          "en": "look at his hand"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_110",
+    "username": "lina.glow",
+    "displayName": "Lina Glow ✨",
+    "verified": true,
+    "avatar": "",
+    "location": {
+      "de": "Gesponsert",
+      "en": "Sponsored"
+    },
+    "mediaType": "image",
+    "media": "assets/posts/Picture_12_App.png",
+    "imageAlt": {
+      "de": "Junge Frau hält eine pinke LumiSkin-Glow-Booster-Flasche und lächelt in die Kamera",
+      "en": "A young woman holding a pink LumiSkin Glow Booster bottle and smiling at the camera"
+    },
+    "caption": {
+      "de": "Leute heute hat Amina Legendz meinen LumiSkin Glow Booster getestet ✨😍 Schaut euch selbst ihre Erfahrung an: https://Interview-lumiskin1.test/glow.de",
+      "en": "guys Amina Legendz tried my LumiSkin Glow Booster today ✨😍 see her experience for yourself: https://Interview-lumiskin1.test/glow.de"
+    },
+    "source": "lina.glow",
+    "likes": 8341,
+    "time": {
+      "de": "1 Std.",
+      "en": "1 hr"
+    },
+    "postType": "news",
+    "taskId": "task_post_110",
+    "comments": [
+      {
+        "username": "beautyqueen",
+        "text": {
+          "de": "will ich auch haben 😍",
+          "en": "i want one too 😍"
+        }
+      },
+      {
+        "username": "kritischer_karl",
+        "text": {
+          "de": "amina wirbt doch sonst nie für sowas",
+          "en": "amina never advertises stuff like this"
+        }
+      },
+      {
+        "username": "sophie",
+        "text": {
+          "de": "das is doch einfach werbung oder?",
+          "en": "this is just an ad isn't it?"
+        }
+      },
+      {
+        "username": "glowgirl",
+        "text": {
+          "de": "hab bestellt, mal sehen ✨",
+          "en": "ordered it, we'll see ✨"
+        }
+      },
+      {
+        "username": "nope_",
+        "text": {
+          "de": "warum sind da zwei finger 😂 offensichtlich fake bro😂😂😂😂😂 wie schlecht fakest du hahahaha",
+          "en": "why are there two fingers 😂 obviously fake bro😂😂😂😂😂 how badly can you fake it hahaha"
+        }
+      }
+    ],
+    "profileId": "trendnow.official",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_110",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Produkt ansehen",
+        "en": "View product"
+      },
+      "url": "https://Interview-lumiskin1.test/glow.de",
+      "domain": "lumiskin-shop1.interview",
+      "title": {
+        "de": "LumiSkin Glow Booster",
+        "en": "LumiSkin Glow Booster"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "LumiSkin Shop",
+        "en": "LumiSkin Shop"
+      },
+      "published": {
+        "de": "Werbeseite",
+        "en": "Sales page"
+      },
+      "status": "ad",
+      "note": {
+        "de": "Die Seite verkauft das Produkt. Sie belegt nicht, dass die Sängerin es empfohlen hat.",
+        "en": "The page sells the product. It does not prove that the singer recommended it."
+      },
+      "pageType": {
+        "de": "Interview",
+        "en": "Interview"
+      },
+      "articleHeadline": {
+        "de": "Amina Legendz zum neuen LumiSkin Glow Booster (Zusammenfassung)",
+        "en": "Amina Legendz on the new LumiSkin Glow Booster (summary)"
+      },
+      "articleSummary": {
+        "de": "Die Seite verkauft das Produkt. Eine unabhängige Bestätigung der angeblichen Empfehlung fehlt.",
+        "en": "The page sells the product. Independent confirmation of the claimed endorsement is missing."
+      },
+      "keyFacts": [
+        {
+          "de": "Bessere Haut",
+          "en": "Better skin"
+        },
+        {
+          "de": "Günstig",
+          "en": "Cheap"
+        },
+        {
+          "de": "Umweltfreundlich",
+          "en": "Eco-friendly"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "will ich auch haben 😍",
+          "en": "i want one too 😍"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "amina wirbt doch sonst nie für sowas.. komisch",
+          "en": "amina never advertises stuff like this.. weird"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "das is doch einfach werbung oder?",
+          "en": "this is just an ad isn't it?"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "hab bestellt, mal sehen ✨",
+          "en": "ordered it, we'll see ✨"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_111",
+    "username": "jayden_xx",
+    "displayName": "jayden",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_13_App.png",
+    "imageAlt": {
+      "de": "Grafik: rotes „BREAKING – CYBERATTACKE! Alle Schulen morgen geschlossen\" mit vermummter Person",
+      "en": "Graphic: a red \"BREAKING – CYBER ATTACK! All schools closed tomorrow\" with a masked figure"
+    },
+    "caption": {
+      "de": "BRO morgen angeblich ALLE Schulen zu wegen Cyberattacke 😳 stimmt das??",
+      "en": "BRO apparently ALL schools are shut tomorrow because of a cyber attack 😳 is that true??"
+    },
+    "source": "jayden_xx",
+    "likes": 12400,
+    "time": {
+      "de": "45 Min.",
+      "en": "45 min"
+    },
+    "postType": "news",
+    "taskId": "task_post_111",
+    "comments": [
+      {
+        "username": "emma_6a",
+        "text": {
+          "de": "bitte ja 😭",
+          "en": "yes please 😭"
+        }
+      },
+      {
+        "username": "tim.k",
+        "text": {
+          "de": "meine schule hat nix gesagt",
+          "en": "my school hasn't said anything"
+        }
+      },
+      {
+        "username": "leo_goat",
+        "text": {
+          "de": "safe einfach fake",
+          "en": "that's just fake for sure"
+        }
+      },
+      {
+        "username": "mila_x",
+        "text": {
+          "de": "woher hast du das digga",
+          "en": "where did you get that bruh"
+        }
+      },
+      {
+        "username": "ayse.6b",
+        "text": {
+          "de": "erst bei der schule nachfragen",
+          "en": "ask your school first"
+        }
+      }
+    ],
+    "profileId": "newsflash24",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_111",
+    "sourceCheck": {
+      "available": false
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "bitte ja 😭",
+          "en": "yes please 😭"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "meine schule hat nix gesagt",
+          "en": "my school hasn't said anything"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "safe einfach fake",
+          "en": "that's just fake for sure"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "woher hast du das digga",
+          "en": "where did you get that bruh"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "mismatch",
+      "hits": [
+        {
+          "date": {
+            "de": "Januar 2021",
+            "en": "January 2021"
+          },
+          "source": "stadt-anzeiger.example",
+          "title": {
+            "de": "Schulen wegen Schneechaos geschlossen",
+            "en": "Schools closed because of heavy snow"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_112",
+    "username": "school.kingz",
+    "displayName": "School Kingz 👑",
+    "verified": true,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_14_App.png",
+    "imageAlt": {
+      "de": "Grafik: rote „HACKERWARNUNG! Schulen vorübergehend geschlossen\" mit vermummter Person am Laptop",
+      "en": "Graphic: a red \"HACKER WARNING! Schools temporarily closed\" with a masked figure at a laptop"
+    },
+    "caption": {
+      "de": "LEUTE morgen schulfrei?? 😭 Auf der Seite steht was von Hackerwarnung",
+      "en": "GUYS is school off tomorrow?? 😭 the site says something about a hacker warning"
+    },
+    "source": "school.kingz",
+    "likes": 12400,
+    "time": {
+      "de": "1 Std.",
+      "en": "1 hr"
+    },
+    "postType": "news",
+    "taskId": "task_post_112",
+    "comments": [
+      {
+        "username": "noah.zockt",
+        "text": {
+          "de": "digga bitte",
+          "en": "bruh please"
+        }
+      },
+      {
+        "username": "lea_2013",
+        "text": {
+          "de": "bei uns kam keine mail",
+          "en": "we didn't get any email"
+        }
+      },
+      {
+        "username": "benji_12",
+        "text": {
+          "de": "die seite sieht sus aus",
+          "en": "that site looks sus"
+        }
+      },
+      {
+        "username": "mila_x",
+        "text": {
+          "de": "gilt das überhaupt für alle?",
+          "en": "does that even apply to everyone?"
+        }
+      }
+    ],
+    "profileId": "school.kingz",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_112",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Schaut selbst",
+        "en": "See for yourself"
+      },
+      "url": "https://school-kingz.example/hackerwarnung",
+      "domain": "school-kingz.example",
+      "title": {
+        "de": "Hackerwarnung an Schulen",
+        "en": "Hacker warning at schools"
+      },
+      "imprint": {
+        "de": "Nicht vorhanden",
+        "en": "Not available"
+      },
+      "published": {
+        "de": "vor 40 Minuten",
+        "en": "40 minutes ago"
+      },
+      "status": "warning",
+      "note": {
+        "de": "Die Seite nennt keine Behörde und keine betroffenen Schulen.",
+        "en": "The page names no authority and no schools affected."
+      },
+      "pageType": {
+        "de": "Blogbeitrag",
+        "en": "Blog post"
+      },
+      "articleHeadline": {
+        "de": "Hackerwarnung sorgt für Gerüchte über Schulschließungen",
+        "en": "Hacker warning sparks rumours about school closures"
+      },
+      "articleSummary": {
+        "de": "Die verlinkte Seite schreibt selbst, dass keine bundesweite Schließung bestätigt ist.",
+        "en": "The linked page itself says no nationwide closure has been confirmed."
+      },
+      "keyFacts": [
+        {
+          "de": "Nur einzelne Systeme waren gestört",
+          "en": "Only a few systems were disrupted"
+        },
+        {
+          "de": "Keine bundesweite Anordnung",
+          "en": "No nationwide order"
+        },
+        {
+          "de": "Überschrift des Posts übertreibt",
+          "en": "The headline of the post exaggerates"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "digga bitte",
+          "en": "bruh please"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "bei uns kam keine mail",
+          "en": "we didn't get any email"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "die seite sieht sus aus",
+          "en": "that site looks sus"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "gilt das überhaupt für alle?",
+          "en": "does that even apply to everyone?"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_113",
+    "username": "drama.alarm",
+    "displayName": "Drama Alarm 🚨",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/Picture_15_App.png",
+    "imageAlt": {
+      "de": "Foto: Mann im Anzug sitzt verzweifelt vor einer Bank, dahinter Absperrband und Rettungskräfte",
+      "en": "Photo: a man in a suit sitting in despair outside a bank, cordon tape and emergency crews behind him"
+    },
+    "caption": {
+      "de": "Diese Bankenpleite geht viral. Der Artikel klingt dramatischer als die Fakten.",
+      "en": "This bank collapse is going viral. The article sounds more dramatic than the facts."
+    },
+    "source": "drama.alarm",
+    "likes": 12100,
+    "time": {
+      "de": "3 Std.",
+      "en": "3 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_113",
+    "comments": [
+      {
+        "username": "besorgt_b",
+        "text": {
+          "de": "oh nein welche bank denn?? 😢",
+          "en": "oh no which bank?? 😢"
+        }
+      },
+      {
+        "username": "finanzfrank",
+        "text": {
+          "de": "steht nirgends welche bank, wann oder wo... dubios",
+          "en": "it doesn't say which bank, when or where anywhere... dodgy"
+        }
+      },
+      {
+        "username": "klara",
+        "text": {
+          "de": "so traurig 😭",
+          "en": "so sad 😭"
+        }
+      },
+      {
+        "username": "info_leser",
+        "text": {
+          "de": "im artikel steht was von einlagensicherung, klingt anders",
+          "en": "the article says something about deposit protection, sounds different"
+        }
+      }
+    ],
+    "profileId": "realnews24",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_113",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Ganzer Artikel",
+        "en": "Full article"
+      },
+      "url": "https://realnews24.example/bankenpleite",
+      "domain": "realnews24.example",
+      "title": {
+        "de": "Bank schließt einzelne Filialen",
+        "en": "Bank closes some branches"
+      },
+      "imprint": {
+        "de": "Unvollständig",
+        "en": "Incomplete"
+      },
+      "author": {
+        "de": "Redaktion",
+        "en": "Editorial team"
+      },
+      "published": {
+        "de": "15. Juli 2026",
+        "en": "15 July 2026"
+      },
+      "status": "mixed",
+      "note": {
+        "de": "Der Artikel beschreibt Einschränkungen. Der Post macht daraus einen vollständigen Verlust für viele Menschen.",
+        "en": "The article describes restrictions. The post turns that into a total loss for many people."
+      },
+      "pageType": {
+        "de": "Nachrichtenbericht",
+        "en": "News report"
+      },
+      "articleHeadline": {
+        "de": "Bankenpleite betrifft Kundinnen und Kunden unterschiedlich",
+        "en": "Bank collapse affects customers differently"
+      },
+      "articleSummary": {
+        "de": "Der Artikel erklärt Sicherungssysteme und widerspricht der Aussage, alle hätten alles verloren.",
+        "en": "The article explains protection schemes and contradicts the claim that everyone lost everything."
+      },
+      "keyFacts": [
+        {
+          "de": "Einlagensicherung wird erwähnt",
+          "en": "Deposit protection is mentioned"
+        },
+        {
+          "de": "Nicht alle Konten sind gleich betroffen",
+          "en": "Not every account is affected in the same way"
+        },
+        {
+          "de": "Post lässt wichtige Einschränkungen weg",
+          "en": "The post leaves out important limits"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "oh nein welche bank denn?? 😢",
+          "en": "oh no which bank?? 😢"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "steht nirgends welche bank, wann oder wo... dubios",
+          "en": "it doesn't say which bank, when or where anywhere... dodgy"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "so traurig 😭",
+          "en": "so sad 😭"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "im artikel steht was von einlagensicherung, klingt anders",
+          "en": "the article says something about deposit protection, sounds different"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "mismatch",
+      "hits": [
+        {
+          "date": {
+            "de": "März 2018",
+            "en": "March 2018"
+          },
+          "source": "finanz-archiv.example",
+          "title": {
+            "de": "Warteschlange vor einer Bank in Athen",
+            "en": "A queue outside a bank in Athens"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_114",
+    "username": "aiapp",
+    "displayName": "AiApp",
+    "verified": true,
+    "avatar": "",
+    "location": {
+      "de": "Gesponsert",
+      "en": "Sponsored"
+    },
+    "mediaType": "image",
+    "media": "assets/posts/5dbfcd1d-c3dc-4d8d-81c0-37624cd8bbb4.png",
+    "imageAlt": {
+      "de": "Handy-Chat-App mit einer eingeblendeten Werbeanzeige zwischen den Nachrichten",
+      "en": "A phone chat app with an ad shown between the messages"
+    },
+    "caption": {
+      "de": "AiApp testet Werbung im Bereich „Aktuelles“ – nicht direkt in privaten Chats.",
+      "en": "AiApp is testing ads in its \"Updates\" section — not inside private chats."
+    },
+    "source": "aiapp",
+    "likes": 980,
+    "time": {
+      "de": "jetzt",
+      "en": "now"
+    },
+    "postType": "news",
+    "taskId": "task_post_114",
+    "comments": [
+      {
+        "username": "userxy",
+        "text": {
+          "de": "cool, neue funktion",
+          "en": "cool, new feature"
+        }
+      },
+      {
+        "username": "skeptiker_s",
+        "text": {
+          "de": "das is doch werbung, steht sogar anzeige dran 🙄",
+          "en": "this is just an ad, it literally says sponsored 🙄"
+        }
+      }
+    ],
+    "profileId": "aiapp.ads",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_114",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Mehr zur Funktion",
+        "en": "More about the feature"
+      },
+      "url": "https://aiapp.example/aktuelles-werbung",
+      "domain": "aiapp.example",
+      "title": {
+        "de": "Werbung im Bereich Aktuelles",
+        "en": "Ads in the Updates section"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "AiApp Produktteam",
+        "en": "AiApp product team"
+      },
+      "published": {
+        "de": "13. Juli 2026",
+        "en": "13 July 2026"
+      },
+      "status": "official",
+      "note": {
+        "de": "Die offizielle Seite sagt, dass Werbung im Bereich „Aktuelles“ getestet wird, nicht direkt in privaten Chats.",
+        "en": "The official page says ads are being tested in the \"Updates\" section, not inside private chats."
+      },
+      "pageType": {
+        "de": "Offizielle Produktankündigung",
+        "en": "Official product announcement"
+      },
+      "articleHeadline": {
+        "de": "AiApp testet Werbung in einem abgegrenzten Bereich",
+        "en": "AiApp tests ads in one separate section"
+      },
+      "articleSummary": {
+        "de": "Die Seite erklärt, dass Werbung nicht direkt in privaten Chats angezeigt wird.",
+        "en": "The page explains that ads are not shown inside private chats."
+      },
+      "keyFacts": [
+        {
+          "de": "Test nur in ausgewählten Regionen",
+          "en": "Tested in selected regions only"
+        },
+        {
+          "de": "Werbung im Bereich Aktuelles",
+          "en": "Ads in the Updates section"
+        },
+        {
+          "de": "Private Nachrichten bleiben werbefrei",
+          "en": "Private messages stay ad-free"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "cool, neue funktion",
+          "en": "cool, new feature"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "das is doch werbung, steht sogar anzeige dran 🙄",
+          "en": "this is just an ad, it literally says sponsored 🙄"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Hat jemand dafür noch eine zweite Quelle?",
+          "en": "Has anyone got a second source for this?"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Hat jemand dafür noch eine zweite Quelle?",
+          "en": "Has anyone got a second source for this?"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_115",
+    "username": "study.with.max",
+    "displayName": "Study with Max 📚",
+    "verified": true,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/077a1fed-38be-4dc8-838c-c65dffc181e9.png",
+    "imageAlt": {
+      "de": "Junger Influencer zeigt nach oben, Text „Schüler dürfen KI bei Hausaufgaben offiziell nutzen\"",
+      "en": "A young influencer pointing upwards, text: \"Students are now officially allowed to use AI for homework\""
+    },
+    "caption": {
+      "de": "KI bei Hausaufgaben: erlaubt heißt nicht automatisch ohne Regeln 🙌",
+      "en": "AI for homework: allowed does not automatically mean no rules 🙌"
+    },
+    "source": "study.with.max",
+    "likes": 12700,
+    "time": {
+      "de": "2 Std.",
+      "en": "2 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_115",
+    "comments": [
+      {
+        "username": "schüler_tim",
+        "text": {
+          "de": "endlich!! dann mach ich alle hausis mit ki 😎",
+          "en": "finally!! now i'm doing all my homework with ai 😎"
+        }
+      },
+      {
+        "username": "frau_schulz",
+        "text": {
+          "de": "Wo wurde das offiziell beschlossen? Eine Quelle fehlt.",
+          "en": "Where was this officially decided? A source is missing."
+        }
+      },
+      {
+        "username": "maxfan",
+        "text": {
+          "de": "danke max 🙌",
+          "en": "thanks max 🙌"
+        }
+      },
+      {
+        "username": "jules",
+        "text": {
+          "de": "klingt zu schön um wahr zu sein 🤔",
+          "en": "sounds too good to be true 🤔"
+        }
+      }
+    ],
+    "profileId": "study.with.max",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_115",
+    "sourceCheck": {
+      "available": false
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "endlich!! dann mach ich alle hausis mit ki 😎",
+          "en": "finally!! now i'm doing all my homework with ai 😎"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "Wo wurde das offiziell beschlossen? Eine Quelle fehlt.",
+          "en": "Where was this officially decided? A source is missing."
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "danke max 🙌",
+          "en": "thanks max 🙌"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "klingt zu schön um wahr zu sein 🤔",
+          "en": "sounds too good to be true 🤔"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_116",
+    "username": "lars.2013",
+    "displayName": "Lars",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/ChatGPT_Image_Jul_15__2026__08_46_26_PM.png",
+    "imageAlt": {
+      "de": "Foto: Mann im Anzug schüttelt einem menschenähnlichen Roboter vor Mikrofonen die Hand",
+      "en": "Photo: a man in a suit shaking hands with a humanlike robot in front of microphones"
+    },
+    "caption": {
+      "de": "Roboter klauen uns bald alle Jobs 😭🤖 oder übertreiben die wieder?",
+      "en": "robots are gonna take all our jobs soon 😭🤖 or are they exaggerating again?"
+    },
+    "source": "lars.2013",
+    "likes": 8700,
+    "time": {
+      "de": "4 Std.",
+      "en": "4 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_116",
+    "comments": [
+      {
+        "username": "jonas_6b",
+        "text": {
+          "de": "mein job wird zocken bro",
+          "en": "my job's gonna be gaming bro"
+        }
+      },
+      {
+        "username": "sara.6b",
+        "text": {
+          "de": "das bild kann KI sein",
+          "en": "that picture could be AI"
+        }
+      },
+      {
+        "username": "maxplays",
+        "text": {
+          "de": "roboter machen doch schon viel",
+          "en": "robots already do loads"
+        }
+      },
+      {
+        "username": "lea.malt",
+        "text": {
+          "de": "aber nicht gleich alle jobs",
+          "en": "but not all the jobs straight away"
+        }
+      }
+    ],
+    "profileId": "robo.news",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_116",
+    "sourceCheck": {
+      "available": false
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "mein job wird zocken bro",
+          "en": "my job's gonna be gaming bro"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "das bild kann KI sein",
+          "en": "that picture could be AI"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "roboter machen doch schon viel",
+          "en": "robots already do loads"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "aber nicht gleich alle jobs",
+          "en": "but not all the jobs straight away"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "none",
+      "hits": []
+    }
+  },
+  {
+    "id": "post_117",
+    "username": "future.hub",
+    "displayName": "Future Hub",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/ChatGPT_Image_Jul_15__2026__09_12_30_PM.png",
+    "imageAlt": {
+      "de": "Foto: Ein menschenähnlicher Roboter unterrichtet eine Schulklasse vor einem großen Bildschirm",
+      "en": "Photo: a humanlike robot teaching a school class in front of a large screen"
+    },
+    "caption": {
+      "de": "Bald nur noch Roboter im Klassenzimmer?! 🤖 Schau genau hin, bevor du entscheidest.",
+      "en": "Soon only robots in the classroom?! 🤖 Look closely before you decide."
+    },
+    "source": "future.hub",
+    "likes": 9400,
+    "time": {
+      "de": "5 Std.",
+      "en": "5 hrs"
+    },
+    "postType": "news",
+    "taskId": "task_post_117",
+    "comments": [
+      {
+        "username": "schüler_j",
+        "text": {
+          "de": "roboter statt lehrer? nein danke 😂",
+          "en": "robots instead of teachers? no thanks 😂"
+        }
+      },
+      {
+        "username": "klara_m",
+        "text": {
+          "de": "das bild ist doch nicht echt oder?",
+          "en": "that picture isn't real though is it?"
+        }
+      },
+      {
+        "username": "nerd42",
+        "text": {
+          "de": "typisches KI-render, guck mal die perspektive",
+          "en": "typical AI render, look at the perspective"
+        }
+      },
+      {
+        "username": "bored_student",
+        "text": {
+          "de": "hauptsache keine hausaufgaben lol",
+          "en": "as long as there's no homework lol"
+        }
+      }
+    ],
+    "profileId": "zukunft.pur",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_117",
+    "sourceCheck": {
+      "available": false
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "roboter statt lehrer? nein danke 😂",
+          "en": "robots instead of teachers? no thanks 😂"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "das bild ist doch nicht echt oder?",
+          "en": "that picture isn't real though is it?"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "typisches KI-render, guck mal die perspektive",
+          "en": "typical AI render, look at the perspective"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "hauptsache keine hausaufgaben lol",
+          "en": "as long as there's no homework lol"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "mismatch",
+      "hits": [
+        {
+          "date": {
+            "de": "Mai 2024",
+            "en": "May 2024"
+          },
+          "source": "zukunft-blog.example",
+          "title": {
+            "de": "Gedankenexperiment: Wenn Roboter unterrichten würden",
+            "en": "Thought experiment: what if robots did the teaching"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "post_118",
+    "username": "pausenhof.news",
+    "displayName": "Pausenhof News",
+    "verified": false,
+    "avatar": "",
+    "location": "",
+    "mediaType": "image",
+    "media": "assets/posts/ChatGPT_Image_Jul_15__2026__09_23_36_PM.png",
+    "imageAlt": {
+      "de": "Eilmeldungs-Grafik zu Handyregeln an Schulen, Klassenzimmer im Hintergrund",
+      "en": "Breaking news graphic about phone rules at schools, a classroom in the background"
+    },
+    "caption": {
+      "de": "Neue Handyregeln?? Digga schaut lieber, ob das auch für eure Schule gilt 👀📱",
+      "en": "New phone rules?? Bruh check whether it even applies to your school 👀📱"
+    },
+    "source": "pausenhof.news",
+    "likes": 15600,
+    "time": {
+      "de": "30 Min.",
+      "en": "30 min"
+    },
+    "postType": "news",
+    "taskId": "task_post_118",
+    "comments": [
+      {
+        "username": "mila_6c",
+        "text": {
+          "de": "bei uns schon seit montag",
+          "en": "we've had it since monday"
+        }
+      },
+      {
+        "username": "benji_12",
+        "text": {
+          "de": "unsere lehrer sagen was anderes",
+          "en": "our teachers say something different"
+        }
+      },
+      {
+        "username": "ayse.6b",
+        "text": {
+          "de": "im link steht nur baden-württemberg",
+          "en": "the link only says baden-württemberg"
+        }
+      },
+      {
+        "username": "noah.zockt",
+        "text": {
+          "de": "handy weg ist mies 😭",
+          "en": "no phones is rough 😭"
+        }
+      },
+      {
+        "username": "lea_2013",
+        "text": {
+          "de": "erst schulseite checken",
+          "en": "check the school page first"
+        }
+      }
+    ],
+    "profileId": "eil.news",
+    "enabled": true,
+    "audience": "forYou",
+    "contentVersion": 1,
+    "reviewTaskId": "task_post_118",
+    "sourceCheck": {
+      "available": true,
+      "linkLabel": {
+        "de": "Regel nachlesen",
+        "en": "Read the rule"
+      },
+      "url": "https://schule-bw.example/handynutzung",
+      "domain": "schule-bw.example",
+      "title": {
+        "de": "Hinweise zur Handynutzung an Schulen",
+        "en": "Guidance on phone use at schools"
+      },
+      "imprint": {
+        "de": "Vorhanden",
+        "en": "Available"
+      },
+      "author": {
+        "de": "Bildungsportal",
+        "en": "Education portal"
+      },
+      "published": {
+        "de": "9. Juli 2026",
+        "en": "9 July 2026"
+      },
+      "status": "reliable",
+      "note": {
+        "de": "Die Seite erklärt regionale Empfehlungen. Der Post klingt wie eine allgemeine neue Pflicht.",
+        "en": "The page explains regional recommendations. The post makes it sound like a general new obligation."
+      },
+      "pageType": {
+        "de": "Nachrichtenartikel",
+        "en": "News article"
+      },
+      "articleHeadline": {
+        "de": "Neue Handyregeln gelten regional und nicht an allen Schulen",
+        "en": "New phone rules apply regionally and not at every school"
+      },
+      "articleSummary": {
+        "de": "Der Artikel nennt die betroffene Stadt und erklärt die Ausnahmen.",
+        "en": "The article names the city affected and explains the exceptions."
+      },
+      "keyFacts": [
+        {
+          "de": "Keine bundesweite Regel",
+          "en": "No nationwide rule"
+        },
+        {
+          "de": "Nutzung in Pausen teilweise erlaubt",
+          "en": "Use during breaks partly allowed"
+        },
+        {
+          "de": "Schulen entscheiden über Details",
+          "en": "Schools decide on the details"
+        }
+      ]
+    },
+    "accountActivity": [
+      {
+        "text": {
+          "de": "bei uns schon seit montag",
+          "en": "we've had it since monday"
+        },
+        "context": {
+          "de": "unter einem ähnlichen Beitrag",
+          "en": "under a similar post"
+        },
+        "time": {
+          "de": "vor 2 Tagen",
+          "en": "2 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "unsere lehrer sagen was anderes",
+          "en": "our teachers say something different"
+        },
+        "context": {
+          "de": "unter einem News-Post",
+          "en": "under a news post"
+        },
+        "time": {
+          "de": "vor 5 Tagen",
+          "en": "5 days ago"
+        }
+      },
+      {
+        "text": {
+          "de": "im link steht nur baden-württemberg",
+          "en": "the link only says baden-württemberg"
+        },
+        "context": {
+          "de": "in einer Diskussion",
+          "en": "in a discussion"
+        },
+        "time": {
+          "de": "vor 1 Woche",
+          "en": "1 week ago"
+        }
+      },
+      {
+        "text": {
+          "de": "handy weg ist mies 😭",
+          "en": "no phones is rough 😭"
+        },
+        "context": {
+          "de": "unter einem Video",
+          "en": "under a video"
+        },
+        "time": {
+          "de": "vor 2 Wochen",
+          "en": "2 weeks ago"
+        }
+      }
+    ],
+    "imageOriginCheck": {
+      "available": true,
+      "result": "mismatch",
+      "hits": [
+        {
+          "date": {
+            "de": "September 2022",
+            "en": "September 2022"
+          },
+          "source": "schul-blog.example",
+          "title": {
+            "de": "Handyverbot an einer Schule in Bayern",
+            "en": "Phone ban at a school in Bavaria"
+          }
+        }
+      ]
+    }
+  }
+]

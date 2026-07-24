@@ -1,0 +1,58 @@
+[
+  {
+    "id": "story_team",
+    "profileId": "agency_team",
+    "label": "Your Story",
+    "status": "online",
+    "priority": 0,
+    "enabled": true
+  },
+  {
+    "id": "story_noah",
+    "profileId": "gaming_news24",
+    "label": "NoahX",
+    "status": "live",
+    "priority": 1,
+    "enabled": true
+  },
+  {
+    "id": "story_mira",
+    "profileId": "mira_fans24",
+    "label": "Mira",
+    "status": "new",
+    "priority": 2,
+    "enabled": true
+  },
+  {
+    "id": "story_news",
+    "profileId": "newsflash24",
+    "label": "News24",
+    "status": "new",
+    "priority": 3,
+    "enabled": true
+  },
+  {
+    "id": "story_fact",
+    "profileId": "truth_alert",
+    "label": "FactLab",
+    "status": "online",
+    "priority": 4,
+    "enabled": true
+  },
+  {
+    "id": "story_school",
+    "profileId": "school_alerts",
+    "label": "School",
+    "status": "new",
+    "priority": 5,
+    "enabled": true
+  },
+  {
+    "id": "story_travel",
+    "profileId": "travel_world",
+    "label": "Travel",
+    "status": "live",
+    "priority": 6,
+    "enabled": true
+  }
+]

@@ -1,0 +1,978 @@
+[
+  {
+    "id": "task_post_101",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_101",
+    "instruction": {
+      "de": "Ist dieser Beitrag echt, suspekt oder manipuliert? Begründe kurz.",
+      "en": "Is this post real, suspicious or manipulated? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "offiziell",
+      "verifiziert",
+      "echt",
+      "seriös",
+      "plattform",
+      "sachlich",
+      "glaubwürdig"
+    ],
+    "acceptedPhrases": [
+      "offizielle ankündigung",
+      "von der plattform",
+      "sieht echt aus"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das ist eine offizielle, sachliche Ankündigung ohne Panikmache – die wirkt vertrauenswürdig."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "echt",
+    "feedbackCorrect": {
+      "de": "Verifiziertes, offizielles Plattform-Konto; sachliche Ankündigung ohne Alarm – glaubwürdig echt.",
+      "en": "A verified, official platform account with a factual announcement and no alarm — credibly real."
+    },
+    "feedbackWrong": {
+      "de": "Das war ein echter, belegbarer Beitrag – achte auf seriöse Quelle, sachlichen Ton und ein passendes, verifiziertes Konto, bevor du „Fake\" rufst.",
+      "en": "This was a real, verifiable post — look for a trustworthy source, a factual tone and a fitting, verified account before you shout \"fake\"."
+    },
+    "diagnosticTool": "profile",
+    "tell": "verifiziertes offizielles Plattform-Konto"
+  },
+  {
+    "id": "task_post_102",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_102",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "seriös",
+      "quelle",
+      "eu",
+      "sachlich",
+      "echt",
+      "glaubwürdig",
+      "plausibel"
+    ],
+    "acceptedPhrases": [
+      "seriöse quelle",
+      "offizielle nachricht",
+      "macht sinn"
+    ],
+    "referenceAnswers": [
+      "Richtig! Eine sachliche Nachricht von einer seriösen Quelle, ohne Druck oder Panik."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "echt",
+    "feedbackCorrect": {
+      "de": "Auch wenn es ein Creator teilt: Die verlinkte Quelle ist seriös (EU) und die Info stimmt. Nicht das Konto zählt, sondern der belegbare Link.",
+      "en": "Even when a creator shares it: the linked source is trustworthy (EU) and the information is correct. What counts is the verifiable link, not the account."
+    },
+    "feedbackWrong": {
+      "de": "Das war ein echter, belegbarer Beitrag – achte auf seriöse Quelle, sachlichen Ton und ein passendes, verifiziertes Konto, bevor du „Fake\" rufst.",
+      "en": "This was a real, verifiable post — look for a trustworthy source, a factual tone and a fitting, verified account before you shout \"fake\"."
+    },
+    "diagnosticTool": "source",
+    "tell": "seriöse verlinkte Quelle (EU), deckt sich mit echter Gesetzgebung – unabhängig davon, wer es postet"
+  },
+  {
+    "id": "task_post_103",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_103",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "eu",
+      "kennzeichnung",
+      "regel",
+      "echt",
+      "sachlich",
+      "stimmt",
+      "korrekt"
+    ],
+    "acceptedPhrases": [
+      "seriöse quelle",
+      "sachliche meldung",
+      "klingt echt"
+    ],
+    "referenceAnswers": [
+      "Richtig! Eine sachliche Meldung über eine neue Regel – ruhig und ohne Panik."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "echt",
+    "feedbackCorrect": {
+      "de": "Die Bildersuche zeigt: Auch das offizielle Bundesministerium hat darüber informiert. Damit ist die Meldung belegt. Wichtig: Auch ein nicht verifiziertes Konto kann Richtiges posten – prüfe die Quelle, nicht den Haken.",
+      "en": "The image search shows that the official federal ministry reported it too. That backs the story up. Important: an unverified account can post correct things as well — check the source, not the tick."
+    },
+    "feedbackWrong": {
+      "de": "Das war ein echter, belegbarer Beitrag. Die Bildersuche führt zur offiziellen Mitteilung des Ministeriums – schau dort nach, bevor du „Fake“ rufst.",
+      "en": "This was a real, verifiable post. The reverse image search leads to the ministry's official announcement — check there before you shout \"fake\"."
+    },
+    "diagnosticTool": "source",
+    "tell": "Aussage entspricht echten EU-Regeln; verlinkte Quelle seriös (Konto nicht verifiziert, Info trotzdem korrekt)"
+  },
+  {
+    "id": "task_post_104",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_104",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "verifiziert",
+      "offiziell",
+      "pilot",
+      "test",
+      "quelle",
+      "sachlich",
+      "plausibel",
+      "echt",
+      "bestätigt"
+    ],
+    "acceptedPhrases": [
+      "klingt normal",
+      "sachliche meldung",
+      "quelle bestätigt",
+      "nur ein test"
+    ],
+    "referenceAnswers": [
+      "Richtig! Sachliche Meldung von einem verifizierten Bildungskonto und die Quelle bestätigt den Pilotversuch."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "Zwei Belege: Die Bildersuche findet das Bild bei einem KI-Bildgenerator, und die verlinkte Seite spricht nur von einem Test an wenigen Schulen – nicht von allen. Der Beitrag übertreibt also und nutzt ein erzeugtes Bild.",
+      "en": "Two pieces of evidence: the image search finds the picture at an AI image generator, and the linked page only mentions a test at a few schools — not everywhere. So the post exaggerates and uses a generated image."
+    },
+    "feedbackWrong": {
+      "de": "Hier stimmt zweierlei nicht: Das Bild taucht bei einem KI-Bildgenerator auf, und die Quelle sagt etwas anderes als der Beitrag. Beides zusammen macht ihn manipuliert.",
+      "en": "Two things are wrong here: the image turns up at an AI image generator, and the source says something different from the post. Together that makes it manipulated."
+    },
+    "diagnosticTool": "profile",
+    "tell": "verifiziertes Bildungskonto; Quelle bestätigt den Pilotversuch"
+  },
+  {
+    "id": "task_post_105",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_105",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "stimmt",
+      "wahr",
+      "louvre",
+      "kunst",
+      "echt",
+      "korrekt",
+      "quelle",
+      "bestätigt"
+    ],
+    "acceptedPhrases": [
+      "das stimmt",
+      "ist bekannt",
+      "echtes bild",
+      "quelle bestätigt"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das ist ein bekanntes Gemälde und die Infos stimmen – nichts ist manipuliert."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "echt",
+    "feedbackCorrect": {
+      "de": "Das Bild ist KI-Kunst, aber die Aussage (Mona Lisa hängt im Louvre) ist wahr – die Quelle bestätigt das, und der Kontext ist Kunst. Kein Täuschungsversuch. Merke: KI-generiert heißt nicht automatisch Falschmeldung.",
+      "en": "The image is AI art, but the statement (the Mona Lisa hangs in the Louvre) is true — the source confirms it, and the context is art. No attempt to deceive. Remember: AI-generated does not automatically mean false."
+    },
+    "feedbackWrong": {
+      "de": "Das war ein echter, belegbarer Beitrag – achte auf seriöse Quelle, sachlichen Ton und ein passendes, verifiziertes Konto, bevor du „Fake\" rufst.",
+      "en": "This was a real, verifiable post — look for a trustworthy source, a factual tone and a fitting, verified account before you shout \"fake\"."
+    },
+    "diagnosticTool": "source",
+    "tell": "Aussage faktisch korrekt (Quelle bestätigt), Kunst-Kontext"
+  },
+  {
+    "id": "task_post_106",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_106",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "sachlich",
+      "lokal",
+      "plausibel",
+      "echt",
+      "quelle",
+      "nüchtern",
+      "glaubwürdig"
+    ],
+    "acceptedPhrases": [
+      "klingt normal",
+      "nur eine stadt",
+      "sachliche meldung"
+    ],
+    "referenceAnswers": [
+      "Richtig! Eine ruhige lokale Meldung über eine Regel in einer Stadt – ohne Panik oder Teilzwang."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "echt",
+    "feedbackCorrect": {
+      "de": "Die verlinkte Seite ist die offizielle Bekanntmachung der Stadt – und die Bildersuche führt zur selben amtlichen Quelle. Zwei Wege, ein Ergebnis: glaubwürdig echt.",
+      "en": "The linked page is the city's official announcement — and the image search leads to that same official source. Two routes, one result: credibly real."
+    },
+    "feedbackWrong": {
+      "de": "Der Beitrag ist belegt: Quellenprüfung und Bildersuche führen beide zur offiziellen Seite der Stadt. Ein aufgeregter Ton mit ❗ macht eine Meldung noch nicht falsch.",
+      "en": "The post is backed up: both the source check and the image search lead to the city's official page. An excited tone with ❗ does not make a report false."
+    },
+    "diagnosticTool": "source",
+    "tell": "nüchterne, plausible Info; die verlinkte städtische Quelle bestätigt die Regel"
+  },
+  {
+    "id": "task_post_107",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_107",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "ki",
+      "generiert",
+      "bild",
+      "hand",
+      "inszeniert",
+      "fake",
+      "breaking",
+      "unverifiziert"
+    ],
+    "acceptedPhrases": [
+      "die hände sind komisch",
+      "mit ki gemacht",
+      "das bild ist gefälscht",
+      "sieht unecht aus"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das Bild ist mit KI gemacht – schau dir die Hände genau an, die wirken unnatürlich."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "Das Foto ist KI-generiert (inszenierte Verhaftung), dazu reißerisches „BREAKING!!\" und ein unverifiziertes Konto – kein echtes Ereignis.",
+      "en": "The photo is AI-generated (a staged arrest), plus a sensational \"BREAKING!!\" and an unverified account — this never happened."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild selbst ist künstlich erzeugt. Nutze die Bildüberprüfung und suche KI-Artefakte (Hände, Gesicht, Übergänge).",
+      "en": "The image itself was artificially created. Use the image check and look for AI artefacts (hands, faces, edges)."
+    },
+    "diagnosticTool": "image",
+    "tell": "KI-generierte Verhaftungsszene / fehlerhafte Hand"
+  },
+  {
+    "id": "task_post_108",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_108",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "animiert",
+      "cgi",
+      "computer",
+      "figur",
+      "mensch",
+      "zitat",
+      "erfunden",
+      "ki"
+    ],
+    "acceptedPhrases": [
+      "sieht aus wie computer",
+      "mit ki gemacht",
+      "das gesicht ist komisch",
+      "wirkt unecht"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das Video wirkt computeranimiert – ein Zeichen für einen Deepfake."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "„Mira Lennox\" ist eine 3D-animierte Kunstfigur, kein realer Mensch – das angebliche Zitat ist frei erfunden.",
+      "en": "\"Mira Lennox\" is a 3D-animated character, not a real person — the alleged quote is completely made up."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild selbst ist künstlich erzeugt. Nutze die Bildüberprüfung und suche KI-Artefakte (Hände, Gesicht, Übergänge).",
+      "en": "The image itself was artificially created. Use the image check and look for AI artefacts (hands, faces, edges)."
+    },
+    "diagnosticTool": "image",
+    "tell": "computeranimierte Figur, kein echter Mensch"
+  },
+  {
+    "id": "task_post_109",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_109",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "hände",
+      "finger",
+      "verformt",
+      "hintergrund",
+      "ki",
+      "artefakt",
+      "generiert"
+    ],
+    "acceptedPhrases": [
+      "die hände sind komisch",
+      "mit ki gemacht",
+      "das kann nicht echt sein",
+      "bild ist gefälscht"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das Foto ist mit KI erstellt – die Hände im Hintergrund verraten es."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "Die Hände der Personen im Hintergrund sind verformt – ein typisches KI-Bild-Artefakt. Das Foto ist generiert.",
+      "en": "The hands of the people in the background are deformed — a typical AI image artefact. The photo was generated."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild selbst ist künstlich erzeugt. Nutze die Bildüberprüfung und suche KI-Artefakte (Hände, Gesicht, Übergänge).",
+      "en": "The image itself was artificially created. Use the image check and look for AI artefacts (hands, faces, edges)."
+    },
+    "diagnosticTool": "image",
+    "tell": "verformte Hände im Hintergrund"
+  },
+  {
+    "id": "task_post_110",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_110",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "ki",
+      "werbung",
+      "fake",
+      "empfehlung",
+      "promi",
+      "gefälscht",
+      "testimonial",
+      "finger"
+    ],
+    "acceptedPhrases": [
+      "das ist werbung",
+      "die quelle ist komisch",
+      "mit ki gemacht",
+      "seite sieht falsch aus"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das ist Werbung mit einer unseriösen Quelle – und die Person könnte mit KI erzeugt sein."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "Verifizierte Beauty-Creatorin – aber das Bild ist KI und das Promi-Testimonial ist gefälscht. Der blaue Haken bestätigt die Werbeaussage NICHT. Merke: verifiziert ≠ wahr.",
+      "en": "A verified beauty creator — but the image is AI and the celebrity endorsement is fake. The blue tick does NOT confirm the advertising claim. Remember: verified ≠ true."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild selbst ist künstlich erzeugt. Nutze die Bildüberprüfung und suche KI-Artefakte (Hände, Gesicht, Übergänge).",
+      "en": "The image itself was artificially created. Use the image check and look for AI artefacts (hands, faces, edges)."
+    },
+    "diagnosticTool": "image",
+    "tell": "verifizierte Beauty-Creatorin, aber KI-Werbebild mit gefälschtem Promi-Testimonial"
+  },
+  {
+    "id": "task_post_111",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_111",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "quelle",
+      "keine",
+      "panik",
+      "teilen",
+      "erfunden",
+      "unverifiziert",
+      "alarm",
+      "breaking"
+    ],
+    "acceptedPhrases": [
+      "macht panik",
+      "die quelle ist komisch",
+      "soll man schnell teilen",
+      "keine echte quelle"
+    ],
+    "referenceAnswers": [
+      "Richtig! Der Beitrag macht Panik und drängt zum Teilen – und die Quelle ist unseriös."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "suspekt",
+    "feedbackCorrect": {
+      "de": "Erfundene Alarm-Grafik ohne seriöse Quelle, dazu der Aufruf „schnell teilen\" – klassisches Panik- und Weiterverbreitungs-Muster.",
+      "en": "A made-up alert graphic with no trustworthy source, plus the call to \"share fast\" — the classic panic-and-spread pattern."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild mag echt wirken, aber Aussage oder Kontext täuschen. Prüfe Quelle und Profil, nicht nur das Bild.",
+      "en": "The image may look real, but the claim or the context is misleading. Check the source and the profile, not just the picture."
+    },
+    "diagnosticTool": "source",
+    "tell": "keine Quelle, Panik + „schnell teilen\""
+  },
+  {
+    "id": "task_post_112",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_112",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "konto",
+      "profil",
+      "nachrichtenquelle",
+      "hackerwarnung",
+      "verifiziert",
+      "unseriös",
+      "quelle"
+    ],
+    "acceptedPhrases": [
+      "macht panik",
+      "die quelle ist komisch",
+      "soll man teilen",
+      "keine echte quelle"
+    ],
+    "referenceAnswers": [
+      "Richtig! Panikmache, Teilzwang und eine unseriöse Quelle – klare Warnzeichen."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "suspekt",
+    "feedbackCorrect": {
+      "de": "„School Kingz“ ist ein Schüler-Influencer, kein Nachrichtenmedium – der blaue Haken macht die „Hackerwarnung“ nicht wahr. Kein offizieller Absender.",
+      "en": "\"School Kingz\" is a student influencer, not a news outlet — the blue tick does not make the \"hacker warning\" true. There is no official sender."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild mag echt wirken, aber Aussage oder Kontext täuschen. Prüfe Quelle und Profil, nicht nur das Bild.",
+      "en": "The image may look real, but the claim or the context is misleading. Check the source and the profile, not just the picture."
+    },
+    "diagnosticTool": "profile",
+    "tell": "falscher Kontotyp, verifiziert aber keine Nachrichtenquelle"
+  },
+  {
+    "id": "task_post_113",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_113",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "quelle",
+      "fakten",
+      "emotion",
+      "vage",
+      "bank",
+      "unverifiziert",
+      "keine"
+    ],
+    "acceptedPhrases": [
+      "das bild passt nicht",
+      "falscher kontext",
+      "das bild ist alt",
+      "stimmt nicht mit text"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das Bild passt nicht wirklich zur Geschichte – es wurde in einen falschen Zusammenhang gesetzt."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "Das Konto tut so, als wäre es eine Nachrichtenseite, ist aber ein Drama-/Repost-Konto. Vage „Bankenpleite“ ohne Ort, Datum oder Quelle – emotionalisierend statt belegt.",
+      "en": "The account pretends to be a news outlet but is really a drama and repost account. A vague \"bank collapse\" with no place, date or source — emotional instead of evidenced."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild mag echt wirken, aber Aussage oder Kontext täuschen. Prüfe Quelle und Profil, nicht nur das Bild.",
+      "en": "The image may look real, but the claim or the context is misleading. Check the source and the profile, not just the picture."
+    },
+    "diagnosticTool": "source",
+    "tell": "Drama-/Repost-Konto tarnt sich als News; vage „Bankenpleite“ ohne Ort, Datum oder Quelle"
+  },
+  {
+    "id": "task_post_114",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_114",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "anzeige",
+      "werbung",
+      "getarnt",
+      "nachricht",
+      "sponsored",
+      "keine"
+    ],
+    "acceptedPhrases": [
+      "das ist werbung",
+      "nur eine anzeige",
+      "will was verkaufen"
+    ],
+    "referenceAnswers": [
+      "Richtig! Das ist Werbung, die wie eine normale Nachricht aussehen will."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "Die Konto-Bio sagt „Anzeige\" – das ist Werbung, die wie eine Nachricht aussieht (Native Ad), keine unabhängige Meldung.",
+      "en": "The account bio says \"ad\" — this is advertising dressed up as news (a native ad), not independent reporting."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild mag echt wirken, aber Aussage oder Kontext täuschen. Prüfe Quelle und Profil, nicht nur das Bild.",
+      "en": "The image may look real, but the claim or the context is misleading. Check the source and the profile, not just the picture."
+    },
+    "diagnosticTool": "profile",
+    "tell": "Bio = „Anzeige\" – Werbung als Nachricht"
+  },
+  {
+    "id": "task_post_115",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_115",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "offiziell",
+      "quelle",
+      "beleg",
+      "influencer",
+      "behörde",
+      "unbelegt",
+      "keine"
+    ],
+    "acceptedPhrases": [
+      "gibt es keine quelle",
+      "das ist erfunden",
+      "niemand hat das offiziell gesagt",
+      "nur behauptet"
+    ],
+    "referenceAnswers": [
+      "Richtig! Hier wird eine offizielle Erlaubnis behauptet, für die es keine echte Quelle gibt."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "manipuliert",
+    "feedbackCorrect": {
+      "de": "„offiziell\" wird behauptet, aber keine Behörde oder Quelle genannt; ein Lern-Influencer ist keine amtliche Stelle.",
+      "en": "It claims to be \"official\", but names no authority and no source; a study influencer is not an official body."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild mag echt wirken, aber Aussage oder Kontext täuschen. Prüfe Quelle und Profil, nicht nur das Bild.",
+      "en": "The image may look real, but the claim or the context is misleading. Check the source and the profile, not just the picture."
+    },
+    "diagnosticTool": "source",
+    "tell": "„offiziell\" ohne Beleg, Influencer statt Behörde"
+  },
+  {
+    "id": "task_post_116",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_116",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "ki",
+      "bild",
+      "generiert",
+      "roboter",
+      "fake",
+      "clickbait",
+      "aufregung"
+    ],
+    "acceptedPhrases": [
+      "das ist übertrieben",
+      "macht panik",
+      "reißerische überschrift",
+      "soll aufregen"
+    ],
+    "referenceAnswers": [
+      "Richtig! Die Überschrift ist reißerisch und übertrieben, um Aufregung zu erzeugen."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "suspekt",
+    "feedbackCorrect": {
+      "de": "Das Bild ist KI-generiert (Roboter-Handschlag). Dass ein Mitschüler es teilt, macht es nicht echt – prüfe das Bild, nicht den Absender.",
+      "en": "The image is AI-generated (robot handshake). A classmate sharing it does not make it real — check the image, not the sender."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild selbst ist künstlich erzeugt. Nutze die Bildüberprüfung und suche KI-Artefakte (Hände, Gesicht, Übergänge).",
+      "en": "The image itself was artificially created. Use the image check and look for AI artefacts (hands, faces, edges)."
+    },
+    "diagnosticTool": "image",
+    "tell": "KI-generiertes Bild (Roboter-Handschlag); ein geteiltes Bild ist nicht automatisch echt"
+  },
+  {
+    "id": "task_post_117",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_117",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "ki",
+      "generiert",
+      "roboter",
+      "szene",
+      "unrealistisch",
+      "clickbait",
+      "fake"
+    ],
+    "acceptedPhrases": [
+      "das ist übertrieben",
+      "macht panik",
+      "reißerische überschrift",
+      "soll aufregen"
+    ],
+    "referenceAnswers": [
+      "Richtig! Reißerische Übertreibung, die Aufregung erzeugen soll – nicht sachlich."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "suspekt",
+    "feedbackCorrect": {
+      "de": "Die Klassenzimmer-Szene ist KI-generiert und unrealistisch – ein Trend-Creator will damit Klicks. Clickbait-Frage ohne Beleg.",
+      "en": "The classroom scene is AI-generated and unrealistic — a trend creator chasing clicks. A clickbait question with no evidence."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild selbst ist künstlich erzeugt. Nutze die Bildüberprüfung und suche KI-Artefakte (Hände, Gesicht, Übergänge).",
+      "en": "The image itself was artificially created. Use the image check and look for AI artefacts (hands, faces, edges)."
+    },
+    "diagnosticTool": "image",
+    "tell": "KI-Szene (Roboter unterrichtet)"
+  },
+  {
+    "id": "task_post_118",
+    "type": "news",
+    "title": {
+      "de": "Faktencheck",
+      "en": "Fact check"
+    },
+    "postId": "post_118",
+    "instruction": {
+      "de": "Echt, suspekt oder manipuliert? Woran erkennst du es? Begründe kurz.",
+      "en": "Real, suspicious or manipulated? How can you tell? Give a short reason."
+    },
+    "timeLimit": 180,
+    "answerMode": "openAnalysis",
+    "answerPrompt": {
+      "de": "Schreib kurz, was dir auffällt. Ein Wort oder ein kurzer Satz reicht.",
+      "en": "Write briefly what you notice. One word or a short sentence is enough."
+    },
+    "minimumReasonLength": 2,
+    "acceptedWords": [
+      "eilmeldung",
+      "alarm",
+      "framing",
+      "banal",
+      "übertrieben",
+      "reißerisch",
+      "regional",
+      "aufgebauscht",
+      "quelle"
+    ],
+    "acceptedPhrases": [
+      "macht panik",
+      "reißerische eilmeldung",
+      "soll dringend wirken",
+      "übertrieben aufgemacht",
+      "nur regional"
+    ],
+    "referenceAnswers": [
+      "Richtig! Die „Eilmeldung“ ist reißerisch aufgemacht – die Quelle zeigt aber nur eine banale, regionale Regel."
+    ],
+    "rubric": [
+      "Nennt einen passenden Hinweis"
+    ],
+    "pointsCorrect": 100,
+    "pointsWrong": 0,
+    "correctVerdict": "suspekt",
+    "feedbackCorrect": {
+      "de": "Eine banale, regionale Handyregel wird als „⚠️EILMELDUNG“ aufgebauscht. Die verlinkte Quelle ist zwar seriös, beschreibt aber nur eine örtliche Empfehlung – der Alarm-Ton täuscht Dringlichkeit vor. Vergleiche Post 106: gleiche Sache, nüchtern formuliert.",
+      "en": "An ordinary local phone rule is blown up into a \"⚠️BREAKING ALERT\". The linked source is trustworthy, but it only describes a local recommendation — the alarm tone fakes urgency. Compare post 106: same thing, calmly worded."
+    },
+    "feedbackWrong": {
+      "de": "Das Bild mag echt wirken, aber Aussage oder Kontext täuschen. Prüfe Quelle und Profil, nicht nur das Bild.",
+      "en": "The image may look real, but the claim or the context is misleading. Check the source and the profile, not just the picture."
+    },
+    "diagnosticTool": "source",
+    "tell": "reißerisches „Eilmeldung“-Framing bei einer banalen, aber echten Regel; die Quelle bestätigt nur eine regionale Empfehlung"
+  }
+]

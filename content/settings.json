@@ -1,0 +1,76 @@
+{
+  "appName": "AiGram",
+  "contentPackName": "Deepfake Defender Core Pack",
+  "contentPackVersion": "1.0.0",
+  "language": "en",
+  "targetScore": 20,
+  "randomizePrimaryMissions": true,
+  "randomizeFeed": true,
+  "defaultTimeLimit": 180,
+  "taskTypes": {
+    "news": {
+      "label": {
+        "de": "News Card",
+        "en": "News Card"
+      },
+      "notificationTitle": {
+        "de": "Community report received",
+        "en": "Community report received"
+      },
+      "notificationText": {
+        "de": "A potentially manipulated post has been reported for review.",
+        "en": "A potentially manipulated post has been reported for review."
+      }
+    },
+    "liveCheck": {
+      "label": {
+        "de": "Live Check",
+        "en": "Live Check"
+      },
+      "notificationTitle": {
+        "de": "Urgent live check",
+        "en": "Urgent live check"
+      },
+      "notificationText": {
+        "de": "This viral post needs an immediate visual inspection.",
+        "en": "This viral post needs an immediate visual inspection."
+      }
+    },
+    "perspective": {
+      "label": {
+        "de": "Perspective Shift",
+        "en": "Perspective Shift"
+      },
+      "notificationTitle": {
+        "de": "Impact analysis requested",
+        "en": "Impact analysis requested"
+      },
+      "notificationText": {
+        "de": "The manipulation was detected. Identify the intended effect.",
+        "en": "The manipulation was detected. Identify the intended effect."
+      }
+    },
+    "realityDefense": {
+      "label": {
+        "de": "Reality Defense",
+        "en": "Reality Defense"
+      },
+      "notificationTitle": {
+        "de": "Defense protocol activated",
+        "en": "Defense protocol activated"
+      },
+      "notificationText": {
+        "de": "Develop a new agency rule to prevent this error in future.",
+        "en": "Develop a new agency rule to prevent this error in future."
+      }
+    }
+  },
+  "scoring": {
+    "verdict": 1,
+    "evidence": 1,
+    "reasoning": 0,
+    "guessCredit": 0,
+    "pointsWrong": -2
+  },
+  "loseScore": -10
+}

@@ -1,0 +1,1284 @@
+[
+  {
+    "id": "agency_team",
+    "username": "digital_credibility_unit",
+    "displayName": "Digital Credibility Unit",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Monitoring information integrity across AiGram.",
+      "en": "Monitoring information integrity across AiGram."
+    },
+    "followers": 12800,
+    "following": 84,
+    "accent": "navy"
+  },
+  {
+    "id": "gaming_news24",
+    "username": "gaming_news24",
+    "displayName": "Gaming News 24",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Fast gaming and creator updates.",
+      "en": "Fast gaming and creator updates."
+    },
+    "followers": 89200,
+    "following": 311,
+    "accent": "purple"
+  },
+  {
+    "id": "truth_alert",
+    "username": "truth_alert",
+    "displayName": "Truth Alert",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Media, numbers, and claims under review.",
+      "en": "Media, numbers, and claims under review."
+    },
+    "followers": 23600,
+    "following": 190,
+    "accent": "blue"
+  },
+  {
+    "id": "mira_fans24",
+    "username": "mira.fans24",
+    "displayName": "Mira Fans 24",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Fan updates about Mira Lennox.",
+      "en": "Fan updates about Mira Lennox."
+    },
+    "followers": 46100,
+    "following": 205,
+    "accent": "pink"
+  },
+  {
+    "id": "school_alerts",
+    "username": "school.alerts",
+    "displayName": "School Alerts",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "School-related alerts and updates.",
+      "en": "School-related alerts and updates."
+    },
+    "followers": 52000,
+    "following": 91,
+    "accent": "green"
+  },
+  {
+    "id": "realnews24",
+    "username": "drama.alarm",
+    "displayName": "Drama Alarm 🚨",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "krasse News zuerst 🚨",
+      "en": "big news first 🚨"
+    },
+    "followers": 61400,
+    "following": 404,
+    "accent": "red",
+    "profileCheck": {
+      "accountType": {
+        "de": "Viral-/Drama-Konto",
+        "en": "Viral / drama account"
+      },
+      "created": {
+        "de": "Vor 6 Wochen",
+        "en": "6 weeks ago"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "203",
+        "en": "203"
+      },
+      "followers": {
+        "de": "61.400",
+        "en": "61,400"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "Die krassesten News zuerst!! 🚨 (repost)",
+        "en": "The wildest news first!! 🚨 (repost)"
+      }
+    }
+  },
+  {
+    "id": "schooltrends24",
+    "username": "schooltrends24_official",
+    "displayName": "School Trends 24",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Polls and school trends.",
+      "en": "Polls and school trends."
+    },
+    "followers": 19300,
+    "following": 122,
+    "accent": "yellow"
+  },
+  {
+    "id": "newsflash24",
+    "username": "jayden_xx",
+    "displayName": "jayden",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "zockt · repostet alles 🔁",
+      "en": "gaming · reposts everything 🔁"
+    },
+    "followers": 612,
+    "following": 267,
+    "accent": "gray",
+    "profileCheck": {
+      "accountType": {
+        "de": "Schüler-Konto",
+        "en": "Student account"
+      },
+      "created": {
+        "de": "Vor 6 Tagen",
+        "en": "6 days ago"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "24",
+        "en": "24"
+      },
+      "followers": {
+        "de": "612",
+        "en": "612"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "zockt · repostet alles 🔁",
+        "en": "gaming · reposts everything 🔁"
+      }
+    }
+  },
+  {
+    "id": "travel_world",
+    "username": "travel_world",
+    "displayName": "Travel World",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Spectacular places and travel moments.",
+      "en": "Spectacular places and travel moments."
+    },
+    "followers": 98000,
+    "following": 512,
+    "accent": "teal"
+  },
+  {
+    "id": "world_news_now",
+    "username": "world_news_now",
+    "displayName": "World News Now",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Breaking viral stories from around the world.",
+      "en": "Breaking viral stories from around the world."
+    },
+    "followers": 4200,
+    "following": 12,
+    "accent": "red"
+  },
+  {
+    "id": "screenshot_leaks",
+    "username": "screenshot_leaks",
+    "displayName": "Screenshot Leaks",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Leaked chats and screenshots. Authenticity not guaranteed.",
+      "en": "Leaked chats and screenshots. Authenticity not guaranteed."
+    },
+    "followers": 4200,
+    "following": 12,
+    "accent": "purple"
+  },
+  {
+    "id": "art_world_official",
+    "username": "art_world_official",
+    "displayName": "Art World",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Kunst und Meisterwerke.",
+      "en": "Art and masterpieces."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "gold"
+  },
+  {
+    "id": "trendnow_official",
+    "username": "trendnow_official",
+    "displayName": "TrendNow",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Beauty und Trends.",
+      "en": "Beauty and trends."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "purple"
+  },
+  {
+    "id": "newsflash24_official",
+    "username": "newsflash24_official",
+    "displayName": "Newsflash 24",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Breaking News.",
+      "en": "Breaking news."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "red"
+  },
+  {
+    "id": "school_kingz",
+    "username": "school.kingz",
+    "displayName": "School Kingz",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Schüler-Influencer.",
+      "en": "Student influencer."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "blue"
+  },
+  {
+    "id": "koch_lena",
+    "username": "koch_lena",
+    "displayName": "Lena kocht",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Einfache Rezepte.",
+      "en": "Simple recipes."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "blue"
+  },
+  {
+    "id": "bergzeit",
+    "username": "bergzeit",
+    "displayName": "Bergzeit",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Wandern & Natur.",
+      "en": "Hiking & nature."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "green"
+  },
+  {
+    "id": "pfoten_glueck",
+    "username": "pfoten_glueck",
+    "displayName": "Pfotenglück",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Rund um Hunde.",
+      "en": "All about dogs."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "gold"
+  },
+  {
+    "id": "run_mia",
+    "username": "run_mia",
+    "displayName": "Mia läuft",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Laufen & Motivation.",
+      "en": "Running & motivation."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "red"
+  },
+  {
+    "id": "stadt_bibliothek",
+    "username": "stadt_bibliothek",
+    "displayName": "Stadtbibliothek",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Eure Stadtbibliothek.",
+      "en": "Your city library."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "navy"
+  },
+  {
+    "id": "markt_frisch",
+    "username": "markt_frisch",
+    "displayName": "Marktfrisch",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Frische vom Markt.",
+      "en": "Fresh from the market."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "green"
+  },
+  {
+    "id": "buerger_stimme",
+    "username": "buerger_stimme",
+    "displayName": "Bürgerstimme",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Politik-News.",
+      "en": "Political news."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "red"
+  },
+  {
+    "id": "news_kompakt",
+    "username": "news_kompakt",
+    "displayName": "News Kompakt",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Aktuelles.",
+      "en": "Latest news."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "navy"
+  },
+  {
+    "id": "umfrage_direkt",
+    "username": "umfrage_direkt",
+    "displayName": "Umfrage Direkt",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Umfragen.",
+      "en": "Polls."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "purple"
+  },
+  {
+    "id": "insider_leak",
+    "username": "insider_leak",
+    "displayName": "Insider Leak",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Leaks & Insider.",
+      "en": "Leaks & insiders."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "red"
+  },
+  {
+    "id": "clip_arena",
+    "username": "clip_arena",
+    "displayName": "Clip Arena",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Video-Clips.",
+      "en": "Video clips."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "blue"
+  },
+  {
+    "id": "eil_melder",
+    "username": "eil_melder",
+    "displayName": "Eil-Melder",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Eilmeldungen.",
+      "en": "Breaking news."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "red"
+  },
+  {
+    "id": "daten_blick",
+    "username": "daten_blick",
+    "displayName": "Datenblick",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Daten & Politik.",
+      "en": "Data & politics."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "navy"
+  },
+  {
+    "id": "polit_watch",
+    "username": "polit_watch",
+    "displayName": "Polit Watch",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Politik beobachtet.",
+      "en": "Watching politics."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "gold"
+  },
+  {
+    "id": "tagesblick_news",
+    "username": "tagesblick_news",
+    "displayName": "Tagesblick",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Nachrichten.",
+      "en": "News."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "navy"
+  },
+  {
+    "id": "trend_puls",
+    "username": "trend_puls",
+    "displayName": "Trendpuls",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Trends.",
+      "en": "Trends."
+    },
+    "followers": 5200,
+    "following": 31,
+    "accent": "purple"
+  },
+  {
+    "id": "gaming.news24",
+    "username": "noah.clips",
+    "displayName": "Noah Clips",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "gaming clips & edits 🎮",
+      "en": "gaming clips & edits 🎮"
+    },
+    "followers": 18400,
+    "following": 42,
+    "accent": "orange",
+    "profileCheck": {
+      "accountType": {
+        "de": "Schüler-Konto",
+        "en": "Student account"
+      },
+      "created": {
+        "de": "Vor 5 Tagen",
+        "en": "5 days ago"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "63",
+        "en": "63"
+      },
+      "followers": {
+        "de": "18.400",
+        "en": "18,400"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "gaming clips & edits 🎮",
+        "en": "gaming clips & edits 🎮"
+      }
+    }
+  },
+  {
+    "id": "news.flash24",
+    "username": "newsflash.clips",
+    "displayName": "NewsFlash Clips",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Virale Clips 🎬",
+      "en": "Viral clips 🎬"
+    },
+    "followers": 128000,
+    "following": 42,
+    "accent": "red",
+    "profileCheck": {
+      "accountType": {
+        "de": "Clip-/Unterhaltungskonto",
+        "en": "Clip / entertainment account"
+      },
+      "created": {
+        "de": "Vor 11 Tagen",
+        "en": "11 days ago"
+      },
+      "visibility": {
+        "de": "Eingeschränkt",
+        "en": "Limited"
+      },
+      "posts": {
+        "de": "77",
+        "en": "77"
+      },
+      "followers": {
+        "de": "128.000",
+        "en": "128,000"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "Virale Clips & News-Schnipsel 🎬",
+        "en": "Viral clips & news snippets 🎬"
+      }
+    }
+  },
+  {
+    "id": "world.news24",
+    "username": "pausenhof.memes",
+    "displayName": "Pausenhof Memes",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "memes aus der pause 💀",
+      "en": "memes from break time 💀"
+    },
+    "followers": 47300,
+    "following": 42,
+    "accent": "yellow",
+    "profileCheck": {
+      "accountType": {
+        "de": "Schüler-/Meme-Konto",
+        "en": "Student / meme account"
+      },
+      "created": {
+        "de": "Seit 2022",
+        "en": "Since 2022"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "1.902",
+        "en": "1,902"
+      },
+      "followers": {
+        "de": "47.300",
+        "en": "47,300"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "memes aus der pause 💀",
+        "en": "memes from break time 💀"
+      }
+    }
+  },
+  {
+    "id": "screenshot.leaks",
+    "username": "screenshot.leaks",
+    "displayName": "Screenshot Leaks",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Screenshot Leaks.",
+      "en": "Screenshot leaks."
+    },
+    "followers": 6100,
+    "following": 42,
+    "accent": "blue"
+  },
+  {
+    "id": "art.world",
+    "username": "lea.malt",
+    "displayName": "Lea 🎨",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "11 Jahre · malen · 6b 🎨",
+      "en": "11 years old · painting · class 6b 🎨"
+    },
+    "followers": 3240,
+    "following": 42,
+    "accent": "pink",
+    "profileCheck": {
+      "accountType": {
+        "de": "Schüler-Konto",
+        "en": "Student account"
+      },
+      "created": {
+        "de": "Seit 2023",
+        "en": "Since 2023"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "141",
+        "en": "141"
+      },
+      "followers": {
+        "de": "3.240",
+        "en": "3,240"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "11 Jahre · malen · 6b 🎨",
+        "en": "11 years old · painting · class 6b 🎨"
+      }
+    }
+  },
+  {
+    "id": "trendnow.official",
+    "username": "lina.glow",
+    "displayName": "Lina Glow ✨",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Beauty & Glow 💖",
+      "en": "Beauty & Glow 💖"
+    },
+    "followers": 781000,
+    "following": 42,
+    "accent": "pink",
+    "profileCheck": {
+      "accountType": {
+        "de": "Beauty-Creatorin",
+        "en": "Beauty creator"
+      },
+      "created": {
+        "de": "Seit 2022",
+        "en": "Since 2022"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "684",
+        "en": "684"
+      },
+      "followers": {
+        "de": "781.000",
+        "en": "781,000"
+      },
+      "verification": {
+        "de": "Verifiziert",
+        "en": "Verified"
+      },
+      "bio": {
+        "de": "Beauty & Glow 💖 Werbung wird gekennzeichnet.",
+        "en": "Beauty & Glow 💖 Ads are labelled."
+      }
+    }
+  },
+  {
+    "id": "school.kingz",
+    "username": "school.kingz",
+    "displayName": "School Kingz",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "schulnews, memes & gerüchte 👀",
+      "en": "school news, memes & rumours 👀"
+    },
+    "followers": 96000,
+    "following": 42,
+    "accent": "blue",
+    "profileCheck": {
+      "accountType": {
+        "de": "Schüler-Creator",
+        "en": "Student creator"
+      },
+      "created": {
+        "de": "Seit 2021",
+        "en": "Since 2021"
+      },
+      "visibility": {
+        "de": "Privat",
+        "en": "Private"
+      },
+      "posts": {
+        "de": "412",
+        "en": "412"
+      },
+      "followers": {
+        "de": "96.000",
+        "en": "96,000"
+      },
+      "verification": {
+        "de": "Verifiziert",
+        "en": "Verified"
+      },
+      "bio": {
+        "de": "schulnews, memes & gerüchte 👀",
+        "en": "school news, memes & rumours 👀"
+      }
+    }
+  },
+  {
+    "id": "weltblick.news",
+    "username": "paul.erklaerts",
+    "displayName": "Paul erklärt's",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Nachrichten einfach erklärt 📲",
+      "en": "The news explained simply 📲"
+    },
+    "followers": 342000,
+    "following": 42,
+    "accent": "blue",
+    "profileCheck": {
+      "accountType": {
+        "de": "Creator · erklärt Nachrichten",
+        "en": "Creator · explains the news"
+      },
+      "created": {
+        "de": "Seit 2020",
+        "en": "Since 2020"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "512",
+        "en": "512"
+      },
+      "followers": {
+        "de": "342.000",
+        "en": "342,000"
+      },
+      "verification": {
+        "de": "Verifiziert",
+        "en": "Verified"
+      },
+      "bio": {
+        "de": "Ich erklär euch die Nachrichten 📲 einfach & immer mit Quelle.",
+        "en": "I explain the news 📲 simply & always with a source."
+      }
+    }
+  },
+  {
+    "id": "ai.news_official",
+    "username": "aigram",
+    "displayName": "AiGram",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Offizielles Konto von AiGram.",
+      "en": "Official AiGram account."
+    },
+    "followers": 2100000,
+    "following": 42,
+    "accent": "purple",
+    "profileCheck": {
+      "accountType": {
+        "de": "Offizielles Konto · Plattform",
+        "en": "Official account · platform"
+      },
+      "created": {
+        "de": "Seit 2018",
+        "en": "Since 2018"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "642",
+        "en": "642"
+      },
+      "followers": {
+        "de": "2,1 Mio.",
+        "en": "2.1M"
+      },
+      "verification": {
+        "de": "Verifiziert",
+        "en": "Verified"
+      },
+      "bio": {
+        "de": "Offizielles Konto der Plattform AiGram.",
+        "en": "Official account of the AiGram platform."
+      }
+    }
+  },
+  {
+    "id": "news360_official",
+    "username": "technik.tim",
+    "displayName": "Technik Tim",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Technik & KI für alle 🤖",
+      "en": "Tech & AI for everyone 🤖"
+    },
+    "followers": 156000,
+    "following": 42,
+    "accent": "teal",
+    "profileCheck": {
+      "accountType": {
+        "de": "Tech-Creator",
+        "en": "Tech creator"
+      },
+      "created": {
+        "de": "Seit 2021",
+        "en": "Since 2021"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "398",
+        "en": "398"
+      },
+      "followers": {
+        "de": "156.000",
+        "en": "156,000"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "Alles über Technik & KI 🤖 Quellen in den Storys.",
+        "en": "All things tech & AI 🤖 Sources in my stories."
+      }
+    }
+  },
+  {
+    "id": "news.update_official",
+    "username": "schule.digital",
+    "displayName": "Schule Digital",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Offizielle Infos zur Schul-Digitalisierung.",
+      "en": "Official information on digital learning at schools."
+    },
+    "followers": 58900,
+    "following": 42,
+    "accent": "green",
+    "profileCheck": {
+      "accountType": {
+        "de": "Privates Konto",
+        "en": "Private account"
+      },
+      "created": {
+        "de": "Vor 4 Stunden erstellt",
+        "en": "Created 4 hours ago"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "1.243",
+        "en": "1,243"
+      },
+      "followers": {
+        "de": "58.900",
+        "en": "58,900"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "Digitalisierung an Schulen – offizielle Infos.",
+        "en": "Digital learning at schools — official information."
+      }
+    }
+  },
+  {
+    "id": "school.vibes_",
+    "username": "school.vibes_",
+    "displayName": "School Vibes",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Schulleben & Neues aus dem Klassenzimmer.",
+      "en": "School life & news from the classroom."
+    },
+    "followers": 6100,
+    "following": 42,
+    "accent": "gold"
+  },
+  {
+    "id": "study.with.max",
+    "username": "study.with.max",
+    "displayName": "Study with Max 📚",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Lerntipps & mehr 📚",
+      "en": "Study tips & more 📚"
+    },
+    "followers": 185000,
+    "following": 42,
+    "accent": "purple",
+    "profileCheck": {
+      "accountType": {
+        "de": "Lern-Influencer",
+        "en": "Study influencer"
+      },
+      "created": {
+        "de": "Seit 2020",
+        "en": "Since 2020"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "286",
+        "en": "286"
+      },
+      "followers": {
+        "de": "185.000",
+        "en": "185,000"
+      },
+      "verification": {
+        "de": "Verifiziert",
+        "en": "Verified"
+      },
+      "bio": {
+        "de": "Lerntipps, Schule & KI 📚 Werbung gekennzeichnet.",
+        "en": "Study tips, school & AI 📚 Ads are labelled."
+      }
+    }
+  },
+  {
+    "id": "aiapp_ads",
+    "username": "AiApp",
+    "displayName": "AiApp",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Anzeige.",
+      "en": "Advertisement."
+    },
+    "followers": 6100,
+    "following": 42,
+    "accent": "blue"
+  },
+  {
+    "id": "robo_news",
+    "username": "robo.news",
+    "displayName": "Robo News",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Die Zukunft der Technik.",
+      "en": "The future of technology."
+    },
+    "followers": 6100,
+    "following": 42,
+    "accent": "red"
+  },
+  {
+    "id": "zukunft_pur",
+    "username": "zukunft.pur",
+    "displayName": "Zukunft Pur",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Trends von morgen.",
+      "en": "Tomorrow's trends."
+    },
+    "followers": 6100,
+    "following": 42,
+    "accent": "purple"
+  },
+  {
+    "id": "eil_news",
+    "username": "eil.news",
+    "displayName": "Eil News",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Eilmeldungen zuerst.",
+      "en": "Breaking news first."
+    },
+    "followers": 6100,
+    "following": 42,
+    "accent": "red"
+  },
+  {
+    "id": "stadt.news",
+    "username": "elternrat.aktuell",
+    "displayName": "Elternrat aktuell",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "Elternrat – Infos für Familien 👪",
+      "en": "Parents' council – information for families 👪"
+    },
+    "followers": 4800,
+    "following": 40,
+    "accent": "navy",
+    "profileCheck": {
+      "accountType": {
+        "de": "Eltern-/Schulgemeinschaft",
+        "en": "Parent / school community"
+      },
+      "created": {
+        "de": "Seit 2019",
+        "en": "Since 2019"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "212",
+        "en": "212"
+      },
+      "followers": {
+        "de": "4.800",
+        "en": "4,800"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "Infos vom Elternrat für Familien 👪",
+        "en": "Information from the parents' council for families 👪"
+      }
+    }
+  },
+  {
+    "id": "aiapp.ads",
+    "username": "aiapp",
+    "displayName": "AiApp",
+    "verified": true,
+    "avatar": "",
+    "bio": {
+      "de": "Offizielles Werbekonto von AiApp.",
+      "en": "Official advertising account of AiApp."
+    },
+    "followers": 1400000,
+    "following": 40,
+    "accent": "blue",
+    "profileCheck": {
+      "accountType": {
+        "de": "Werbekonto (Marke)",
+        "en": "Brand advertising account"
+      },
+      "created": {
+        "de": "Seit 2020",
+        "en": "Since 2020"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "720",
+        "en": "720"
+      },
+      "followers": {
+        "de": "1,4 Mio.",
+        "en": "1.4M"
+      },
+      "verification": {
+        "de": "Verifiziert",
+        "en": "Verified"
+      },
+      "bio": {
+        "de": "Offizielles Werbekonto. Beiträge sind Anzeigen (Werbung).",
+        "en": "Official advertising account. Posts are ads."
+      }
+    }
+  },
+  {
+    "id": "robo.news",
+    "username": "lars.2013",
+    "displayName": "Lars",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "robotik · games · 6a 🤖",
+      "en": "robotics · games · class 6a 🤖"
+    },
+    "followers": 1410,
+    "following": 40,
+    "accent": "teal",
+    "profileCheck": {
+      "accountType": {
+        "de": "Schüler-Konto",
+        "en": "Student account"
+      },
+      "created": {
+        "de": "Seit 2023",
+        "en": "Since 2023"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "58",
+        "en": "58"
+      },
+      "followers": {
+        "de": "1.410",
+        "en": "1,410"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "robotik · games · 6a 🤖",
+        "en": "robotics · games · class 6a 🤖"
+      }
+    }
+  },
+  {
+    "id": "zukunft.pur",
+    "username": "future.hub",
+    "displayName": "Future Hub",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "KI, Roboter & Zukunft 🤖",
+      "en": "AI, robots & the future 🤖"
+    },
+    "followers": 92500,
+    "following": 40,
+    "accent": "indigo",
+    "profileCheck": {
+      "accountType": {
+        "de": "Trend-/Tech-Creator",
+        "en": "Trend / tech creator"
+      },
+      "created": {
+        "de": "Seit 2023",
+        "en": "Since 2023"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "319",
+        "en": "319"
+      },
+      "followers": {
+        "de": "92.500",
+        "en": "92,500"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "KI, Roboter & Zukunft 🤖 täglich neu",
+        "en": "AI, robots & the future 🤖 new every day"
+      }
+    }
+  },
+  {
+    "id": "eil.news",
+    "username": "pausenhof.news",
+    "displayName": "Pausenhof News",
+    "verified": false,
+    "avatar": "",
+    "bio": {
+      "de": "was an schulen abgeht 📱",
+      "en": "what's going on at schools 📱"
+    },
+    "followers": 12100,
+    "following": 40,
+    "accent": "orange",
+    "profileCheck": {
+      "accountType": {
+        "de": "Schüler-Creator",
+        "en": "Student creator"
+      },
+      "created": {
+        "de": "Seit 2022",
+        "en": "Since 2022"
+      },
+      "visibility": {
+        "de": "Öffentlich",
+        "en": "Public"
+      },
+      "posts": {
+        "de": "301",
+        "en": "301"
+      },
+      "followers": {
+        "de": "12.100",
+        "en": "12,100"
+      },
+      "verification": {
+        "de": "Nicht verifiziert",
+        "en": "Not verified"
+      },
+      "bio": {
+        "de": "was an schulen abgeht 📱",
+        "en": "what's going on at schools 📱"
+      }
+    }
+  }
+]
