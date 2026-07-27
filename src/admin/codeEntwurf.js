@@ -12,7 +12,7 @@ import {
 /* ============================================================
    ENTWURFSSPEICHER FUER DIE CODE-DATEIEN
 
-   Die JSON-Inhalte verwaltet AdminApp. Hier liegt alles, was in
+   Die JSON-Inhalte verwaltet InlineAdmin. Hier liegt alles, was in
    JS-Dateien steht: Uebersetzungen, Bewertungsregeln,
    Fehlerzonen, der Algorithmus und der reine Text von App.jsx.
 
